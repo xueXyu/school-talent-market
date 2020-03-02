@@ -34,6 +34,7 @@ CREATE TABLE `user_resume` (
 	`deleted_at` datetime DEFAULT NULL,
 
 	`user_id` int(11) NOT NULL COMMENT '用户表id',
+	`resume_name` varchar(64) DEFAULT '' COMMENT '简历名称',
 	`resume_email` varchar(255) DEFAULT '' COMMENT '邮箱',
 	`resume_education` varchar(64) DEFAULT '' COMMENT '学历 初中及以下 中专/中技 高中 大专 本科 硕士 博士',
 	`resume_working_years` varchar(32) DEFAULT '' COMMENT '（几年）工作经验',
@@ -74,7 +75,7 @@ CREATE TABLE `company_job` (
 	FOREIGN KEY (`company_id`) REFERENCES `company` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='公司职位表';
 
-CREATE TABLE `job_resume` (
+CREATE TABLE `job_resume_associated` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`created_at` datetime DEFAULT NULL,
 	`updated_at` datetime DEFAULT NULL,
@@ -84,13 +85,26 @@ CREATE TABLE `job_resume` (
 	`user_id` int(11) NOT NULL COMMENT '用户表id',
 	`job_id` int(11) NOT NULL COMMENT '职位表id',
 	`resume_id` int(11) NOT NULL COMMENT '简历表id',
-	`status` tinyint(1) DEFAULT 0 COMMENT '简历状态 0 已投递 1 待面试/邀请面试 2 不合适',
+	`status` tinyint(1) DEFAULT 0 COMMENT '简历状态 0 已投递 1 录用 2 不合适',
 	PRIMARY KEY (`id`),
 	FOREIGN KEY (`company_id`) REFERENCES `company` (`id`) ON DELETE CASCADE,
 	FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE,
 	FOREIGN KEY (`job_id`) REFERENCES `company_job` (`id`) ON DELETE CASCADE,
 	FOREIGN KEY (`resume_id`) REFERENCES `user_resume` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='公司职位与简历投递关联表';
+
+CREATE TABLE `user_like_job` (
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`created_at` datetime DEFAULT NULL,
+	`updated_at` datetime DEFAULT NULL,
+	`deleted_at` datetime DEFAULT NULL,
+
+	`user_id` int(11) NOT NULL COMMENT '用户表id',
+	`job_id` int(11) NOT NULL COMMENT '职位表id',
+	PRIMARY KEY (`id`),
+	FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE,
+	FOREIGN KEY (`job_id`) REFERENCES `company_job` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户收藏公司职位表';
 
 CREATE TABLE `news` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
@@ -102,3 +116,14 @@ CREATE TABLE `news` (
 	`content` text COMMENT '新闻内容',
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='新闻表';
+
+CREATE TABLE `affiche` (
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`created_at` datetime DEFAULT NULL,
+	`updated_at` datetime DEFAULT NULL,
+	`deleted_at` datetime DEFAULT NULL,
+
+	`title` varchar(255) NOT NULL DEFAULT 'title' COMMENT '公告标题',
+	`content` text COMMENT '公告内容',
+	PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='公告表';

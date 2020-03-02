@@ -1,5 +1,7 @@
 /* jshint indent: 2 */
 
+const util = require('../util');
+
 module.exports = function (sequelize, DataTypes) {
     return sequelize.define('CompanyJob', {
         id: {
@@ -52,10 +54,7 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.TEXT,
             allowNull: true
         }
-    }, {
-        tableName: 'company_job',
-        createdAt: 'created_at',
-        updatedAt: 'updated_at',
-        deletedAt: 'deleted_at',
-    });
+    }, util.addModelCommonOptions({
+        tableName: 'company_job'
+    }));
 };

@@ -1,5 +1,7 @@
 /* jshint indent: 2 */
 
+const util = require('../util');
+
 module.exports = function (sequelize, DataTypes) {
     const model = sequelize.define('User', {
         id: {
@@ -55,12 +57,10 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: true,
             defaultValue: ''
         }
-    }, {
-        tableName: 'user',
-        createdAt: 'created_at',
-        updatedAt: 'updated_at',
-        deletedAt: 'deleted_at',
-    });
+    }, util.addModelCommonOptions({
+        tableName: 'user'
+    }));
+
 
     model.associate = function (models) {
         models.User.hasMany(models.UserResume, {

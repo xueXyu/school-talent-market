@@ -3,7 +3,7 @@
 const util = require('../util');
 
 module.exports = function (sequelize, DataTypes) {
-    return sequelize.define('UserResume', {
+    return sequelize.define('JobResumeAssociated', {
         id: {
             type: DataTypes.INTEGER(11),
             allowNull: false,
@@ -22,6 +22,14 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.DATE,
             allowNull: true
         },
+        company_id: {
+            type: DataTypes.INTEGER(11),
+            allowNull: false,
+            references: {
+                model: 'company',
+                key: 'id'
+            }
+        },
         user_id: {
             type: DataTypes.INTEGER(11),
             allowNull: false,
@@ -30,31 +38,28 @@ module.exports = function (sequelize, DataTypes) {
                 key: 'id'
             }
         },
-        resume_name: {
-            type: DataTypes.STRING(64),
-            allowNull: true,
-            defaultValue: ''
+        job_id: {
+            type: DataTypes.INTEGER(11),
+            allowNull: false,
+            references: {
+                model: 'company_job',
+                key: 'id'
+            }
         },
-        resume_email: {
-            type: DataTypes.STRING(255),
-            allowNull: true,
-            defaultValue: ''
+        resume_id: {
+            type: DataTypes.INTEGER(11),
+            allowNull: false,
+            references: {
+                model: 'user_resume',
+                key: 'id'
+            }
         },
-        resume_education: {
-            type: DataTypes.STRING(64),
+        status: {
+            type: DataTypes.INTEGER(1),
             allowNull: true,
-            defaultValue: ''
-        },
-        resume_working_years: {
-            type: DataTypes.STRING(32),
-            allowNull: true,
-            defaultValue: ''
-        },
-        resume_job_intension: {
-            type: DataTypes.TEXT,
-            allowNull: true
+            defaultValue: '0'
         }
     }, util.addModelCommonOptions({
-        tableName: 'user_resume'
+        tableName: 'job_resume_associated'
     }));
 };

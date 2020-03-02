@@ -1,5 +1,7 @@
 /* jshint indent: 2 */
 
+const util = require('../util');
+
 module.exports = function (sequelize, DataTypes) {
     const model = sequelize.define('Company', {
         id: {
@@ -55,12 +57,9 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: true,
             defaultValue: ''
         }
-    }, {
-        tableName: 'company',
-        createdAt: 'created_at',
-        updatedAt: 'updated_at',
-        deletedAt: 'deleted_at',
-    });
+    }, util.addModelCommonOptions({
+        tableName: 'company'
+    }));
 
     model.associate = function (models) {
         models.Company.hasMany(models.CompanyJob, {

@@ -43,17 +43,20 @@ module.exports = {
     // 设置模型通用option
     addModelCommonOptions: (options) => {
         if (options) {
+            options.createdAt = 'created_at';
+            options.updatedAt = 'updated_at';
+            options.deletedAt = 'deleted_at';
+
             options.freezeTableName = true;
             options.timestamps = true;
             options.paranoid = true;
 
-            options.charset = options.charset || 'utf8';
-            options.collate = options.collate || 'utf8_general_ci';
+            options.charset = options.charset || 'utf8mb4';
+            options.collate = options.collate || 'utf8mb4_general_ci';
 
             options.defaultScope = options.defaultScope || {};
             options.defaultScope.attributes = options.defaultScope.attributes || {};
             options.defaultScope.attributes.exclude = options.defaultScope.attributes.exclude || [];
-            options.defaultScope.attributes.exclude.push('deletedAt');
         }
         return options;
     },

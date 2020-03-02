@@ -1,9 +1,8 @@
 /* jshint indent: 2 */
-
 const util = require('../util');
 
 module.exports = function (sequelize, DataTypes) {
-    return sequelize.define('Admin', {
+    return sequelize.define('Affiche', {
         id: {
             type: DataTypes.INTEGER(11),
             allowNull: false,
@@ -22,17 +21,16 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.DATE,
             allowNull: true
         },
-        admin_account: {
-            type: DataTypes.STRING(32),
+        title: {
+            type: DataTypes.STRING(255),
             allowNull: false,
-            defaultValue: '0'
+            defaultValue: 'title'
         },
-        admin_password: {
-            type: DataTypes.STRING(64),
-            allowNull: false,
-            defaultValue: '0'
+        content: {
+            type: DataTypes.TEXT,
+            allowNull: true
         }
     }, util.addModelCommonOptions({
-        tableName: 'admin'
+        tableName: 'affiche'
     }));
 };
