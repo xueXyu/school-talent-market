@@ -6,7 +6,7 @@
                 <!-- Header Logo Start -->
                 <div class="col">
                     <div class="header-logo">
-                        <a href="index.html"><img src="../../static/images/logo/logo-light.png" alt="Site Logo"></a>
+                        <router-link :to="{name:'Home'}"><img src="../../static/images/logo/logo-light.png" alt="Site Logo"></router-link>
                     </div>
                 </div><!-- Header Logo End -->
 
@@ -28,7 +28,7 @@
                 <!-- Header Menu Start -->
                 <nav id="main-menu" class="main-menu col-lg-auto order-lg-2">
                     <ul>
-                        <li class="has-children"><a href="index.html">首页</a>
+                        <li class="has-children"><router-link :to="{name:'Home'}">首页</router-link>
 <!--                            <ul class="sub-menu">-->
 <!--                                <li><a href="index.html">Home One</a></li>-->
 <!--                                <li><a href="index-2.html">Home Two</a></li>-->
