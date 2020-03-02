@@ -17,17 +17,27 @@ module.exports = {
     // rest路由
     restRoute: (path, router, controller) => {
         path = path || '';
-        router.get(path + '/', (req, res) => {
-            controller.index(req, res);
-        }).get(path + '/:id', (req, res) => {
-            controller.show(req, res);
-        }).post(path + '/', (req, res) => {
-            controller.create(req, res);
-        }).put(path + '/:id', (req, res) => {
-            controller.update(req, res);
-        }).delete(path + '/:id', (req, res) => {
-            controller.destroy(req, res);
-        });
+        router
+            // 分页查询
+            .get(path + '/', (req, res) => {
+                controller.index(req, res);
+            })
+            // 查一个
+            .get(path + '/:id', (req, res) => {
+                controller.show(req, res);
+            })
+            // 新建
+            .post(path + '/', (req, res) => {
+                controller.create(req, res);
+            })
+            // 更新
+            .put(path + '/:id', (req, res) => {
+                controller.update(req, res);
+            })
+            // 删除
+            .delete(path + '/:id', (req, res) => {
+                controller.destroy(req, res);
+            });
     },
 
     // 是生产环境
