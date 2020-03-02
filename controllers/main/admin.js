@@ -3,7 +3,7 @@
 const _ = require('lodash');
 const joi = require('@hapi/joi');
 const md5 = require('md5-node');
-const RestController = require('./rest');
+const RestController = require('../rest');
 
 class AdminController extends RestController {
     constructor() {
@@ -19,31 +19,6 @@ class AdminController extends RestController {
         //     //     throw new Error('Failed to load the default admin! Should run sequelize seeder first!');
         //     // }
         // });
-    }
-
-    /**
-     * 分页返回所有对象
-     */
-    index(req, res) {
-        // const params = req.query || {};
-        // const data = {
-        //     offset: +params.offset || 0,
-        //     limit: +params.limit || 10
-        // };
-        // if (params.where && _.isObject(params.where)) {
-        //     data.where = params.where;
-        // }
-        // const Admin = this.models['Admin'];
-        // // data.include = [{model: Admin, as: 'admin'}];
-        // data.distinct = true;
-        // res.reply(this.model.findAndCountAll(data));
-
-        this.models['Admin'].findAll({
-        }).then(function(result){
-            res.reply(result);
-        }).catch(function(error){
-            res.error("发生错误：" + error);
-        });
     }
 
     /**

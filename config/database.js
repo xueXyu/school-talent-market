@@ -14,7 +14,7 @@ const dbConfig = {
         'min': 0,
         'idle': 10000
     },
-    'timezone': '+08:00',
+    'timezone': '+00:00',
     'logging': false,
 };
 

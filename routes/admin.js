@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var util = require('../util');
-var adminController = require('../controllers/admin');
+var adminController = require('../controllers/main/admin');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -25,6 +25,7 @@ router.get('/', function(req, res, next) {
 
 util.buildRoute([
     { path: '/admin', method: 'get', target: 'index' },
+    { path: '/admin/:id', method: 'get', target: 'show' },
     { path: '/admin', method: 'post', target: 'create' },
     { path: '/admin', method: 'delete', target: 'destroy'},
     { path: '/admin-update-password', method: 'post', target: 'updatePassword'}
