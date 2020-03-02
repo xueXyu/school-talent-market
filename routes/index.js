@@ -1,12 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var models = require('../models');
-// const util = require('../util');
-
-/* GET home page. */
-// router.get('/', function(req, res, next) {
-//   res.render('index', { title: 'Express' });
-// });
+var util = require('../util');
 
 router.get('/', (req, res) => {
     res.reply('Hello!');
@@ -14,17 +9,15 @@ router.get('/', (req, res) => {
 
 router.get('/json', function(req, res, next) {
 
-    return models['Admin'].findAll({
+    models['Admin'].findAll({
     }).then(function(result){
-        // res.send(result);
-        res.json(result)
+        res.reply(result);
     }).catch(function(error){
-        console.log("发生错误：" + error);
+        res.error("发生错误：" + error);
     });
 
 });
 
-//
 // util.restRoute('/users', router, userController);
 // util.restRoute('/roles', router, roleController);
 // util.restRoute('/permissions', router, permissionController);
