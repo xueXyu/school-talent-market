@@ -1,76 +1,78 @@
 <template>
-    <div class="header">
-        <el-row :gutter="10" style="width: 980px;">
-            <el-col :span="6">
-                <div class="logo">
-<!--                    <img src="../assets/logo.png" height="40"/>-->
+    <header class="header">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+
+                <!-- Header Logo Start -->
+                <div class="col">
+                    <div class="header-logo">
+                        <a href="index.html"><img src="../../static/images/logo/logo-light.png" alt="Site Logo"></a>
+                    </div>
+                </div><!-- Header Logo End -->
+
+                <!-- Offcanvas Toggle Start -->
+                <div class="col-auto d-lg-none d-flex align-items-center">
+                    <button class="offcanvas-toggle">
+                        <span></span>
+                    </button>
                 </div>
-            </el-col>
-            <el-col :span="12" style="text-align: center;">
-                <div class="nav">
-                    <el-menu
-                        :default-active="activeIndex"
-                        class="el-menu-demo"
-                        mode="horizontal"
-                        @select="handleSelect"
-                        background-color="#303a40"
-                        text-color="#fff"
-                        active-text-color="#ffd04b">
-                        <el-menu-item index="1">首页</el-menu-item>
-                        <el-menu-item index="2">简历</el-menu-item>
-                        <el-menu-item index="3">职位</el-menu-item>
-                        <el-menu-item index="4">公告</el-menu-item>
-                        <el-menu-item index="5">新闻中心</el-menu-item>
-                    </el-menu>
-                </div>
-            </el-col>
-            <el-col :span="6" style="color:#ffffff;">
-                <el-col :span="24" style="text-align: center;">
-                    <el-col :span="6">登录</el-col>
-                    <el-col :span="6">注册</el-col>
-                </el-col>
-            </el-col>
-        </el-row>
-    </div>
+                <!-- Offcanvas Toggle End -->
+
+                <!-- Header Links Start -->
+                <div class="header-links col-auto order-lg-3">
+                    <a href="#" data-toggle="modal" data-target="#loginSignupModal" data-target-sub="#login">登录</a>
+                    <span>or</span>
+                    <a href="#" data-toggle="modal" data-target="#loginSignupModal" data-target-sub="#signup">注册</a>
+                </div><!-- Header Links End -->
+
+                <!-- Header Menu Start -->
+                <nav id="main-menu" class="main-menu col-lg-auto order-lg-2">
+                    <ul>
+                        <li class="has-children"><a href="index.html">首页</a>
+<!--                            <ul class="sub-menu">-->
+<!--                                <li><a href="index.html">Home One</a></li>-->
+<!--                                <li><a href="index-2.html">Home Two</a></li>-->
+<!--                            </ul>-->
+                        </li>
+                        <li class="has-children"><a href="job-list.html">工作</a>
+                            <ul class="sub-menu">
+                                <li><a href="job-list.html">工作列表</a></li>
+                                <li><a href="job-single.html">职位详情</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="company-list.html">公司</a>
+                            <ul class="sub-menu">
+                                <li><a href="company-list.html">公司列表</a></li>
+                                <li><a href="company-single.html">公司详情</a></li>
+                                <li><a href="create-job.html">创建招聘</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="blog.html">新闻</a>
+                            <ul class="sub-menu">
+                                <li><a href="blog.html">新闻列表</a></li>
+                                <li><a href="blog-right-sidebar.html">新闻列表2</a></li>
+                                <li><a href="blog-single.html">新闻详情</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">公告</a></li>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">联系我们</a></li>
+                    </ul>
+                </nav>
+                <!-- Header Menu End -->
+
+            </div>
+
+        </div>
+    </header>
 </template>
 
 <script>
     export default {
         name: "Header",
-        data() {
-            return {
-                activeIndex: '1'
-            };
-        },
-        methods: {
-            handleSelect(key, keyPath) {
-                console.log(key, keyPath);
-            }
-        }
     }
 </script>
 
 <style scoped>
-    .header {
-        display: flex;
-        top: 0;
-        left: 0;
-        display: flex;
-        justify-content: center;
-        justify-items: center;
-        height: 60px;
-        line-height: 60px;
-        overflow: hidden;
-        background-color: #303a40;
-    }
-
-    .logo {
-        height: 60px;
-        overflow: hidden;
-    }
-
-    .logo img {
-        vertical-align: middle;
-    }
 
 </style>

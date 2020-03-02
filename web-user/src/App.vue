@@ -1,6 +1,7 @@
 <template>
     <div id="app">
         <main-header></main-header>
+        <login-signup></login-signup>
         <router-view/>
         <main-footer></main-footer>
     </div>
@@ -9,27 +10,18 @@
 <script>
     import Header from "./components/Header";
     import Footer from "./components/Footer";
+    import LoginSignup from "./components/LoginSignup"
 
     export default {
         name: 'App',
         components: {
             'main-header': Header,
             'main-footer': Footer,
+            'login-signup': LoginSignup
         }
     }
 </script>
 
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-    }
 
-    #app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-    }
 </style>
