@@ -4,18 +4,7 @@
         <div class="offcanvas-overlay"></div>
 
         <!-- Page Heading Section Start -->
-        <div class="page-heading-section section bg-parallax" data-bg-image="static/images/bg/bg-1.jpg" data-overlay="50">
-            <div class="container">
-                <div class="page-heading-content text-center">
-                    <h3 class="title">公司名</h3>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">首页</a></li>
-                        <li class="breadcrumb-item"><a href="company-list.html">公司列表</a></li>
-                        <li class="breadcrumb-item active">公司名</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
+        <PageHeading :page-data="pageData"></PageHeading>
         <!-- Page Heading Section End -->
 
         <!-- Company List Start -->
@@ -50,7 +39,7 @@
                         <!-- Job List Wrap Start -->
                         <div class="job-list-wrap mt-5">
 
-                            <job-item></job-item>
+                            <JobItem></JobItem>
 
                         </div>
                         <!-- Job List Wrap Start -->
@@ -89,13 +78,27 @@
 </template>
 
 <script>
+    import PageHeading from "./public/PageHeading";
     import JobItem from "./public/JobItem";
 
     export default {
         name: "CompanySingle",
         components:{
-            'job-item': JobItem,
-        }
+            JobItem,
+            PageHeading
+        },
+        data() {
+            return {
+                pageData: {
+                    'name':'工作名称',
+                    'navs':[
+                        {'name':'Home','to':'Home','active':false},
+                        {'name':'Jobs','to':'Jobs','active':false},
+                        {'name':'工作名称','to':'','active':true},
+                    ],
+                }
+            }
+        },
     }
 </script>
 

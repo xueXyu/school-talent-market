@@ -3,7 +3,9 @@
         <!--OffCanvas Overlay-->
         <div class="offcanvas-overlay"></div>
 
-        <page-heading :page-data="pageData"></page-heading>
+        <!-- Page Heading Section Start -->
+        <PageHeading :page-data="pageData"></PageHeading>
+        <!-- Page Heading Section End -->
 
         <!-- Recent Jobs Start -->
         <div class="section section-padding">
@@ -13,7 +15,7 @@
                     <div class="col-lg-8 col-12 mb-5 pr-lg-5">
                         <div class="job-list-details">
                             <div v-on:click.prevent.self="doThat" v-on:click.self.prevent="doThat">
-                                <job-item></job-item>
+                                <JobItem></JobItem>
                             </div>
                             <div class="job-details-body mt-4">
                                 <h6 class="mb-3">Job Description</h6>
@@ -108,6 +110,10 @@
     import JobItem from "./public/JobItem";
     export default {
         name: "JobSingle",
+        components:{
+            PageHeading,
+            JobItem,
+        },
         data() {
             return {
                 pageData: {
@@ -120,10 +126,6 @@
                 }
             }
         },
-        components:{
-            'page-heading':PageHeading,
-            'job-item': JobItem,
-        }
     }
 </script>
 

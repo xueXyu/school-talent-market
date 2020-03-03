@@ -4,17 +4,7 @@
         <div class="offcanvas-overlay"></div>
 
         <!-- Page Heading Section Start -->
-        <div class="page-heading-section section bg-parallax" data-bg-image="static/images/bg/bg-1.jpg" data-overlay="50">
-            <div class="container">
-                <div class="page-heading-content text-center">
-                    <h3 class="title">Blog</h3>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active">Blog</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
+        <PageHeading :page-data="pageData"></PageHeading>
         <!-- Page Heading Section End -->
 
         <!-- Blog Section Start -->
@@ -119,8 +109,27 @@
 </template>
 
 <script>
+    import PageHeading from "./public/PageHeading";
+    import NewsItem from "./public/NewsItem";
+    import Pagination from "./public/Pagination";
+
     export default {
-        name: "NewsSingle"
+        name: "NewsSingle",
+        components: {
+            PageHeading
+        },
+        data() {
+            return {
+                pageData: {
+                    'name':'工作名称',
+                    'navs':[
+                        {'name':'Home','to':'Home','active':false},
+                        {'name':'Jobs','to':'Jobs','active':false},
+                        {'name':'工作名称','to':'','active':true},
+                    ],
+                }
+            }
+        },
     }
 </script>
 

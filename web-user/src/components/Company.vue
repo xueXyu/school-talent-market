@@ -4,17 +4,7 @@
         <div class="offcanvas-overlay"></div>
 
         <!-- Page Heading Section Start -->
-        <div class="page-heading-section section bg-parallax" data-bg-image="static/images/bg/bg-1.jpg" data-overlay="50">
-            <div class="container">
-                <div class="page-heading-content text-center">
-                    <h3 class="title">所有公司</h3>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><router-link :to="{name:'Home'}">首页</router-link></li>
-                        <li class="breadcrumb-item active">公司列表</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
+        <PageHeading :page-data="pageData"></PageHeading>
         <!-- Page Heading Section End -->
 
         <!-- Company List Start -->
@@ -27,31 +17,24 @@
                         <!-- Company List Wrap Start -->
                         <div class="company-list-wrap row">
 
-                            <company-item></company-item>
-                            <company-item></company-item>
-                            <company-item></company-item>
-                            <company-item></company-item>
-                            <company-item></company-item>
-                            <company-item></company-item>
-                            <company-item></company-item>
-                            <company-item></company-item>
-                            <company-item></company-item>
-                            <company-item></company-item>
-                            <company-item></company-item>
-                            <company-item></company-item>
+                            <CompanyItem></CompanyItem>
+                            <CompanyItem></CompanyItem>
+                            <CompanyItem></CompanyItem>
+                            <CompanyItem></CompanyItem>
+                            <CompanyItem></CompanyItem>
+                            <CompanyItem></CompanyItem>
+                            <CompanyItem></CompanyItem>
+                            <CompanyItem></CompanyItem>
+                            <CompanyItem></CompanyItem>
+                            <CompanyItem></CompanyItem>
+                            <CompanyItem></CompanyItem>
+                            <CompanyItem></CompanyItem>
 
                         </div>
                         <!-- Company List Wrap Start -->
 
                         <!-- Pagination Start -->
-                        <ul class="pagination pagination-center mt-5">
-                            <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a></li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">4</a></li>
-                            <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
-                        </ul>
+                        <Pagination></Pagination>
                         <!-- Pagination End -->
 
                     </div>
@@ -110,12 +93,28 @@
 </template>
 
 <script>
+    import PageHeading from "./public/PageHeading";
     import CompanyItem from "./public/CompanyItem";
+    import Pagination from "./public/Pagination";
     export default {
         name: "Company",
         components:{
-            'company-item':CompanyItem,
-        }
+            CompanyItem,
+            PageHeading,
+            Pagination
+        },
+        data() {
+            return {
+                pageData: {
+                    'name':'工作名称',
+                    'navs':[
+                        {'name':'Home','to':'Home','active':false},
+                        {'name':'Jobs','to':'Jobs','active':false},
+                        {'name':'工作名称','to':'','active':true},
+                    ],
+                }
+            }
+        },
     }
 </script>
 

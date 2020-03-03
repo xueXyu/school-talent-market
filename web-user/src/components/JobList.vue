@@ -4,17 +4,7 @@
         <div class="offcanvas-overlay"></div>
 
         <!-- Page Heading Section Start -->
-        <div class="page-heading-section section bg-parallax" data-bg-image="static/images/bg/bg-1.jpg" data-overlay="50">
-            <div class="container">
-                <div class="page-heading-content text-center">
-                    <h3 class="title">职位列表</h3>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active">Jobs</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
+        <PageHeading :page-data="pageData"></PageHeading>
         <!-- Page Heading Section End -->
 
         <!-- Recent Jobs Start -->
@@ -27,24 +17,17 @@
                         <!-- Job List Wrap Start -->
                         <div class="job-list-wrap">
 
-                            <job-item></job-item>
-                            <job-item></job-item>
-                            <job-item></job-item>
-                            <job-item></job-item>
-                            <job-item></job-item>
+                            <JobItem></JobItem>
+                            <JobItem></JobItem>
+                            <JobItem></JobItem>
+                            <JobItem></JobItem>
+                            <JobItem></JobItem>
 
                         </div>
                         <!-- Job List Wrap Start -->
 
                         <!-- Pagination Start -->
-                        <ul class="pagination pagination-center mt-5">
-                            <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a></li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">4</a></li>
-                            <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
-                        </ul>
+                        <Pagination></Pagination>
                         <!-- Pagination End -->
 
                     </div>
@@ -126,13 +109,29 @@
 </template>
 
 <script>
+    import PageHeading from "./public/PageHeading";
     import JobItem from "./public/JobItem";
+    import Pagination from "./public/Pagination";
 
     export default {
         name: "JobList",
         components:{
-            'job-item': JobItem,
-        }
+            JobItem,
+            PageHeading,
+            Pagination
+        },
+        data() {
+            return {
+                pageData: {
+                    'name':'工作名称',
+                    'navs':[
+                        {'name':'Home','to':'Home','active':false},
+                        {'name':'Jobs','to':'Jobs','active':false},
+                        {'name':'工作名称','to':'','active':true},
+                    ],
+                }
+            }
+        },
     }
 </script>
 

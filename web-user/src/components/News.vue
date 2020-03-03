@@ -4,7 +4,7 @@
         <div class="offcanvas-overlay"></div>
 
         <!-- Page Heading Section Start -->
-        <PageHeading :pageData="pageData"></PageHeading>
+        <PageHeading :page-data="pageData"></PageHeading>
         <!-- Page Heading Section End -->
 
         <!-- Blog Section Start -->
@@ -36,9 +36,10 @@
 </template>
 
 <script>
+    import PageHeading from "./public/PageHeading";
     import NewsItem from "./public/NewsItem";
     import Pagination from "./public/Pagination";
-    import PageHeading from "./public/PageHeading";
+
     export default {
         name: "News",
         components: {
