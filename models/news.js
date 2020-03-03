@@ -24,8 +24,11 @@ module.exports = function (sequelize, DataTypes) {
         },
         title: {
             type: DataTypes.STRING(255),
-            allowNull: false,
-            defaultValue: 'title'
+            allowNull: false
+        },
+        title_img: {
+            type: DataTypes.STRING(255),
+            allowNull: false
         },
         content: {
             type: DataTypes.TEXT,

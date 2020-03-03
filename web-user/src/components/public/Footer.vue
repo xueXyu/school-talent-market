@@ -9,7 +9,7 @@
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="footer-widget">
                             <div class="footer-widget-about">
-                                <img src="static/images/logo/logo-light.png" alt="">
+                                <img src="../../../static/images/logo/logo-light.png" alt="">
                                 <p>校园人才市场校园人才市场校园人才市场校园人才市场校园人才市场校园人才市场校园人才市场校园人才市场校园人才市场校园人才市场</p>
 
                                 <ul class="footer-socail">

@@ -6,7 +6,7 @@
                 <!-- Header Logo Start -->
                 <div class="col">
                     <div class="header-logo">
-                        <router-link :to="{name:'Home'}"><img src="../../static/images/logo/logo-light.png" alt="Site Logo"></router-link>
+                        <router-link :to="{name:'Home'}"><img src="../../../static/images/logo/logo-light.png" alt="Site Logo"></router-link>
                     </div>
                 </div><!-- Header Logo End -->
 
@@ -29,34 +29,31 @@
                 <nav id="main-menu" class="main-menu col-lg-auto order-lg-2">
                     <ul>
                         <li class="has-children"><router-link :to="{name:'Home'}">首页</router-link>
-<!--                            <ul class="sub-menu">-->
-<!--                                <li><a href="index.html">Home One</a></li>-->
-<!--                                <li><a href="index-2.html">Home Two</a></li>-->
-<!--                            </ul>-->
                         </li>
-                        <li class="has-children"><a href="job-list.html">工作</a>
+                        <li class="has-children"><router-link :to="{name:'JobList'}">工作</router-link>
                             <ul class="sub-menu">
-                                <li><a href="job-list.html">工作列表</a></li>
-                                <li><a href="job-single.html">职位详情</a></li>
+                                <li><router-link :to="{name:'JobList'}">工作列表</router-link></li>
+                                <li><router-link :to="{name:'JobSingle'}">职位详情</router-link></li>
+                                <li><router-link :to="{name:'ManagementJobs'}">管理职位</router-link></li>
+                                <li><router-link :to="{name:'ManagementResume'}">管理简历</router-link></li>
                             </ul>
                         </li>
-                        <li><a href="company-list.html">公司</a>
+                        <li><router-link :to="{name:'Company'}">公司</router-link>
                             <ul class="sub-menu">
-                                <li><a href="company-list.html">公司列表</a></li>
-                                <li><a href="company-single.html">公司详情</a></li>
-                                <li><a href="create-job.html">创建招聘</a></li>
+                                <li><router-link :to="{name:'Company'}">公司列表</router-link></li>
+                                <li><router-link :to="{name:'CompanySingle'}">公司详情</router-link></li>
+                                <li><router-link :to="{name:'CreateJob'}">创建职位</router-link></li>
+                                <li><router-link :to="{name:'CreateResume'}">创建简历</router-link></li>
                             </ul>
                         </li>
-                        <li><a href="blog.html">新闻</a>
+                        <li><router-link :to="{name:'Home'}">新闻&公告</router-link>
                             <ul class="sub-menu">
-                                <li><a href="blog.html">新闻列表</a></li>
-                                <li><a href="blog-right-sidebar.html">新闻列表2</a></li>
-                                <li><a href="blog-single.html">新闻详情</a></li>
+                                <li><router-link :to="{name:'News'}">新闻&公告列表</router-link></li>
+                                <li><router-link :to="{name:'NewsSingle'}">新闻&公告详情</router-link></li>
                             </ul>
                         </li>
-                        <li><a href="#">公告</a></li>
-                        <li><a href="#">关于我们</a></li>
-                        <li><a href="#">联系我们</a></li>
+                        <li><router-link :to="{name:'AboutUs'}">关于我们</router-link></li>
+                        <li><router-link :to="{name:'ContactUs'}">联系我们</router-link></li>
                     </ul>
                 </nav>
                 <!-- Header Menu End -->

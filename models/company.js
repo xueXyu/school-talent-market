@@ -47,6 +47,10 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: true,
             defaultValue: ''
         },
+        company_create: {
+            type: DataTypes.DATE,
+            allowNull: true,
+        },
         company_size: {
             type: DataTypes.STRING(32),
             allowNull: true,
@@ -56,6 +60,15 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING(255),
             allowNull: true,
             defaultValue: ''
+        },
+        company_site: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            defaultValue: ''
+        },
+        company_detail: {
+            type: DataTypes.TEXT,
+            allowNull: true
         }
     }, util.addModelCommonOptions({
         tableName: 'company'

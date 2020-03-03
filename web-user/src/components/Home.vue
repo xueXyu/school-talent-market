@@ -66,62 +66,7 @@
             <!-- Job List Wrap Start -->
             <div class="job-list-wrap">
 
-                <!-- Job List Start -->
-                <a href="job-single.html" class="job-list">
-                    <div class="company-logo col-auto">
-                        <img src="static/images/companies/company-1.png" alt="Company Logo">
-                    </div>
-                    <div class="salary-type col-auto order-sm-3">
-                        <span class="salary-range">$5000 - $8000</span>
-                        <span class="badge badge-success">全职</span>
-                    </div>
-                    <div class="content col">
-                        <h6 class="title">全栈后端开发人员</h6>
-                        <ul class="meta">
-                            <li><strong class="text-primary">公司名</strong></li>
-                            <li><i class="fa fa-calendar-check-o"></i>职位简介职责描述信息...</li>
-                        </ul>
-                    </div>
-                </a>
-                <!-- Job List Start -->
-
-                <!-- Job List Start -->
-                <a href="job-single.html" class="job-list">
-                    <div class="company-logo col-auto">
-                        <img src="static/images/companies/company-2.png" alt="Company Logo">
-                    </div>
-                    <div class="salary-type col-auto order-sm-3">
-                        <span class="salary-range">$7000 - $13000</span>
-                        <span class="badge badge-warning">兼职</span>
-                    </div>
-                    <div class="content col">
-                        <h6 class="title">产品UI和UX专家</h6>
-                        <ul class="meta">
-                            <li><strong class="text-primary">Astha</strong></li>
-                            <li><i class="fa fa-calendar-check-o"></i>职位简介职责描述信息...</li>
-                        </ul>
-                    </div>
-                </a>
-                <!-- Job List Start -->
-
-                <!-- Job List Start -->
-                <a href="job-single.html" class="job-list">
-                    <div class="company-logo col-auto">
-                        <img src="static/images/companies/company-3.png" alt="Company Logo">
-                    </div>
-                    <div class="salary-type col-auto order-sm-3">
-                        <span class="salary-range">$5000 - $8000</span>
-                        <span class="badge badge-danger">实习</span>
-                    </div>
-                    <div class="content col">
-                        <h6 class="title">全栈后端开发人员</h6>
-                        <ul class="meta">
-                            <li><strong class="text-primary">Github</strong></li>
-                            <li><i class="fa fa-calendar-check-o"></i>职位简介职责描述信息...</li>
-                        </ul>
-                    </div>
-                </a>
-                <!-- Job List Start -->
+                <job-item></job-item>
 
             </div>
             <!-- Job List Wrap Start -->
@@ -341,7 +286,7 @@
         <div class="container">
 
             <div class="section-title">
-                <h3 class="title">新闻/公告</h3>
+                <h3 class="title">新闻&公告</h3>
             </div>
 
             <!-- Blog Slider Start -->
@@ -351,7 +296,7 @@
                 <div class="col">
                     <div class="blog">
                         <div class="media">
-                            <a href="blog-single.html"></a>
+                            <a href="blog-single.html"><img src="static/images/blog/blog-1.jpg" alt=""></a>
                         </div>
                         <div class="content">
                             <h6 class="title"><a href="blog-single.html">标题标题标题标题标题标题</a></h6>
@@ -371,7 +316,7 @@
                 <div class="col">
                     <div class="blog">
                         <div class="media">
-                            <a href="blog-single.html"></a>
+                            <a href="blog-single.html"><img src="static/images/blog/blog-2.jpg" alt=""></a>
                         </div>
                         <div class="content">
                             <h6 class="title"><a href="blog-single.html">标题标题标题标题标题标题</a></h6>
@@ -379,7 +324,7 @@
                                 <li>2020-12-12 12:12:21</li>
                             </ul>
                             <div class="desc">
-                                <p>公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容</p>
+                                <p>公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容</p>
                             </div>
                             <a href="blog-single.html" class="read-more">查看详情<i class="fa fa-angle-right"></i></a>
                         </div>
@@ -391,7 +336,7 @@
                 <div class="col">
                     <div class="blog">
                         <div class="media">
-                            <a href="blog-single.html"></a>
+                            <a href="blog-single.html"><img src="static/images/blog/blog-3.jpg" alt=""></a>
                         </div>
                         <div class="content">
                             <h6 class="title"><a href="blog-single.html">标题标题标题标题标题标题</a></h6>
@@ -417,8 +362,12 @@
 </template>
 
 <script>
+    import JobItem from "./public/JobItem";
     export default {
-        name: 'Home'
+        name: 'Home',
+        components:{
+            'job-item': JobItem,
+        }
     }
 </script>
 

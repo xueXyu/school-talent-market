@@ -8,9 +8,9 @@
 </template>
 
 <script>
-    import Header from "./components/Header";
-    import Footer from "./components/Footer";
-    import LoginSignup from "./components/LoginSignup"
+    import Header from "./components/public/Header";
+    import Footer from "./components/public/Footer";
+    import LoginSignup from "./components/public/LoginSignup"
 
     export default {
         name: 'App',

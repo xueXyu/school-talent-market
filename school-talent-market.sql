@@ -54,8 +54,11 @@ CREATE TABLE `company` (
 	`company_name` varchar(255) DEFAULT '' COMMENT '公司名称',
 	`company_phone` varchar(32) DEFAULT '' COMMENT '联系电话',
 	`company_contacts` varchar(32) DEFAULT '' COMMENT '联系人',
+	`company_create` date DEFAULT NULL COMMENT '公司创立日期',
 	`company_size` varchar(32) DEFAULT '' COMMENT '公司规模 0-20人 20-99人 100-499人 500-999人 1000-9999人 10000人以上',
 	`company_address` varchar(255) DEFAULT '' COMMENT '公司地址',
+	`company_site` varchar(255) DEFAULT '' COMMENT '网站',
+	`company_detail` text COMMENT '公司简介描述',
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='公司表';
 
@@ -112,18 +115,8 @@ CREATE TABLE `news` (
 	`updated_at` datetime DEFAULT NULL,
 	`deleted_at` datetime DEFAULT NULL,
 
-	`title` varchar(255) NOT NULL DEFAULT 'title' COMMENT '新闻标题',
-	`content` text COMMENT '新闻内容',
+	`title` varchar(255) NOT NULL COMMENT '标题',
+	`title_img` varchar(255) NOT NULL COMMENT '头图',
+	`content` text COMMENT '内容',
 	PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='新闻表';
-
-CREATE TABLE `affiche` (
-	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`created_at` datetime DEFAULT NULL,
-	`updated_at` datetime DEFAULT NULL,
-	`deleted_at` datetime DEFAULT NULL,
-
-	`title` varchar(255) NOT NULL DEFAULT 'title' COMMENT '公告标题',
-	`content` text COMMENT '公告内容',
-	PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='公告表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='新闻&公告表';
