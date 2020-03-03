@@ -11,7 +11,11 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "bootstrap": "^4.4.1",
     "element-ui": "^2.13.0",
+    "jquery": "^3.4.1",
+    "jquery-parallax.js": "^1.5.0",
+    "jsdom": "^16.2.0",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "vue": "^2.5.2",

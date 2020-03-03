@@ -3,7 +3,7 @@
         <!-- Job List Start -->
         <a href="job-single.html" class="job-list">
             <div class="company-logo col-auto">
-                <img src="static/images/companies/company-1.png" alt="Company Logo">
+                <img src="../../../static/images/companies/company-1.png" alt="Company Logo">
             </div>
             <div class="salary-type col-auto order-sm-3">
                 <span class="salary-range">$5000 - $8000</span>

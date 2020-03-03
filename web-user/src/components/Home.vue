@@ -66,7 +66,10 @@
             <!-- Job List Wrap Start -->
             <div class="job-list-wrap">
 
-                <job-item></job-item>
+                <JobItem></JobItem>
+                <JobItem></JobItem>
+                <JobItem></JobItem>
+                <JobItem></JobItem>
 
             </div>
             <!-- Job List Wrap Start -->
@@ -130,7 +133,7 @@
                 <!-- Company List Start -->
                 <div class="col">
                     <a href="company-single.html" class="feature-company">
-                        <span class="company-logo"><img src="static/images/companies/company-1.png" alt="company-1"></span>
+                        <span class="company-logo"><img src="../../static/images/companies/company-1.png" alt="company-1"></span>
                         <h6 class="title">Envato</h6>
                         <span class="open-job">2 个空缺职位</span>
                     </a>
@@ -140,7 +143,7 @@
                 <!-- Company List Start -->
                 <div class="col">
                     <a href="company-single.html" class="feature-company">
-                        <span class="company-logo"><img src="static/images/companies/company-2.png" alt="company-1"></span>
+                        <span class="company-logo"><img src="../../static/images/companies/company-2.png" alt="company-1"></span>
                         <h6 class="title">Astha</h6>
                         <span class="open-job">1 个空缺职位</span>
                     </a>
@@ -150,7 +153,7 @@
                 <!-- Company List Start -->
                 <div class="col">
                     <a href="company-single.html" class="feature-company">
-                        <span class="company-logo"><img src="static/images/companies/company-3.png" alt="company-1"></span>
+                        <span class="company-logo"><img src="../../static/images/companies/company-3.png" alt="company-1"></span>
                         <h6 class="title">Github</h6>
                         <span class="open-job">4 个空缺职位</span>
                     </a>
@@ -160,7 +163,7 @@
                 <!-- Company List Start -->
                 <div class="col">
                     <a href="company-single.html" class="feature-company">
-                        <span class="company-logo"><img src="static/images/companies/company-4.png" alt="company-1"></span>
+                        <span class="company-logo"><img src="../../static/images/companies/company-4.png" alt="company-1"></span>
                         <h6 class="title">Medicore</h6>
                         <span class="open-job">1 个空缺职位</span>
                     </a>
@@ -170,7 +173,7 @@
                 <!-- Company List Start -->
                 <div class="col">
                     <a href="company-single.html" class="feature-company">
-                        <span class="company-logo"><img src="static/images/companies/company-5.png" alt="company-1"></span>
+                        <span class="company-logo"><img src="../../static/images/companies/company-5.png" alt="company-1"></span>
                         <h6 class="title">Greensoul</h6>
                         <span class="open-job">1 个空缺职位</span>
                     </a>
@@ -180,7 +183,7 @@
                 <!-- Company List Start -->
                 <div class="col">
                     <a href="company-single.html" class="feature-company">
-                        <span class="company-logo"><img src="static/images/companies/company-6.png" alt="company-1"></span>
+                        <span class="company-logo"><img src="../../static/images/companies/company-6.png" alt="company-1"></span>
                         <h6 class="title">Generous</h6>
                         <span class="open-job">2 个空缺职位</span>
                     </a>
@@ -190,7 +193,7 @@
                 <!-- Company List Start -->
                 <div class="col">
                     <a href="company-single.html" class="feature-company">
-                        <span class="company-logo"><img src="static/images/companies/company-7.png" alt="company-1"></span>
+                        <span class="company-logo"><img src="../../static/images/companies/company-7.png" alt="company-1"></span>
                         <h6 class="title">Buzco</h6>
                         <span class="open-job">3 个空缺职位</span>
                     </a>
@@ -200,7 +203,7 @@
                 <!-- Company List Start -->
                 <div class="col">
                     <a href="company-single.html" class="feature-company">
-                        <span class="company-logo"><img src="static/images/companies/company-8.png" alt="company-1"></span>
+                        <span class="company-logo"><img src="../../static/images/companies/company-8.png" alt="company-1"></span>
                         <h6 class="title">Salina</h6>
                         <span class="open-job">1 个空缺职位</span>
                     </a>
@@ -210,7 +213,7 @@
                 <!-- Company List Start -->
                 <div class="col">
                     <a href="company-single.html" class="feature-company">
-                        <span class="company-logo"><img src="static/images/companies/company-9.png" alt="company-1"></span>
+                        <span class="company-logo"><img src="../../static/images/companies/company-9.png" alt="company-1"></span>
                         <h6 class="title">Hope</h6>
                         <span class="open-job">1 个空缺职位</span>
                     </a>
@@ -220,7 +223,7 @@
                 <!-- Company List Start -->
                 <div class="col">
                     <a href="company-single.html" class="feature-company">
-                        <span class="company-logo"><img src="static/images/companies/company-10.png" alt="company-span"></span>
+                        <span class="company-logo"><img src="../../static/images/companies/company-10.png" alt="company-span"></span>
                         <h6 class="title">Bebsha</h6>
                         <span class="open-job">2 个空缺职位</span>
                     </a>
@@ -245,7 +248,7 @@
                 <div class="col">
                     <div class="testimonial text-center text-white">
                         <p>求职者反馈求职者反馈求职者反馈求职者反馈求职者反馈求职者反馈求职者反馈求职者反馈求职者反馈</p>
-                        <img src="static/images/authors/author-1.jpg" alt="">
+                        <img src="../../static/images/authors/author-1.jpg" alt="">
                         <h6 class="name">李二妞</h6>
                         <span class="title">华北销售负责人</span>
                     </div>
@@ -256,7 +259,7 @@
                 <div class="col">
                     <div class="testimonial text-center text-white">
                         <p>公司反馈公司反馈公司反馈公司反馈公司反馈公司反馈公司反馈公司反馈公司反馈公司反馈公司反馈公司反馈公司反馈</p>
-                        <img src="static/images/authors/author-2.jpg" alt="">
+                        <img src="../../static/images/authors/author-2.jpg" alt="">
                         <h6 class="name">张三</h6>
                         <span class="title">铁憨憨CEO</span>
                     </div>
@@ -267,7 +270,7 @@
                 <div class="col">
                     <div class="testimonial text-center text-white">
                         <p>求职者反馈求职者反馈求职者反馈求职者反馈求职者反馈求职者反馈求职者反馈求职者反馈求职者反馈</p>
-                        <img src="static/images/authors/author-3.jpg" alt="">
+                        <img src="../../static/images/authors/author-3.jpg" alt="">
                         <h6 class="name">李铁柱</h6>
                         <span class="title">百度后端开发</span>
                     </div>
@@ -296,7 +299,7 @@
                 <div class="col">
                     <div class="blog">
                         <div class="media">
-                            <a href="blog-single.html"><img src="static/images/blog/blog-1.jpg" alt=""></a>
+                            <a href="blog-single.html"><img src="../../static/images/blog/blog-1.jpg" alt=""></a>
                         </div>
                         <div class="content">
                             <h6 class="title"><a href="blog-single.html">标题标题标题标题标题标题</a></h6>
@@ -316,7 +319,7 @@
                 <div class="col">
                     <div class="blog">
                         <div class="media">
-                            <a href="blog-single.html"><img src="static/images/blog/blog-2.jpg" alt=""></a>
+                            <a href="blog-single.html"><img src="../../static/images/blog/blog-2.jpg" alt=""></a>
                         </div>
                         <div class="content">
                             <h6 class="title"><a href="blog-single.html">标题标题标题标题标题标题</a></h6>
@@ -336,7 +339,7 @@
                 <div class="col">
                     <div class="blog">
                         <div class="media">
-                            <a href="blog-single.html"><img src="static/images/blog/blog-3.jpg" alt=""></a>
+                            <a href="blog-single.html"><img src="../../static/images/blog/blog-3.jpg" alt=""></a>
                         </div>
                         <div class="content">
                             <h6 class="title"><a href="blog-single.html">标题标题标题标题标题标题</a></h6>
@@ -363,11 +366,39 @@
 
 <script>
     import JobItem from "./public/JobItem";
+    import '../../src/assets/js/plugins/jquery.parallax';
+
     export default {
         name: 'Home',
         components:{
-            'job-item': JobItem,
+            JobItem,
+        },
+        methods:{
+        },
+        created() {
+        },
+        mounted:() => {
+            // console.log($.fn.parallax);
+            console.log('log123123');
+            console.log($('#offcanvas-overlay').html());
+
+            $('[data-bg-image]').each(function () {
+                var $this = $(this),
+                    $image = $this.data('bg-image');
+                $this.css('background-image', 'url(' + $image + ')');
+
+            });
+
+            $('.bg-parallax').each(function () {
+                $(this).parallax("50%", 0.5);
+            });
+
+            // $('.counter').counterUp({
+            //     time: 3000
+            // });
+
         }
+
     }
 </script>
 

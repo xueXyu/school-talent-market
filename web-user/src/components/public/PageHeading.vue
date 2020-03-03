@@ -17,11 +17,24 @@
 </template>
 
 <script>
+    import '../../../src/assets/js/plugins/jquery.parallax';
     export default {
         name: "PageHeading",
         props: [
             "pageData"
-        ]
+        ],
+        mounted:() => {
+            $('[data-bg-image]').each(function () {
+                var $this = $(this),
+                    $image = $this.data('bg-image');
+                $this.css('background-image', 'url(' + $image + ')');
+
+            });
+
+            $('.bg-parallax').each(function () {
+                $(this).parallax("50%", 0.5);
+            });
+        }
     }
 </script>
 

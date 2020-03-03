@@ -21,7 +21,7 @@
                             <div class="col-12">
                                 <div class="blog blog-single">
                                     <div class="media">
-                                        <img src="static/images/blog/single-1.jpg" alt="">
+                                        <img src="../../static/images/blog/single-1.jpg" alt="">
                                     </div>
                                     <div class="content">
                                         <h6 class="title">The Top 5 Job Interview Questions For IT Professional</h6>
@@ -72,23 +72,23 @@
                                     <h6 class="title">最近新闻&公告</h6>
                                     <ul class="sidebar-post">
                                         <li>
-                                            <a href="blog-single.html" class="image"><img src="static/images/blog/sidebar-1.jpg" alt=""></a>
+                                            <a href="blog-single.html" class="image"><img src="../../static/images/blog/sidebar-1.jpg" alt=""></a>
                                             <a href="blog-single.html" class="title">The Top 5 Job Interview Questions For IT Professional</a>
                                         </li>
                                         <li>
-                                            <a href="blog-single.html" class="image"><img src="static/images/blog/sidebar-2.jpg" alt=""></a>
+                                            <a href="blog-single.html" class="image"><img src="../../static/images/blog/sidebar-2.jpg" alt=""></a>
                                             <a href="blog-single.html" class="title">7 Careers To Consider If You Love Traveling</a>
                                         </li>
                                         <li>
-                                            <a href="blog-single.html" class="image"><img src="static/images/blog/sidebar-3.jpg" alt=""></a>
+                                            <a href="blog-single.html" class="image"><img src="../../static/images/blog/sidebar-3.jpg" alt=""></a>
                                             <a href="blog-single.html" class="title">When the Perfect Candidate Turns Out To Be an Imperfect Fit</a>
                                         </li>
                                         <li>
-                                            <a href="blog-single.html" class="image"><img src="static/images/blog/sidebar-4.jpg" alt=""></a>
+                                            <a href="blog-single.html" class="image"><img src="../../static/images/blog/sidebar-4.jpg" alt=""></a>
                                             <a href="blog-single.html" class="title">5 ways to keep calm and carry on during your job search</a>
                                         </li>
                                         <li>
-                                            <a href="blog-single.html" class="image"><img src="static/images/blog/sidebar-5.jpg" alt=""></a>
+                                            <a href="blog-single.html" class="image"><img src="../../static/images/blog/sidebar-5.jpg" alt=""></a>
                                             <a href="blog-single.html" class="title">Should I reapply for a job vacancy that was reposted?</a>
                                         </li>
                                     </ul>

@@ -53,7 +53,7 @@
                             <div class="sidebar-widget">
                                 <div class="inner">
                                     <div class="sidebar-company">
-                                        <span class="company-logo"><img src="static/images/companies/company-1.png" alt="company-1"></span>
+                                        <span class="company-logo"><img src="../../static/images/companies/company-1.png" alt="company-1"></span>
                                         <h6 class="title">公司名</h6>
                                         <ul>
                                             <li><strong>成立时间:</strong> 2006</li>

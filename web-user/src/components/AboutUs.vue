@@ -30,7 +30,7 @@
                     <!-- About Image Start -->
                     <div class="col-md-6 col-12 mb-4">
                         <div class="about-image">
-                            <img src="static/images/others/about-1.jpg" alt="">
+                            <img src="../../static/images/others/about-1.jpg" alt="">
                         </div>
                     </div>
                     <!-- About Image End -->
@@ -91,7 +91,7 @@
                     <!-- Team Start -->
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="team">
-                            <img src="static/images/team/team-1.jpg" alt="Team">
+                            <img src="../../static/images/team/team-1.jpg" alt="Team">
                             <div class="content">
                                 <div class="inner">
                                     <h6 class="name">Matthew Wilder</h6>
@@ -111,7 +111,7 @@
                     <!-- Team Start -->
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="team">
-                            <img src="static/images/team/team-2.jpg" alt="Team">
+                            <img src="../../static/images/team/team-2.jpg" alt="Team">
                             <div class="content">
                                 <div class="inner">
                                     <h6 class="name">Jameson Bau</h6>
@@ -131,7 +131,7 @@
                     <!-- Team Start -->
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="team">
-                            <img src="static/images/team/team-3.jpg" alt="Team">
+                            <img src="../../static/images/team/team-3.jpg" alt="Team">
                             <div class="content">
                                 <div class="inner">
                                     <h6 class="name">Irene Simon</h6>
@@ -151,7 +151,7 @@
                     <!-- Team Start -->
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="team">
-                            <img src="static/images/team/team-4.jpg" alt="Team">
+                            <img src="../../static/images/team/team-4.jpg" alt="Team">
                             <div class="content">
                                 <div class="inner">
                                     <h6 class="name">Chris Walker</h6>

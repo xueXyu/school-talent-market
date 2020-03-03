@@ -77,7 +77,7 @@
                             <!-- Sidebar (Search) Start -->
                             <div class="sidebar-widget">
                                 <div class="inner">
-                                    <a class="banner" href="/" target="_blank"><img src="static/images/banner/banner-1.jpg" alt="Banner"></a>
+                                    <a class="banner" href="/" target="_blank"><img src="../../static/images/banner/banner-1.jpg" alt="Banner"></a>
                                 </div>
                             </div>
                             <!-- Sidebar (Search) End -->

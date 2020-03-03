@@ -3,7 +3,7 @@
     <div class="col-lg-4 col-md-6 col-12">
         <div class="blog">
             <div class="media">
-                <a href="blog-single.html"><img src="static/images/blog/blog-1.jpg" alt=""></a>
+                <a href="blog-single.html"><img src="../../../static/images/blog/blog-1.jpg" alt=""></a>
             </div>
             <div class="content">
                 <h6 class="title"><a href="blog-single.html">The Top 5 Job Interview Questions For IT Professional</a></h6>
