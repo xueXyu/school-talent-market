@@ -21,9 +21,9 @@
 
                     <!-- Header Links Start -->
                     <div class="header-links col-auto order-lg-3">
-                        <a href="#" data-toggle="modal"￿target="#loginSignupModal" data-target-sub="#login">登录</a>
+                        <a href="#" v-on:click="onLogin('login')" >登录</a>
                         <span>or</span>
-                        <a href="#" data-toggle="modal" data-target="#loginSignupModal" data-target-sub="#signup">注册</a>
+                        <a href="#" v-on:click="onLogin('signup')">注册</a>
                     </div><!-- Header Links End -->
 
                     <!-- Header Menu Start -->
@@ -63,7 +63,7 @@
             </div>
         </header>
 
-        <LoginSignup></LoginSignup>
+        <LoginSignup ref="child1"></LoginSignup>
     </div>
 </template>
 
@@ -78,6 +78,8 @@
         data() {
             return {
                 header_class: '',
+                openLoginSign: false,
+                activeLogin: true,
             }
         },
         methods: {
@@ -95,6 +97,9 @@
                     top: window.pageYOffset || document.documentElement.scrollTop ||   document.body.scrollTop || 0
                 }
             },
+            onLogin: function (t) {
+                this.$refs.child1.changeStatus(t);
+            }
         },
         created() {
             window.addEventListener('scroll', this.handleScroll);
