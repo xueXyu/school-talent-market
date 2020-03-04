@@ -1,15 +1,16 @@
 <template>
     <!-- Page Heading Section Start -->
-    <div class="page-heading-section section bg-parallax" data-bg-image="static/images/bg/bg-1.jpg" data-overlay="50">
+    <div class="page-heading-section section bg-parallax" :style="randombg" data-overlay="50">
         <div class="container">
             <div class="page-heading-content text-center">
                 <h3 class="title">{{pageData.name}}</h3>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item" v-for="item in pageData.navs" v-bind:class="{'active':item.active}">
-                        <router-link v-if="!item.active" :to="item.to">{{item.name}}</router-link>
-                        <span v-else>{{item.name}}</span>
-                    </li>
-                </ol>
+                <div class="breadcrumb mt-3">
+                    <el-breadcrumb separator-class="el-icon-arrow-right">
+                        <el-breadcrumb-item v-for="(item,index) in pageData.navs" :key="index" :to="item.to">
+                            {{item.name}}
+                        </el-breadcrumb-item>
+                    </el-breadcrumb>
+                </div>
             </div>
         </div>
     </div>
@@ -23,21 +24,36 @@
         props: [
             "pageData"
         ],
-        mounted:() => {
-            $('[data-bg-image]').each(function () {
-                var $this = $(this),
-                    $image = $this.data('bg-image');
-                $this.css('background-image', 'url(' + $image + ')');
-
-            });
-
-            $('.bg-parallax').each(function () {
-                $(this).parallax("50%", 0.5);
-            });
+        data(){
+            return {
+                randombg:'',
+            }
+        },
+        methods:{
+            init() {
+                $('.bg-parallax').each(function () {
+                    $(this).parallax("50%", 0.5);
+                });
+            },
+            randomFrom(lowerValue,upperValue) {
+                return Math.floor(Math.random() * (upperValue - lowerValue + 1) + lowerValue);
+                },
+            randomFun () {
+                let num = this.randomFrom(1,3);
+                this.randombg = 'background-image: url(\"static/images/bg/bg-'+num+'.jpg\");'
+            }
+        },
+        created() {
+            this.randomFun();
+        },
+        mounted() {
+            this.init();
         }
     }
 </script>
 
-<style scoped>
-
+<style>
+    .el-breadcrumb__inner {
+        color: #ffffff !important;
+    }
 </style>

@@ -40,7 +40,7 @@
         <!-- About Us End -->
 
         <!-- Funfact Section Start -->
-        <div class="section section-padding bg-parallax" data-bg-image="static/images/bg/bg-3.jpg" data-overlay="50">
+        <div class="section section-padding bg-parallax" style="background-image: url('static/images/bg/bg-3.jpg');" data-overlay="50">
             <div class="container">
                 <div class="funfact-wrap row">
 

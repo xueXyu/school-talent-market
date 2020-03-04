@@ -6,15 +6,14 @@
                 <a href="blog-single.html"><img src="../../../static/images/blog/blog-1.jpg" alt=""></a>
             </div>
             <div class="content">
-                <h6 class="title"><a href="blog-single.html">The Top 5 Job Interview Questions For IT Professional</a></h6>
+                <h6 class="title"><a href="blog-single.html">标题标题标题标题标题标题</a></h6>
                 <ul class="meta">
-                    <li>Posted on 25 Jan, 2019</li>
-                    <li><a href="#">3 Comments</a></li>
+                    <li>2020-12-12 12:12:21</li>
                 </ul>
                 <div class="desc">
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium fugiat fugit voluptates ut rem vitae.</p>
+                    <p>新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容</p>
                 </div>
-                <a href="blog-single.html" class="read-more">Read More <i class="fa fa-angle-right"></i></a>
+                <a href="blog-single.html" class="read-more">查看详情<i class="fa fa-angle-right"></i></a>
             </div>
         </div>
     </div>
