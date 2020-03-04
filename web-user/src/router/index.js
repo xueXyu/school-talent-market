@@ -8,12 +8,17 @@ import Company from '../components/Company';
 import CompanySingle from '../components/CompanySingle';
 import CreateJob from '../components/CreateJob';
 import CreateResume from '../components/CreateResume';
+import ResumeSingle from "../components/ResumeSingle";
 import News from '../components/News';
 import NewsSingle from '../components/NewsSingle';
 import AboutUs from '../components/AboutUs';
 import ContactUs from '../components/ContactUs';
-import ManagementJobs from '../components/ManagementJobs';
-import ManagementResume from '../components/ManagementResume';
+import EditUserInfo from "../components/EditUserInfo";
+import EditCompanyInfo from "../components/EditCompanyInfo";
+import UserManagementJobs from '../components/UserManagementJobs';
+import UserManagementResume from '../components/UserManagementResume';
+import CompanyManagementJobs from '../components/CompanyManagementJobs';
+import CompanyManagementResume from '../components/CompanyManagementResume';
 
 Vue.use(Router);
 
@@ -54,6 +59,11 @@ export default new Router({
             name: 'CreateResume',
             component: CreateResume
         },
+        {// 简历详情
+            path: '/resume-single',
+            name: 'ResumeSingle',
+            component: ResumeSingle
+        },
         {// 新闻&公告列表
             path: '/news',
             name: 'News',
@@ -74,15 +84,35 @@ export default new Router({
             name: 'ContactUs',
             component: ContactUs
         },
-        {// 管理职位
-            path: '/management-jobs',
-            name: 'ManagementJobs',
-            component: ManagementJobs
+        {// 编辑用户信息
+            path: '/edit-user-info',
+            name: 'EditUserInfo',
+            component: EditUserInfo
         },
-        {// 管理简历
-            path: '/management-resume',
-            name: 'ManagementResume',
-            component: ManagementResume
+        {// 编辑公司信息
+            path: '/edit-company-info',
+            name: 'EditCompanyInfo',
+            component: EditCompanyInfo
+        },
+        {// 用户-管理职位
+            path: '/user-management-jobs',
+            name: 'UserManagementJobs',
+            component: UserManagementJobs
+        },
+        {// 用户-管理简历
+            path: '/user-management-resume',
+            name: 'UserManagementResume',
+            component: UserManagementResume
+        },
+        {// 公司-管理职位
+            path: '/company-management-jobs',
+            name: 'CompanyManagementJobs',
+            component: CompanyManagementJobs
+        },
+        {// 公司-管理简历
+            path: '/company-management-resume',
+            name: 'CompanyManagementResume',
+            component: CompanyManagementResume
         },
     ]
 })

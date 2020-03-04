@@ -84,7 +84,13 @@
                                 <div class="inner">
                                     <h6 class="title">薪资待遇</h6>
                                     <form action="#">
-                                        <input type="text" id="salary-range" name="salary-range" class="range-slider" value="" />
+                                        <el-slider
+                                            v-model="value"
+                                            step="500"
+                                            range
+                                            label="k"
+                                            :max="60000">
+                                        </el-slider>
                                     </form>
                                 </div>
                             </div>
@@ -122,6 +128,7 @@
         },
         data() {
             return {
+                value: [0, 20000],
                 pageData: {
                     'name':'工作名称',
                     'navs':[

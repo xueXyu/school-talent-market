@@ -24,7 +24,8 @@
                         <a href="#" v-on:click="onLogin('login')" >登录</a>
                         <span>or</span>
                         <a href="#" v-on:click="onLogin('signup')">注册</a>
-                    </div><!-- Header Links End -->
+                    </div>
+                    <!-- Header Links End -->
 
                     <!-- Header Menu Start -->
                     <nav id="main-menu" class="main-menu col-lg-auto order-lg-2">
@@ -35,16 +36,13 @@
                                 <ul class="sub-menu">
                                     <li><router-link :to="{name:'JobList'}">工作列表</router-link></li>
                                     <li><router-link :to="{name:'JobSingle'}">职位详情</router-link></li>
-                                    <li><router-link :to="{name:'ManagementJobs'}">管理职位</router-link></li>
-                                    <li><router-link :to="{name:'ManagementResume'}">管理简历</router-link></li>
+                                    <li><router-link :to="{name:'ResumeSingle'}">简历详情</router-link></li>
                                 </ul>
                             </li>
                             <li><router-link :to="{name:'Company'}">公司</router-link>
                                 <ul class="sub-menu">
                                     <li><router-link :to="{name:'Company'}">公司列表</router-link></li>
                                     <li><router-link :to="{name:'CompanySingle'}">公司详情</router-link></li>
-                                    <li><router-link :to="{name:'CreateJob'}">创建职位</router-link></li>
-                                    <li><router-link :to="{name:'CreateResume'}">创建简历</router-link></li>
                                 </ul>
                             </li>
                             <li><router-link :to="{name:'News'}">新闻&公告</router-link>
@@ -55,6 +53,18 @@
                             </li>
                             <li><router-link :to="{name:'AboutUs'}">关于我们</router-link></li>
                             <li><router-link :to="{name:'ContactUs'}">联系我们</router-link></li>
+                            <li><router-link :to="{name:'News'}">账号-个人中心</router-link>
+                                <ul class="sub-menu">
+                                    <li><router-link :to="{name:'EditUserInfo'}">修改个人信息</router-link></li>
+                                    <li><router-link :to="{name:'EditCompanyInfo'}">修改公司信息</router-link></li>
+                                    <li><router-link :to="{name:'CreateJob'}">创建职位</router-link></li>
+                                    <li><router-link :to="{name:'CreateResume'}">创建简历</router-link></li>
+                                    <li><router-link :to="{name:'UserManagementJobs'}">用户-管理职位</router-link></li>
+                                    <li><router-link :to="{name:'UserManagementResume'}">用户-管理简历</router-link></li>
+                                    <li><router-link :to="{name:'CompanyManagementJobs'}">公司-管理职位</router-link></li>
+                                    <li><router-link :to="{name:'CompanyManagementResume'}">公司-管理简历</router-link></li>
+                                </ul>
+                            </li>
                         </ul>
                     </nav>
                     <!-- Header Menu End -->
