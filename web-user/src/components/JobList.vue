@@ -86,7 +86,7 @@
                                     <form action="#">
                                         <el-slider
                                             v-model="value"
-                                            step="500"
+                                            :step="500"
                                             range
                                             label="k"
                                             :max="60000">
