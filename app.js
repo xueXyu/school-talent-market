@@ -51,7 +51,7 @@ app.use(baseMiddleware.reply);
 
 // 路由
 app.use(apiPath + '/', indexRouter);
-app.use(apiPath + '/admin', adminRouter);
+app.use(apiPath + '/backend', adminRouter);
 
 // 打印路由
 if (util.isNotProdEnv()) {

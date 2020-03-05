@@ -14,7 +14,6 @@ var companyController = require('../controllers/main/company');
 var companyJobController = require('../controllers/main/company_job');
 
 var newsController = require('../controllers/main/news');
-var afficheController = require('../controllers/main/affiche');
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
@@ -23,7 +22,6 @@ router.get('/', function (req, res, next) {
 
 // 使用rest的CURD
 util.restRoute('/news', router, newsController);
-util.restRoute('/affiche', router, afficheController);
 util.restRoute('/user', router, userController);
 util.restRoute('/user-resume', router, userResumeController);
 util.restRoute('/user-like-job', router, userLikeJobController);
