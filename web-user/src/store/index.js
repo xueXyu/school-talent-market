@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import {storage} from './storage';
 
 Vue.use(Vuex);
 
@@ -31,18 +32,33 @@ const options = {
             state.isLogin = payload;
         },
         updateUserRole: (state, payload) => {
-            return state.userRole = payload;
+            state.userRole = payload;
         },
         updateUserInfo: (state, payload) => {
-            return state.userInfo = payload;
-        },
-        clearState: (state) => {
-            state.isLogin = false;
-            state.userRole = '';
-            state.userInfo = null;
+            state.userInfo = payload;
         }
+    },
+    actions: {
+        updateIsLogin({commit, state}, data) {
+            commit('updateIsLogin', data);
+            var local = storage.getLocalStorage || {};
+            local.isLogin = data;
+            storage.setLocalStorage = local;
+        },
+        updateUserRole({commit, state}, data) {
+            commit('updateUserRole', data);
+            var local = storage.getLocalStorage || {};
+            local.userRole = data;
+            storage.setLocalStorage = local;
+        },
+        updateUserInfo({commit, state}, data) {
+            commit('updateUserInfo', data);
+            var local = storage.getLocalStorage || {};
+            local.userInfo = data;
+            storage.setLocalStorage = local;
+        },
     }
-}
+};
 
 // const store = new Vuex.store(options);
 // export default store;

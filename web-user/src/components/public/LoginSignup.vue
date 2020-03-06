@@ -214,12 +214,12 @@
             },
             submitSUccess(data) {
                 this.onclose();
-                this.store.commit("updateIsLogin", true);
-                this.store.commit("updateUserRole", this.signupForm.usertype || this.loginForm.usertype);
-                this.store.commit("updateUserInfo", data);
+                this.store.dispatch("updateIsLogin", true);
+                this.store.dispatch("updateUserRole", this.signupForm.usertype || this.loginForm.usertype);
+                this.store.dispatch("updateUserInfo", data);
                 this.signupLoading = false;
                 this.loginLoading = false;
-                this.$router.push({name:'Home'});
+                this.$route.name === 'Home' ? '' : this.$router.push({name: 'Home'});
             },
             async userSignup() {
                 try {
@@ -254,7 +254,6 @@
                     console.error(error);
                 }
             }
-
         }
     }
 </script>

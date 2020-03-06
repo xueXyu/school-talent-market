@@ -10,6 +10,7 @@ import axios from 'axios';
 import store from "./store";
 import http from './api/http';
 import api from './api/api';
+import util from './util';
 
 import jQuery from 'jquery';
 window.jQuery = window.$ = jQuery;
@@ -22,6 +23,7 @@ Vue.prototype.store = store;
 Vue.prototype.axios = axios;
 Vue.prototype.http = http;
 Vue.prototype.api = api;
+Vue.prototype.util = util;
 
 /* eslint-disable no-new */
 new Vue({

@@ -18,6 +18,7 @@
     "jsdom": "^16.2.0",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
+    "store2": "^2.10.0",
     "vue": "^2.5.2",
     "vue-countup-v2": "^4.0.0",
     "vue-parallaxy": "^1.1.1",
