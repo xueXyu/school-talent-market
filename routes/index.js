@@ -17,7 +17,7 @@ var newsController = require('../controllers/main/news');
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-    res.end('this is web api');
+    res.end('Hello! this is web api');
 });
 
 // 使用rest的CURD

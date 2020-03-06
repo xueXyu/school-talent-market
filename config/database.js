@@ -9,6 +9,10 @@ const dbConfig = {
     'host': process.env.DB_HOST,
     'port': process.env.DB_PORT,
     'dialect': process.env.DB_DIALECT,
+    'dialectOptions': {
+        'dateStrings': true,
+        'typeCast': true
+    },
     'pool': {
         'max': 5,
         'min': 0,

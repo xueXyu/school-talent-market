@@ -18,13 +18,14 @@ CREATE TABLE `user` (
 	`deleted_at` datetime DEFAULT NULL,
 
 	`user_account` varchar(32) NOT NULL DEFAULT '0' COMMENT '账号',
-	`user_password` varchar(64) NOT NULL DEFAULT '0' COMMENT '密码',
+	`user_password` varchar(255) NOT NULL DEFAULT '0' COMMENT '密码',
 	`user_name` varchar(32) DEFAULT '' COMMENT '姓名',
 	`user_gender` char(5) DEFAULT '未知' COMMENT '性别 男 女',
 	`user_age` tinyint(5) DEFAULT 0 COMMENT '年龄',
 	`user_phone` varchar(32) DEFAULT '' COMMENT '电话',
 	`user_img` varchar(255) DEFAULT '' COMMENT '头像',
-	PRIMARY KEY (`id`)
+	PRIMARY KEY (`id`),
+	UNIQUE KEY (`user_account`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户表';
 
 CREATE TABLE `user_resume` (
@@ -50,7 +51,7 @@ CREATE TABLE `company` (
 	`deleted_at` datetime DEFAULT NULL,
 
 	`company_account` varchar(32) NOT NULL DEFAULT '0' COMMENT '公司账号',
-	`company_password` varchar(64) NOT NULL DEFAULT '0' COMMENT '公司密码',
+	`company_password` varchar(255) NOT NULL DEFAULT '0' COMMENT '公司密码',
 	`company_name` varchar(255) DEFAULT '' COMMENT '公司名称',
 	`company_phone` varchar(32) DEFAULT '' COMMENT '联系电话',
 	`company_contacts` varchar(32) DEFAULT '' COMMENT '联系人',
@@ -59,7 +60,8 @@ CREATE TABLE `company` (
 	`company_address` varchar(255) DEFAULT '' COMMENT '公司地址',
 	`company_site` varchar(255) DEFAULT '' COMMENT '网站',
 	`company_detail` text COMMENT '公司简介描述',
-	PRIMARY KEY (`id`)
+	PRIMARY KEY (`id`),
+	UNIQUE KEY (`company_account`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='公司表';
 
 CREATE TABLE `company_job` (

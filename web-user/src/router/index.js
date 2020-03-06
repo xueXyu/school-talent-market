@@ -1,24 +1,24 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Home from '../components/Home';
-import JobList from '../components/JobList';
-import JobSingle from '../components/JobSingle';
-import Company from '../components/Company';
-import CompanySingle from '../components/CompanySingle';
-import CreateJob from '../components/CreateJob';
-import CreateResume from '../components/CreateResume';
-import ResumeSingle from "../components/ResumeSingle";
-import News from '../components/News';
-import NewsSingle from '../components/NewsSingle';
-import AboutUs from '../components/AboutUs';
-import ContactUs from '../components/ContactUs';
-import EditUserInfo from "../components/EditUserInfo";
-import EditCompanyInfo from "../components/EditCompanyInfo";
-import UserManagementJobs from '../components/UserManagementJobs';
-import UserManagementResume from '../components/UserManagementResume';
-import CompanyManagementJobs from '../components/CompanyManagementJobs';
-import CompanyManagementResume from '../components/CompanyManagementResume';
+import Home from '_c/Home';
+import JobList from '_c/JobList';
+import JobSingle from '_c/JobSingle';
+import Company from '_c/Company';
+import CompanySingle from '_c/CompanySingle';
+import CreateJob from '_c/CreateJob';
+import CreateResume from '_c/CreateResume';
+import ResumeSingle from "_c/ResumeSingle";
+import News from '_c/News';
+import NewsSingle from '_c/NewsSingle';
+import AboutUs from '_c/AboutUs';
+import ContactUs from '_c/ContactUs';
+import EditUserInfo from "_c/EditUserInfo";
+import EditCompanyInfo from "_c/EditCompanyInfo";
+import UserManagementJobs from '_c/UserManagementJobs';
+import UserManagementResume from '_c/UserManagementResume';
+import CompanyManagementJobs from '_c/CompanyManagementJobs';
+import CompanyManagementResume from '_c/CompanyManagementResume';
 
 Vue.use(Router);
 

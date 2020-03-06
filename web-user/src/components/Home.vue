@@ -5,6 +5,9 @@
 
     <!-- Slider Section Start -->
     <div class="slider-section section">
+<!--        <parallax>-->
+<!--            <img src="static/images/slider/slider-1.jpg" style="z-index: 0;">-->
+<!--        </parallax>-->
         <div class="slide-item bg-parallax" style="background-image: url('static/images/slider/slider-1.jpg');" data-overlay="50">
             <div class="container">
                 <div class="slider-content text-center">
@@ -221,8 +224,9 @@
     import JobItem from "./public/JobItem";
     import CountUp from "./public/CountUp";
     import HomeCompanyItem from "./public/HomeCompanyItem";
-    import RespondentsItem from './public/RespondentsItem'
-    import NewsItem from './public/NewsItem'
+    import RespondentsItem from './public/RespondentsItem';
+    import NewsItem from './public/NewsItem';
+    // import Parallax from 'vue-parallaxy' // 图片，并不是背景
     import '../../src/assets/js/plugins/jquery.parallax';
 
     export default {
@@ -246,11 +250,26 @@
                     $(this).parallax("50%", 0.5);
                 });
             },
+            async getUser() {
+                try {
+                    await this.http.get(this.api.User+'/1')
+                        .then(res => {
+                            if(res.code == 0) {
+                                console.log(res.data);
+                                this.store.commit("updateUserInfo",res.data);
+                            }
+                        });
+                    console.log(this.store.state.userInfo);
+                } catch (error) {
+                    console.error(error);
+                }
+            }
         },
         created() {
         },
         mounted() {
             this.init();
+            this.getUser();
         }
 
     }

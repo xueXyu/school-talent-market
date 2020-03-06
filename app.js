@@ -6,11 +6,12 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
-// var session = require('express-session');
+var session = require('express-session');
 
 var apiPath = process.env.API_PATH + '/' + process.env.API_VERSION;
 var util = require('./util');
 var baseMiddleware = require('./middleware/base');
+var baseRouter = require('./routes/base');
 var indexRouter = require('./routes/index');
 var adminRouter = require('./routes/admin');
 
@@ -49,8 +50,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(baseMiddleware.reply);
 
+app.use(session({
+    name: 'sessionid',
+    secret: 'school-talent-market',
+    resave: false,
+    saveUninitialized: true,
+}));
+
 // 路由
 app.use(apiPath + '/', indexRouter);
+app.use(apiPath + '/base', baseRouter);
 app.use(apiPath + '/backend', adminRouter);
 
 // 打印路由

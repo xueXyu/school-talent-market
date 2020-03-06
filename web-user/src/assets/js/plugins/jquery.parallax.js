@@ -11,7 +11,7 @@ http://www.opensource.org/licenses/mit-license.php
 http://www.gnu.org/licenses/gpl.html
 */
 import jQuery from 'jquery';
-window.jQuery = window.$ = jQuery;;
+window.jQuery = window.$ = jQuery;
 
 (function( $ ){
 	var $window = $(window);
