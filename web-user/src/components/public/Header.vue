@@ -63,6 +63,7 @@
                                     <li><router-link :to="{name:'UserManagementResume'}">用户-管理简历</router-link></li>
                                     <li><router-link :to="{name:'CompanyManagementJobs'}">公司-管理职位</router-link></li>
                                     <li><router-link :to="{name:'CompanyManagementResume'}">公司-管理简历</router-link></li>
+                                    <li><router-link :to="{name:'CompanyManagementResume'}">退出登录</router-link></li>
                                 </ul>
                             </li>
                         </ul>

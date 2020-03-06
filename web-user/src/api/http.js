@@ -11,7 +11,7 @@ axios.interceptors.request.use(function (config) {
     return config;
 }, function (error) {
     // 处理请求错误
-    Message.error('请求错误：'+error);
+    Message.error('请求错误：' + error);
     return Promise.reject(error);
 });
 
@@ -37,9 +37,7 @@ function successfun(res) {//处理后台返回的非200错误
 }
 
 function errorfun(res) {
-    if (typeof res.status == "undefined") {
-        Message.error('response.status状态异常');
-    } else if (res.status == 404) {
+    if (res.status == 404) {
         Message.error('接口不存在');
     } else if (res.status == 500) {
         Message.error('服务器内部错误');

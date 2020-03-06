@@ -26,36 +26,32 @@
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade" v-bind:class="{'show active':activeLogin}" id="login">
                                 <form>
-                                    <div class="row mb-n3">
-                                        <div class="col-12 mb-3"><input type="email" placeholder="账号"></div>
-                                        <div class="col-12 mb-3"><input type="password" placeholder="密码"></div>
-                                        <div class="col-12 mb-3">
-                                            <div class="row justify-content-sm-between pl-4">
-                                                <div class="col-auto"><input type="radio" name="sex" id="login-user"
-                                                                             class="custom-control-input"
-                                                                             selected="selected" value="我是求职者"><label
-                                                    class="custom-control-label" for="login-user">我是求职者</label></div>
-                                                <div class="col-auto"><input type="radio" name="sex" id="login-company"
-                                                                             class="custom-control-input" value="我是招聘者"><label
-                                                    class="custom-control-label" for="login-company">我是招聘者</label></div>
+                                    <el-form :model="loginForm" :rules="loginRules" ref="loginForm">
+                                        <el-form-item label="" prop="username">
+                                            <el-input v-model="loginForm.username" placeholder="账号"></el-input>
+                                        </el-form-item>
+                                        <el-form-item label="" prop="password">
+                                            <el-input v-model="loginForm.password" type="password"
+                                                      placeholder="密码"></el-input>
+                                        </el-form-item>
+                                        <el-form-item label="" prop="usertype">
+                                            <el-radio-group v-model="loginForm.usertype">
+                                                <el-radio label="user" value="user">我是求职者</el-radio>
+                                                <el-radio label="company" value="company">我是招聘者</el-radio>
+                                            </el-radio-group>
+                                        </el-form-item>
+                                        <el-form-item>
+                                            <el-button class="signup-button" type="primary" style="width: 100%;"
+                                                       @click="submitForm('loginForm')"
+                                                       :loading="signupLoading">登录
+                                            </el-button>
+                                        </el-form-item>
+                                        <div class="row" style="text-align: center;">
+                                            <div class="col-12">
+                                                <a @click="forgotPassword">忘记密码啦?</a>
                                             </div>
                                         </div>
-                                        <div class="col-12 mb-3">
-                                            <div class="row justify-content-between mb-n2">
-                                                <div class="col-auto mb-2">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" name="remember-me" id="remember-me"
-                                                               value="checkedValue" class="custom-control-input">
-                                                        <label class="custom-control-label"
-                                                               for="remember-me">记住我</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-auto mb-2"><a href="#">忘记密码啦?</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 mb-3"><input class="btn btn-primary w-100" type="submit"
-                                                                        value="登录"></div>
-                                    </div>
+                                    </el-form>
                                     <div class="row mt-4">
                                         <div class="col text-center">
                                             <div class="login-reg-social">
@@ -70,25 +66,31 @@
                             </div>
                             <div class="tab-pane fade" v-bind:class="{'show active':!activeLogin}" id="signup">
                                 <form>
-                                    <div class="row mb-n3">
-                                        <div class="col-12 mb-3"><input type="text" placeholder="账号"></div>
-                                        <div class="col-12 mb-3"><input type="password" placeholder="密码"></div>
-                                        <div class="col-12 mb-3"><input type="password" placeholder="重复密码"></div>
-                                        <div class="col-12 mb-3">
-                                            <div class="row justify-content-sm-between pl-4">
-                                                <div class="col-auto"><input type="radio" name="sex" id="signup-user"
-                                                                             class="custom-control-input"
-                                                                             selected="selected" value="我是求职者"><label
-                                                    class="custom-control-label" for="signup-user">我是求职者</label></div>
-                                                <div class="col-auto"><input type="radio" name="sex" id="signup-company"
-                                                                             class="custom-control-input" value="我是招聘者"><label
-                                                    class="custom-control-label" for="signup-company">我是招聘者</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 mb-3"><input class="btn btn-primary w-100" type="submit"
-                                                                        value="注册"></div>
-                                    </div>
+                                    <el-form :model="signupForm" :rules="signupRules" ref="signupForm">
+                                        <el-form-item label="" prop="username">
+                                            <el-input v-model="signupForm.username" placeholder="账号"></el-input>
+                                        </el-form-item>
+                                        <el-form-item label="" prop="password">
+                                            <el-input v-model="signupForm.password" type="password"
+                                                      placeholder="密码"></el-input>
+                                        </el-form-item>
+                                        <el-form-item label="" prop="repassword">
+                                            <el-input v-model="signupForm.repassword" type="password"
+                                                      placeholder="确认密码"></el-input>
+                                        </el-form-item>
+                                        <el-form-item label="" prop="usertype">
+                                            <el-radio-group v-model="signupForm.usertype">
+                                                <el-radio label="user" value="user">我是求职者</el-radio>
+                                                <el-radio label="company" value="company">我是招聘者</el-radio>
+                                            </el-radio-group>
+                                        </el-form-item>
+                                        <el-form-item>
+                                            <el-button class="signup-button" type="primary" style="width: 100%;"
+                                                       @click="submitForm('signupForm')"
+                                                       :loading="signupLoading">注册
+                                            </el-button>
+                                        </el-form-item>
+                                    </el-form>
                                     <div class="row mt-4">
                                         <div class="col text-center">
                                             <div class="login-reg-social">
@@ -112,12 +114,66 @@
 </template>
 
 <script>
+    import {Message} from 'element-ui';
+    import router from "../../router";
+
     export default {
         name: "LoginSignup",
         data() {
+            var checkPass = (rule, value, callback) => {
+                if (typeof value == 'undefined' || value == '' || value == null) {
+                    callback(new Error('请再次输入密码'));
+                } else if (value !== this.signupForm.password) {
+                    callback(new Error('两次输入密码不一致!'));
+                } else {
+                    callback();
+                }
+            };
             return {
                 openLoginSign: false,
                 activeLogin: true,
+                signupLoading: false,
+                loginLoading: false,
+                signupForm: {
+                    username: null,
+                    password: null,
+                    repassword: null,
+                    usertype: null,
+                },
+                loginForm: {
+                    username: null,
+                    password: null,
+                    usertype: null,
+                },
+                signupRules: {
+                    username: [
+                        {required: true, message: '请输入账号', trigger: 'blur'},
+                        {min: 3, max: 30, message: '账号长度在 3 到 30 个字符', trigger: 'blur'}
+                    ],
+                    password: [
+                        {required: true, message: '请输入密码', trigger: 'blur'},
+                        {min: 6, max: 30, message: '密码长度在 6 到 30 个字符', trigger: 'blur'}
+                    ],
+                    repassword: [
+                        {validator: checkPass, trigger: 'blur'}
+                    ],
+                    usertype: [
+                        {required: true, message: '请选择用户类型', trigger: 'change'}
+                    ],
+                },
+                loginRules: {
+                    username: [
+                        {required: true, message: '请输入账号', trigger: 'blur'},
+                        {min: 3, max: 30, message: '账号长度在 3 到 30 个字符', trigger: 'blur'}
+                    ],
+                    password: [
+                        {required: true, message: '请输入密码', trigger: 'blur'},
+                        {min: 6, max: 30, message: '密码长度在 6 到 30 个字符', trigger: 'blur'}
+                    ],
+                    usertype: [
+                        {required: true, message: '请选择用户类型', trigger: 'change'}
+                    ],
+                }
             }
         },
         methods: {
@@ -138,11 +194,71 @@
                     this.openLoginSign = true;
                     this.activeLogin = false;
                 }
+            },
+            forgotPassword() {
+                Message.success('哈哈哈，忘记就忘记吧~');
+            },
+            submitForm(formName) {
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        if (formName == 'signupForm') {
+                            this.signupLoading = true;
+                            this.userSignup();
+                        } else if (formName == 'loginForm') {
+                            this.loginLoading = true;
+                            this.userLogin();
+                        }
+
+                    }
+                });
+            },
+            submitSUccess(data) {
+                this.onclose();
+                this.store.commit("updateIsLogin", true);
+                this.store.commit("updateUserRole", this.signupForm.usertype || this.loginForm.usertype);
+                this.store.commit("updateUserInfo", data);
+                this.signupLoading = false;
+                this.loginLoading = false;
+                this.$router.push({name:'Home'});
+            },
+            async userSignup() {
+                try {
+                    await this.http.post(this.api.User, {
+                        username: this.signupForm.username,
+                        password: this.signupForm.password,
+                        usertype: this.signupForm.usertype
+                    })
+                        .then(res => {
+                            if (res.code == 0) {
+                                Message.success('注册成功');
+                                this.submitSUccess(res.data);
+                            } else {
+                                Message.error(res.message);
+                            }
+                        });
+                } catch (error) {
+                    console.error(error);
+                }
+            },
+            async userLogin() {
+                try {
+                    await this.http.post(this.api.Sessions, this.loginForm).then(res => {
+                        if (res.code == 0) {
+                            Message.success('登录成功');
+                            this.submitSUccess(res.data);
+                        } else {
+                            Message.error(res.message);
+                        }
+                    });
+                } catch (error) {
+                    console.error(error);
+                }
             }
 
         }
     }
 </script>
+
 
 <style scoped>
 

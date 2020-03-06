@@ -269,7 +269,7 @@
         },
         mounted() {
             this.init();
-            this.getUser();
+            // this.getUser();
         }
 
     }
