@@ -68,8 +68,16 @@ function reply(req, res, next) {
         });
     }
 
+    function _replyCannot(err) {
+        res.status(200).json({
+            code: 1,
+            message: err || 'Unknown error'
+        });
+    }
+
     res.reply = _reply;
     res.replyError = _replyError;
+    res.replyCannot = _replyCannot;
 
     next();
 }

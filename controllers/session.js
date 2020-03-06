@@ -22,8 +22,8 @@ class SessionController extends BaseController {
         const rules = Joi.object({
             // 3 - 30 个 数字、字符
             username: Joi.string().alphanum().min(3).max(30).required(),
-            // 3 - 30 位 字母数字组合密码
-            password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).required(),
+            // 6 - 30 位 字母数字组合密码
+            password: Joi.string().regex(/^[a-zA-Z0-9]{6,30}$/).required(),
             // 只有：用户，公司
             usertype: Joi.string().valid('user', 'company').required(),
         });
@@ -55,11 +55,11 @@ class SessionController extends BaseController {
                             };
                         } else {
                             req.session.destroy();
-                            return Promise.reject('用户名或密码错误！');
+                            res.replyCannot('用户名或密码错误！');
                         }
                     });
                 } else {
-                    return Promise.reject('用户不存在！');
+                    res.replyCannot('用户不存在！');
                 }
             });
 
@@ -90,11 +90,11 @@ class SessionController extends BaseController {
                             };
                         } else {
                             req.session.destroy();
-                            return Promise.reject('用户名或密码错误！');
+                            res.replyCannot('用户名或密码错误！');
                         }
                     });
                 } else {
-                    return Promise.reject('用户不存在！');
+                    res.replyCannot('用户不存在！');
                 }
             });
 
@@ -107,7 +107,7 @@ class SessionController extends BaseController {
      */
     destroy(req, res) {
         req.session.destroy();
-        return res.reply();
+        return res.reply('退出成功！');
     }
 
     // 更新用户密码
