@@ -145,6 +145,7 @@
                     password: null,
                     usertype: null,
                 },
+                usertype: '',
                 signupRules: {
                     username: [
                         {required: true, message: '请输入账号', trigger: 'blur'},
@@ -215,7 +216,7 @@
             submitSUccess(data) {
                 this.onclose();
                 this.store.dispatch("updateIsLogin", true);
-                this.store.dispatch("updateUserRole", this.signupForm.usertype || this.loginForm.usertype);
+                this.store.dispatch("updateUserRole", this.usertype);
                 this.store.dispatch("updateUserInfo", data);
                 this.signupLoading = false;
                 this.loginLoading = false;
@@ -231,6 +232,7 @@
                         .then(res => {
                             if (res.code == 0) {
                                 Message.success('注册成功');
+                                this.usertype = this.signupForm.usertype;
                                 this.submitSUccess(res.data);
                             } else {
                                 Message.error(res.message);
@@ -245,6 +247,7 @@
                     await this.http.post(this.api.Sessions, this.loginForm).then(res => {
                         if (res.code == 0) {
                             Message.success('登录成功');
+                            this.usertype = this.loginForm.usertype;
                             this.submitSUccess(res.data);
                         } else {
                             Message.error(res.message);
