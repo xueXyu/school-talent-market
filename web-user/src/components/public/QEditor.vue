@@ -40,7 +40,8 @@
                         //     syntax: {
                         //         highlight: text => hljs.highlightAuto(text).value
                         //     }
-                    }
+                    },
+                    placeholder: '输入公司简介，让大家更了解...',
                 },
             }
         },
