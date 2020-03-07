@@ -14,6 +14,8 @@ var baseMiddleware = require('./middleware/base');
 var baseRouter = require('./routes/base');
 var indexRouter = require('./routes/index');
 var adminRouter = require('./routes/admin');
+var uploadRouter = require('./routes/upload');
+
 
 var app = express();
 
@@ -23,6 +25,7 @@ app.all('*', function (req, res, next) {
     res.header('Access-Control-Allow-Origin', req.headers.origin);
     res.header('Access-Control-Allow-Methods', "POST, GET, OPTIONS, DELETE, PUT");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Content-Type", "application/json;charset=utf-8");
     res.header('Access-Control-Allow-Credentials', 'true');  // 允许发送Cookie数据
     // intercept OPTIONS method
     if ('OPTIONS' == req.method) {
@@ -50,6 +53,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(baseMiddleware.reply);
 
+// 将uploads文件夹托管为静态文件
+app.use(apiPath + '/uploads', express.static(__dirname + '/uploads'));
+
 app.use(session({
     name: 'sessionid',
     secret: 'school-talent-market',
@@ -61,6 +67,7 @@ app.use(session({
 app.use(apiPath + '/', indexRouter);
 app.use(apiPath + '/base', baseRouter);
 app.use(apiPath + '/backend', adminRouter);
+app.use(apiPath + '/upload', uploadRouter);
 
 // 打印路由
 if (util.isNotProdEnv()) {

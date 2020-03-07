@@ -76,17 +76,17 @@ class SessionController extends BaseController {
                                 type: value.usertype
                             };
                             return {
-                                'id':user.id,
-                                'created_at':user.created_at,
-                                'company_account':user.company_account,
-                                'company_name':user.company_name,
-                                'company_phone':user.company_phone,
-                                'company_contacts':user.company_contacts,
-                                'company_create':user.company_create,
-                                'company_size':user.company_size,
-                                'company_address':user.company_address,
-                                'company_site':user.company_site,
-                                'company_detail':user.company_detail,
+                                'id': user.id,
+                                'created_at': user.created_at,
+                                'company_account': user.company_account,
+                                'company_name': user.company_name,
+                                'company_phone': user.company_phone,
+                                'company_contacts': user.company_contacts,
+                                'company_create': user.company_create,
+                                'company_size': user.company_size,
+                                'company_address': user.company_address,
+                                'company_site': user.company_site,
+                                'company_detail': user.company_detail,
                             };
                         } else {
                             req.session.destroy();

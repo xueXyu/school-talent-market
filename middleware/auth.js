@@ -9,7 +9,7 @@ module.exports = {
             req.user = req.session.user; // 将用户信息添加到request对象
             next();
         } else {
-            next({message: '请先登录！', status: 401});
+            next({message: '请先登录！', status: 200});
         }
     },
 };

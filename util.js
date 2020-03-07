@@ -1,8 +1,34 @@
 'use strict';
 
 const _ = require('lodash');
+const path = require('path');
+const fs = require('fs');
 
 module.exports = {
+
+    // 获取当前日期
+    getCurrentDay: () => {
+        const date = new Date();
+        return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+    },
+
+    /**
+     * 检查路径是否存在 如果不存在则创建路径
+     * @param {string} folderpath 文件路径
+     */
+    checkDirExist: (folderpath) => {
+        const pathArr = folderpath.split('/');
+        let _path = '';
+        for (let i = 0; i < pathArr.length; i++) {
+            if (pathArr[i]) {
+                _path += `/${pathArr[i]}`;
+                if (!fs.existsSync(_path)) {
+                    fs.mkdirSync(_path);
+                }
+            }
+        }
+    },
+
     // 根据配置构建路由 - [{path, method, target, middlewares }]
     buildRoute: (routeArr, router, controller) => {
         if (router && routeArr && routeArr.length && controller) {
