@@ -52,7 +52,7 @@
                                         <Uploader from="company" @func="getUploadUrl"></Uploader>
                                     </el-form-item>
                                     <el-form-item label="公司简介" prop="company_detail" required>
-                                        <el-input type="textarea" v-model="ruleForm.company_detail"></el-input>
+                                        <QEditor ref="child" @func="getQEditorContent"></QEditor>
                                     </el-form-item>
                                     <el-form-item>
                                         <el-button type="primary" :loading="loading" @click="submitForm('ruleForm')">
@@ -73,12 +73,14 @@
 <script>
     import PageHeading from "./public/PageHeading";
     import Uploader from "./public/Uploader";
+    import QEditor from "./public/QEditor";
 
     export default {
         name: "EditCompanyInfo",
         components: {
             PageHeading,
-            Uploader
+            Uploader,
+            QEditor
         },
         data() {
             var validPhone = (rule, value, callback) => {
@@ -162,8 +164,12 @@
                 });
             },
             getUploadUrl(data) {
-                // console.log('父组件获取URL：'+data);
+                // 接受子组件的传值
                 this.ruleForm.company_img = data;
+            },
+            getQEditorContent(data) {
+                // 接受子组件的传值
+                this.ruleForm.company_detail = data;
             },
             async getInfo() {
                 try {
@@ -180,6 +186,8 @@
                                 company_img: res.data.company_img,
                                 company_detail: res.data.company_detail,
                             };
+                            // 向子组件传值
+                            this.$refs.child.childMethod(res.data.company_detail)
                         } else {
                             this.$message.error(res.message);
                         }
