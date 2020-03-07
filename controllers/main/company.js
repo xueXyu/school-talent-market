@@ -9,26 +9,26 @@ class CompanyController extends RestController {
         super('Company');
     }
 
-    /**
-     * 创建对象
-     */
-    create(req, res) {
-        res.reply('create');
-    }
-
-    /**
-     * 更新对象
-     */
-    update(req, res) {
-        res.reply('update');
-    }
-
-    /**
-     * 删除单个对象
-     */
-    destroy(req, res) {
-        res.reply('destroy');
-    }
+    // /**
+    //  * 创建对象
+    //  */
+    // create(req, res) {
+    //     res.reply('create');
+    // }
+    //
+    // /**
+    //  * 更新对象
+    //  */
+    // update(req, res) {
+    //     res.reply('update');
+    // }
+    //
+    // /**
+    //  * 删除单个对象
+    //  */
+    // destroy(req, res) {
+    //     res.reply('destroy');
+    // }
 }
 
 module.exports = new CompanyController();

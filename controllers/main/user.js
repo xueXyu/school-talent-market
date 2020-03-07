@@ -73,20 +73,6 @@ class UserController extends RestController {
 
         res.reply(result);
     }
-
-    /**
-     * 更新对象
-     */
-    update(req, res) {
-        res.reply('update');
-    }
-
-    /**
-     * 删除单个对象
-     */
-    destroy(req, res) {
-        res.reply('destroy');
-    }
 }
 
 module.exports = new UserController();

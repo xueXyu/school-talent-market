@@ -124,7 +124,6 @@
 
 <script>
     import LoginSignup from "./LoginSignup"
-    import {Message} from "element-ui";
 
     export default {
         name: "Header",
@@ -164,9 +163,9 @@
                 try {
                     await this.http.delete(this.api.Sessions).then(res => {
                         if (res.code == 0) {
-                            Message.success('退出成功');
+                            this.$message.success('退出成功');
                         } else {
-                            Message.error(res.message);
+                            this.$message.error(res.message);
                         }
                     });
                 } catch (error) {

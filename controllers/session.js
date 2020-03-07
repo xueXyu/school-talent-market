@@ -16,7 +16,7 @@ class SessionController extends BaseController {
     }
 
     /**
-     * create session(login)
+     * create session(login)登录
      */
     create(req, res) {
         const rules = Joi.object({
@@ -43,16 +43,7 @@ class SessionController extends BaseController {
                                 id: user.id,
                                 type: value.usertype
                             };
-                            return {
-                                'id': user.id,
-                                'created_at': user.created_at,
-                                'user_account': user.user_account,
-                                'user_name': user.user_name,
-                                'user_gender': user.user_gender,
-                                'user_age': user.user_age,
-                                'user_phone': user.user_phone,
-                                'user_img': user.user_img,
-                            };
+                            return user;
                         } else {
                             req.session.destroy();
                             res.replyCannot('用户名或密码错误！');
@@ -63,6 +54,7 @@ class SessionController extends BaseController {
                 }
             });
 
+            console.log(result);
             res.reply(result);
         } else if (value.usertype == 'company') {
             const result = this.models['Company'].findOne({
@@ -75,19 +67,7 @@ class SessionController extends BaseController {
                                 id: user.id,
                                 type: value.usertype
                             };
-                            return {
-                                'id': user.id,
-                                'created_at': user.created_at,
-                                'company_account': user.company_account,
-                                'company_name': user.company_name,
-                                'company_phone': user.company_phone,
-                                'company_contacts': user.company_contacts,
-                                'company_create': user.company_create,
-                                'company_size': user.company_size,
-                                'company_address': user.company_address,
-                                'company_site': user.company_site,
-                                'company_detail': user.company_detail,
-                            };
+                            return user;
                         } else {
                             req.session.destroy();
                             res.replyCannot('用户名或密码错误！');

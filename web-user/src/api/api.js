@@ -1,5 +1,6 @@
 export default {
-    Sessions: 'base/sessions',
+    Sessions: '/base/sessions',
+    UploadImg: '/upload/img',
     Admin: '/admin',
     News: '/news',
     User: '/user',

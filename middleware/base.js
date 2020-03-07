@@ -35,10 +35,18 @@ function reply(req, res, next) {
 
     function _replyObj(data) {
         data = data || {};
+        // 不返回，updated_at，deleted_at，user_password，company_password等字段数据
+        var disableList = [
+            'updated_at',
+            'deleted_at',
+            'user_password',
+            'company_password'
+        ];
+        var result = _.omit(data.dataValues, disableList);
         res.json({
             code: 0,
             message: 'success',
-            data: data
+            data: result
         });
     }
 

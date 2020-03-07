@@ -1,8 +1,9 @@
 import axios from 'axios';
 import {Message} from 'element-ui';
 import router from '../router';
+import util from '../util';
 
-const localhosts = 'http://localhost:3000/api/v1';   //请求的后台域名
+const localhosts = util.getHost();   //请求的后台域名
 
 // 添加一个请求拦截器
 axios.interceptors.request.use(function (config) {
@@ -47,6 +48,9 @@ function errorfun(res) {
 }
 
 export default {
+    hosts() {
+        return localhosts;
+    },
     post(url, data) {//post请求
         return axios({
             method: 'post',

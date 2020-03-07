@@ -114,9 +114,6 @@
 </template>
 
 <script>
-    import {Message} from 'element-ui';
-    import router from "../../router";
-
     export default {
         name: "LoginSignup",
         data() {
@@ -197,7 +194,7 @@
                 }
             },
             forgotPassword() {
-                Message.success('哈哈哈，忘记就忘记吧~');
+                this.$message.success('哈哈哈，忘记就忘记吧~');
             },
             submitForm(formName) {
                 this.$refs[formName].validate((valid) => {
@@ -213,7 +210,7 @@
                     }
                 });
             },
-            submitSUccess(data) {
+            submitSuccess(data) {
                 this.onclose();
                 this.store.dispatch("updateIsLogin", true);
                 this.store.dispatch("updateUserRole", this.usertype);
@@ -231,11 +228,11 @@
                     })
                         .then(res => {
                             if (res.code == 0) {
-                                Message.success('注册成功');
+                                this.$message.success('注册成功');
                                 this.usertype = this.signupForm.usertype;
-                                this.submitSUccess(res.data);
+                                this.submitSuccess(res.data);
                             } else {
-                                Message.error(res.message);
+                                this.$message.error(res.message);
                             }
                         });
                 } catch (error) {
@@ -246,11 +243,11 @@
                 try {
                     await this.http.post(this.api.Sessions, this.loginForm).then(res => {
                         if (res.code == 0) {
-                            Message.success('登录成功');
+                            this.$message.success('登录成功');
                             this.usertype = this.loginForm.usertype;
-                            this.submitSUccess(res.data);
+                            this.submitSuccess(res.data);
                         } else {
-                            Message.error(res.message);
+                            this.$message.error(res.message);
                         }
                     });
                 } catch (error) {
