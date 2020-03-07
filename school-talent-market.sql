@@ -59,6 +59,7 @@ CREATE TABLE `company` (
 	`company_size` varchar(32) DEFAULT '' COMMENT '公司规模 0-20人 20-99人 100-499人 500-999人 1000-9999人 10000人以上',
 	`company_address` varchar(255) DEFAULT '' COMMENT '公司地址',
 	`company_site` varchar(255) DEFAULT '' COMMENT '网站',
+	`company_img` varchar(255) DEFAULT '' COMMENT '公司图片',
 	`company_detail` text COMMENT '公司简介描述',
 	PRIMARY KEY (`id`),
 	UNIQUE KEY (`company_account`)

@@ -55,17 +55,26 @@
 
                 return isJPGPNG && isLt1M;
             },
-            getHeadImage() {
+            getUserImage() {
                 if (this.store.state.userInfo) {
                     if (this.store.state.userInfo.user_img) {
                         this.imageUrl = this.util.getHost() + this.store.state.userInfo.user_img;
                     }
                 }
             },
+            getCompanyImage() {
+                if (this.store.state.userInfo) {
+                    if (this.store.state.userInfo.company_img) {
+                        this.imageUrl = this.util.getHost() + this.store.state.userInfo.company_img;
+                    }
+                }
+            },
         },
         mounted() {
-            if (this.from === 'head') {
-                this.getHeadImage();
+            if (this.from === 'user') {
+                this.getUserImage();
+            } else if (this.from === 'company') {
+                this.getCompanyImage();
             }
         }
     }

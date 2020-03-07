@@ -23,8 +23,7 @@
                                         <el-input v-model="ruleForm.user_name"></el-input>
                                     </el-form-item>
                                     <el-form-item label="性别" prop="user_gender" required>
-                                        <el-select v-model="ruleForm.user_gender" placeholder="请选择你的性别"
-                                                   auto-complete="off">
+                                        <el-select v-model="ruleForm.user_gender" auto-complete="off">
                                             <el-option label="男" value="男"></el-option>
                                             <el-option label="女" value="女"></el-option>
                                         </el-select>
@@ -36,7 +35,7 @@
                                         <el-input type="tel" v-model="ruleForm.user_phone"></el-input>
                                     </el-form-item>
                                     <el-form-item label="用户照片" prop="user_img" required>
-                                        <Uploader from="head" @func="getUploadUrl"></Uploader>
+                                        <Uploader from="user" @func="getUploadUrl"></Uploader>
                                     </el-form-item>
                                     <el-form-item>
                                         <el-button type="primary" :loading="loading" @click="submitForm('ruleForm')">
