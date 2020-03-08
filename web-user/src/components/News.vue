@@ -61,14 +61,14 @@
         },
         methods: {
             currentChange(event) {
-                this.current_page = (event - 1) * this.page_size;
+                this.current_page = event;
                 this.getNewsList();
             },
             async getNewsList() {
                 try {
                     await this.http.get(this.api.News, {
                         limit: this.page_size,
-                        offset: this.current_page,
+                        offset: (this.current_page - 1) * this.page_size,
                         order: ['created_at', 'DESC'],
                     }).then(res => {
                         if (res.code == 0) {
@@ -95,6 +95,4 @@
         justify-content: center;
         padding-top: 90px;
     }
-
-
 </style>

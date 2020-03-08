@@ -39,9 +39,14 @@
                                 <div class="inner">
                                     <div class="sidebar-company">
                                         <span class="company-logo">
-                                            <el-image style="width: 70px; height: 70px;"
+                                            <el-image style="width: 70px; height: 70px; line-height: 70px;"
                                                       :src="this.util.getHost()+companyInfo.company_img"
-                                                      fit="fit"></el-image>
+                                                      fit="fit">
+                                                <div slot="error" class="image-slot">
+                                                    <i class="el-icon-picture-outline"
+                                                       style="font-size: 2em; color: #909399;"></i>
+                                                </div>
+                                            </el-image>
                                         </span>
                                         <h6 class="title">{{companyInfo.company_name}}</h6>
                                         <ul>

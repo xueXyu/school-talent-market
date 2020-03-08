@@ -17,24 +17,21 @@
                         <!-- Company List Wrap Start -->
                         <div class="company-list-wrap row">
 
-                            <CompanyItem></CompanyItem>
-                            <CompanyItem></CompanyItem>
-                            <CompanyItem></CompanyItem>
-                            <CompanyItem></CompanyItem>
-                            <CompanyItem></CompanyItem>
-                            <CompanyItem></CompanyItem>
-                            <CompanyItem></CompanyItem>
-                            <CompanyItem></CompanyItem>
-                            <CompanyItem></CompanyItem>
-                            <CompanyItem></CompanyItem>
-                            <CompanyItem></CompanyItem>
-                            <CompanyItem></CompanyItem>
+                            <CompanyItem v-for="(item,index) in companyList" :key="index"
+                                         :company-item="item"></CompanyItem>
 
                         </div>
                         <!-- Company List Wrap Start -->
 
                         <!-- Pagination Start -->
-                        <Pagination></Pagination>
+                        <el-pagination
+                            class="pagination"
+                            background
+                            layout="prev, pager, next"
+                            @current-change="currentChange"
+                            :page-size="page_size"
+                            :total="page_count">
+                        </el-pagination>
                         <!-- Pagination End -->
 
                     </div>
@@ -77,7 +74,8 @@
                             <!-- Sidebar (Search) Start -->
                             <div class="sidebar-widget">
                                 <div class="inner">
-                                    <a class="banner" href="/" target="_blank"><img src="../../static/images/banner/banner-1.jpg" alt="Banner"></a>
+                                    <a class="banner" href="/" target="_blank"><img
+                                        src="../../static/images/banner/banner-1.jpg" alt="Banner"></a>
                                 </div>
                             </div>
                             <!-- Sidebar (Search) End -->
@@ -95,29 +93,62 @@
 <script>
     import PageHeading from "./public/PageHeading";
     import CompanyItem from "./public/CompanyItem";
-    import Pagination from "./public/Pagination";
+
     export default {
         name: "Company",
-        components:{
+        components: {
             CompanyItem,
-            PageHeading,
-            Pagination
+            PageHeading
         },
         data() {
             return {
                 pageData: {
-                    'name':'工作名称',
-                    'navs':[
-                        {'name':'Home','to':'Home','active':false},
-                        {'name':'Jobs','to':'Jobs','active':false},
-                        {'name':'工作名称','to':'','active':true},
+                    'name': '公司',
+                    'navs': [
+                        {'name': 'Home', 'to': 'Home', 'active': false},
+                        {'name': '公司', 'to': '', 'active': false},
                     ],
-                }
+                },
+                companyList: null,
+                current_page: 1,
+                page_count: 1,
+                page_size: 12,
             }
         },
+        methods: {
+            currentChange(event) {
+                this.current_page = event;
+                this.getCompanyList();
+            },
+            async getCompanyList() {
+                try {
+                    await this.http.get(this.api.Company, {
+                        limit: this.page_size,
+                        offset: (this.current_page - 1) * this.page_size,
+                        order: ['created_at', 'DESC'],
+                    }).then(res => {
+                        if (res.code == 0) {
+                            this.page_count = res.data.count;
+                            this.companyList = res.data.rows;
+                        } else {
+                            this.$message.error(res.message);
+                        }
+                    });
+                } catch (error) {
+                    console.error(error);
+                }
+            },
+        },
+        mounted() {
+            this.getCompanyList();
+        }
     }
 </script>
 
-<style scoped>
-
+<style>
+    .pagination {
+        display: flex;
+        justify-content: center;
+        padding-top: 90px;
+    }
 </style>

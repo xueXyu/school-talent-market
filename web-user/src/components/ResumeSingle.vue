@@ -18,9 +18,14 @@
                                 <!-- Job List Start -->
                                 <span class="job-list">
                                     <div class="company-logo col-auto">
-                                        <el-image style="width: 70px; height: 70px;"
+                                        <el-image style="width: 70px; height: 70px; line-height: 70px;"
                                                   :src="this.util.getHost()+resumeInfo.user.user_img"
-                                                  fit="fit"></el-image>
+                                                  fit="fit">
+                                            <div slot="error" class="image-slot">
+                                                <i class="el-icon-picture-outline"
+                                                   style="font-size: 2em; color: #909399;"></i>
+                                            </div>
+                                        </el-image>
                                     </div>
                                     <div class="salary-type col-auto order-sm-3">
                                     </div>
