@@ -49,10 +49,10 @@
                                         <el-input v-model="ruleForm.company_site"></el-input>
                                     </el-form-item>
                                     <el-form-item label="公司图片" prop="company_img" required>
-                                        <Uploader from="company" @func="getUploadUrl"></Uploader>
+                                        <Uploader ref="childUploader" @func="getUploadUrl"></Uploader>
                                     </el-form-item>
                                     <el-form-item label="公司简介" prop="company_detail" required>
-                                        <QEditor ref="child" @func="getQEditorContent"></QEditor>
+                                        <QEditor ref="childQeditor" @func="getQEditorContent"></QEditor>
                                     </el-form-item>
                                     <el-form-item>
                                         <el-button type="primary" :loading="loading" @click="submitForm('ruleForm')">
@@ -187,7 +187,8 @@
                                 company_detail: res.data.company_detail,
                             };
                             // 向子组件传值
-                            this.$refs.child.childMethod(res.data.company_detail)
+                            this.$refs.childUploader.childMethod(res.data.company_img);
+                            this.$refs.childQeditor.childMethod(res.data.company_detail);
                         } else {
                             this.$message.error(res.message);
                         }

@@ -35,7 +35,7 @@
                                         <el-input type="tel" v-model="ruleForm.user_phone"></el-input>
                                     </el-form-item>
                                     <el-form-item label="用户照片" prop="user_img" required>
-                                        <Uploader from="user" @func="getUploadUrl"></Uploader>
+                                        <Uploader ref="childUploader" @func="getUploadUrl"></Uploader>
                                     </el-form-item>
                                     <el-form-item>
                                         <el-button type="primary" :loading="loading" @click="submitForm('ruleForm')">
@@ -148,6 +148,8 @@
                                 user_phone: res.data.user_phone,
                                 user_img: res.data.user_img,
                             };
+                            // 向子组件传值
+                            this.$refs.childUploader.childMethod(res.data.user_img);
                         } else {
                             this.$message.error(res.message);
                         }

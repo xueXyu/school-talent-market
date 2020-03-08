@@ -29,6 +29,10 @@
             }
         },
         methods: {
+            childMethod(data) {
+                // 接受父组件传值
+                this.imageUrl = this.util.getHost() + data;
+            },
             // 上传成功
             handleSuccess(res, file) {
                 this.imageUrl = URL.createObjectURL(file.raw);
@@ -54,29 +58,8 @@
                 }
 
                 return isJPGPNG && isLt1M;
-            },
-            getUserImage() {
-                if (this.store.state.userInfo) {
-                    if (this.store.state.userInfo.user_img) {
-                        this.imageUrl = this.util.getHost() + this.store.state.userInfo.user_img;
-                    }
-                }
-            },
-            getCompanyImage() {
-                if (this.store.state.userInfo) {
-                    if (this.store.state.userInfo.company_img) {
-                        this.imageUrl = this.util.getHost() + this.store.state.userInfo.company_img;
-                    }
-                }
-            },
-        },
-        mounted() {
-            if (this.from === 'user') {
-                this.getUserImage();
-            } else if (this.from === 'company') {
-                this.getCompanyImage();
             }
-        }
+        },
     }
 </script>
 
