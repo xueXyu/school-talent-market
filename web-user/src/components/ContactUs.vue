@@ -23,10 +23,10 @@
                                 <li><i class="fa fa-envelope-o"></i><span>jack@wu06.com</span></li>
                             </ul>
                             <div class="contact-social">
-                                <a href="#"><i class="fa fa-qq"></i></a>
-                                <a href="#"><i class="fa fa-wechat"></i></a>
-                                <a href="#"><i class="fa fa-weibo"></i></a>
-                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="/"><i class="fa fa-qq"></i></a>
+                                <a href="/"><i class="fa fa-wechat"></i></a>
+                                <a href="/"><i class="fa fa-weibo"></i></a>
+                                <a href="/"><i class="fa fa-facebook"></i></a>
                             </div>
                         </div>
                     </div>

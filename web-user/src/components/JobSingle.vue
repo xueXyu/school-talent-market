@@ -33,12 +33,12 @@
                                 <div class="inner">
                                     <div class="row m-n2">
                                         <div class="col-xl-auto col-lg-12 col-sm-auto col-12 p-2">
-                                            <a href="#" class="d-block btn btn-outline-success">
+                                            <a href="/" class="d-block btn btn-outline-success">
                                                 <i class="fa fa-heart-o mr-1"></i>收藏职位
                                             </a>
                                         </div>
                                         <div class="col-xl-auto col-lg-12 col-sm-auto col-12 p-2">
-                                            <a href="#" class="d-block btn btn-primary">申请职位</a>
+                                            <a href="/" class="d-block btn btn-primary">申请职位</a>
                                         </div>
                                     </div>
                                 </div>

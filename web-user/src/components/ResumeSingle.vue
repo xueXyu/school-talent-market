@@ -50,10 +50,10 @@
                                 <div class="inner">
                                     <div class="row m-n2">
                                         <div class="col-xl-auto col-lg-12 col-sm-auto col-12 p-2">
-                                            <a href="#" class="d-block btn btn-primary">审核通过</a>
+                                            <a href="/" class="d-block btn btn-primary">审核通过</a>
                                         </div>
                                         <div class="col-xl-auto col-lg-12 col-sm-auto col-12 p-2">
-                                            <a href="#" class="d-block btn btn-outline-secondary">审核不通过</a>
+                                            <a href="/" class="d-block btn btn-outline-secondary">审核不通过</a>
                                         </div>
                                     </div>
                                 </div>

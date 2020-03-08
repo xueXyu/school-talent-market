@@ -42,7 +42,23 @@ function reply(req, res, next) {
             'user_password',
             'company_password'
         ];
-        var result = _.omit(data.dataValues, disableList);
+
+        // 去除不可显示字段
+        var result = null;
+        if (data.rows && data.count) {
+            // console.log('多条数据', data);
+            result = {
+                count: data.count,
+                rows: [],
+            };
+            data.rows.forEach((currentValue, currentIndex) => {
+                result.rows.push(_.omit(currentValue.dataValues, disableList));
+            });
+        } else {
+            // console.log('单条数据', data);
+            result = _.omit(data.dataValues, disableList);
+        }
+
         res.json({
             code: 0,
             message: 'success',

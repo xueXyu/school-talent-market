@@ -13,10 +13,10 @@
                                 <p>校园人才市场校园人才市场校园人才市场校园人才市场校园人才市场校园人才市场校园人才市场校园人才市场校园人才市场校园人才市场</p>
 
                                 <ul class="footer-socail">
-                                    <li><a href="#"><i class="fa fa-qq"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-wechat"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-weibo"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="/"><i class="fa fa-qq"></i></a></li>
+                                    <li><a href="/"><i class="fa fa-wechat"></i></a></li>
+                                    <li><a href="/"><i class="fa fa-weibo"></i></a></li>
+                                    <li><a href="/"><i class="fa fa-facebook"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -29,11 +29,11 @@
                             <h6 class="title">友情链接</h6>
                             <div class="footer-widget-link">
                                 <ul>
-                                    <li><a href="#">BOSS直聘</a></li>
-                                    <li><a href="#">猎聘</a></li>
-                                    <li><a href="#">拉钩</a></li>
-                                    <li><a href="#">智联招聘</a></li>
-                                    <li><a href="#">前程无忧</a></li>
+                                    <li><a href="/">BOSS直聘</a></li>
+                                    <li><a href="/">猎聘</a></li>
+                                    <li><a href="/">拉钩</a></li>
+                                    <li><a href="/">智联招聘</a></li>
+                                    <li><a href="/">前程无忧</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -46,11 +46,11 @@
                             <h6 class="title">其他工作</h6>
                             <div class="footer-widget-link">
                                 <ul>
-                                    <li><a href="#">BOSS直聘</a></li>
-                                    <li><a href="#">猎聘</a></li>
-                                    <li><a href="#">拉钩</a></li>
-                                    <li><a href="#">智联招聘</a></li>
-                                    <li><a href="#">前程无忧</a></li>
+                                    <li><a href="/">BOSS直聘</a></li>
+                                    <li><a href="/">猎聘</a></li>
+                                    <li><a href="/">拉钩</a></li>
+                                    <li><a href="/">智联招聘</a></li>
+                                    <li><a href="/">前程无忧</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -90,7 +90,7 @@
 
                     <!-- Footer Copyright Start -->
                     <div class="col-12">
-                        <p class="footer-copyright text-center">Copyright &copy; 2019 <a href="#">校园人才市场</a> All Rights Reserved.</p>
+                        <p class="footer-copyright text-center">Copyright &copy; 2019 <a href="/">校园人才市场</a> All Rights Reserved.</p>
                     </div>
                     <!-- Footer Copyright End -->
 

@@ -8,7 +8,7 @@
         <!-- Page Heading Section End -->
 
         <!-- Blog Section Start -->
-        <div class="section section-padding">
+        <div class="section section-padding" v-if="newsInfo">
             <div class="container">
                 <div class="row mb-n5">
 
@@ -21,33 +21,25 @@
                             <div class="col-12">
                                 <div class="blog blog-single">
                                     <div class="media">
-                                        <img src="../../static/images/blog/single-1.jpg" alt="">
+                                        <el-image
+                                            style="width: 100%;"
+                                            :src="this.util.getHost()+newsInfo.title_img"
+                                            fit="fit"></el-image>
                                     </div>
                                     <div class="content">
-                                        <h6 class="title">The Top 5 Job Interview Questions For IT Professional</h6>
+                                        <h6 class="title">{{newsInfo.title}}</h6>
                                         <ul class="meta">
-                                            <li>Posted on 25 Jan, 2019</li>
-                                            <li><a href="#">3 Comments</a></li>
+                                            <li>{{newsInfo.created_at}}</li>
                                         </ul>
-                                        <div class="desc">
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi enim corporis totam. Deserunt, aperiam. Neque quibusdam nihil sunt, soluta unde inventore odit ea consequatur voluptatem doloribus assumenda, nisi expedita ipsam eaque harum. Quam, ipsa? Nihil, harum, veniam dignissimos laudantium nobis libero a nostrum quis voluptatum beatae pariatur hic cum odio natus, tenetur officia similique incidunt!</p>
-                                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio totam ab reiciendis distinctio dicta deserunt? Culpa ex quam eligendi sapiente quo laboriosam velit pariatur obcaecati omnis soluta necessitatibus, fugiat minima?</p>
-                                            <blockquote class="blockquote">
-                                                <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas aspernatur nemo pariatur eius corrupti cupiditate rem molestias voluptatem explicabo eum.</p>
-                                                <footer class="blockquote-footer"> <cite title="Source Title">Source Title</cite></footer>
-                                            </blockquote>
-                                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium facilis molestiae qui quod rerum numquam, neque inventore non eius reiciendis, necessitatibus exercitationem, maxime natus dignissimos saepe veritatis id recusandae distinctio doloremque aliquam provident similique consequatur. A cupiditate tempore repellat sint.</p>
-                                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore sint quaerat dolore, ipsa voluptates illo ullam sed numquam! Pariatur excepturi reiciendis sequi dolorum placeat quaerat at, nostrum iusto soluta corrupti.</p>
-                                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet, omnis aliquam! Porro minima quasi repudiandae ad officia expedita quae? Aspernatur ipsam provident ullam architecto natus, accusantium asperiores earum totam quaerat odit eligendi? Sunt dolore saepe minima reiciendis nesciunt odio tempora repudiandae non veritatis esse officia maxime, voluptatum reprehenderit? Sint sapiente omnis dolore error ipsa quibusdam obcaecati nisi accusamus dolorum reiciendis a quos, maiores dignissimos nostrum aspernatur, pariatur quia amet. Praesentium nobis ullam quae accusantium recusandae.</p>
-                                        </div>
+                                        <div class="desc" v-html="newsInfo.content"></div>
                                         <div class="foot row justify-content-between align-items-start mb-n2">
                                             <div class="blog-share col-auto mb-2">
                                                 <ul>
                                                     <li><strong>Share:</strong></li>
-                                                    <li><a href="#"><i class="fa fa-qq"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-wechat"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-weibo"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                    <li><a href="/"><i class="fa fa-qq"></i></a></li>
+                                                    <li><a href="/"><i class="fa fa-wechat"></i></a></li>
+                                                    <li><a href="/"><i class="fa fa-weibo"></i></a></li>
+                                                    <li><a href="/"><i class="fa fa-facebook"></i></a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -67,29 +59,21 @@
                         <div class="sidebar-wrap">
 
                             <!-- Sidebar (Recent Posts) Start -->
-                            <div class="sidebar-widget">
+                            <div class="sidebar-widget" v-if="latestNews">
                                 <div class="inner">
-                                    <h6 class="title">最近新闻&公告</h6>
+                                    <h6 class="title">最新新闻&公告</h6>
                                     <ul class="sidebar-post">
-                                        <li>
-                                            <a href="blog-single.html" class="image"><img src="../../static/images/blog/sidebar-1.jpg" alt=""></a>
-                                            <a href="blog-single.html" class="title">The Top 5 Job Interview Questions For IT Professional</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-single.html" class="image"><img src="../../static/images/blog/sidebar-2.jpg" alt=""></a>
-                                            <a href="blog-single.html" class="title">7 Careers To Consider If You Love Traveling</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-single.html" class="image"><img src="../../static/images/blog/sidebar-3.jpg" alt=""></a>
-                                            <a href="blog-single.html" class="title">When the Perfect Candidate Turns Out To Be an Imperfect Fit</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-single.html" class="image"><img src="../../static/images/blog/sidebar-4.jpg" alt=""></a>
-                                            <a href="blog-single.html" class="title">5 ways to keep calm and carry on during your job search</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-single.html" class="image"><img src="../../static/images/blog/sidebar-5.jpg" alt=""></a>
-                                            <a href="blog-single.html" class="title">Should I reapply for a job vacancy that was reposted?</a>
+                                        <li v-for="(news,index) in latestNews" :key="index">
+                                            <a class="image">
+                                                <el-image
+                                                    @click="gotoNewsSingle(news.id)"
+                                                    style="width: 70px; height: 70px"
+                                                    :src="theHost+news.title_img"
+                                                    fit="fit"></el-image>
+                                            </a>
+                                            <a class="title"
+                                               @click="gotoNewsSingle(news.id)"
+                                               v-html="news.title"></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -118,21 +102,90 @@
         components: {
             PageHeading
         },
+        provide() {
+            return {
+                routerRefresh: this.routerRefresh
+            }
+        },
         data() {
             return {
                 pageData: {
-                    'name':'工作名称',
-                    'navs':[
-                        {'name':'Home','to':'Home','active':false},
-                        {'name':'Jobs','to':'Jobs','active':false},
-                        {'name':'工作名称','to':'','active':true},
+                    'name': '新闻&公告详情',
+                    'navs': [
+                        {'name': 'Home', 'to': 'Home', 'active': false},
+                        {'name': '新闻&公告', 'to': 'News', 'active': false},
+                        {'name': '新闻&公告详情', 'to': '', 'active': true},
                     ],
-                }
+                },
+                newsInfo: null,
+                latestNews: null,
+                theHost: this.util.getHost(),
+                routerAlive: true
             }
         },
+
+        methods: {
+            gotoNewsSingle(id) {
+                this.$router.push({
+                    name: 'NewsSingle',
+                    params: {newsId: id}
+                });
+                // 同页面重新加载数据
+                this.getNews();
+                this.getLatestNews();
+                this.$router.go(0);
+            },
+            routerRefresh() {
+                this.routerAlive = false;
+                this.$nextTick(() => {
+                    this.routerAlive = true;
+                });
+            },
+            async getNews() {
+                try {
+                    await this.http.get(this.api.News + '/' + this.$route.params.newsId).then(res => {
+                        if (res.code == 0) {
+                            this.newsInfo = res.data;
+                        } else {
+                            this.$message.error(res.message);
+                        }
+                    });
+                } catch (error) {
+                    console.error(error);
+                }
+            },
+            async getLatestNews() {
+                try {
+                    await this.http.get(this.api.News, {
+                        limit: 6,
+                        order: ['created_at', 'DESC'],
+                    }).then(res => {
+                        if (res.code == 0) {
+                            this.latestNews = res.data.rows;
+                        } else {
+                            this.$message.error(res.message);
+                        }
+                    });
+                } catch (error) {
+                    console.error(error);
+                }
+            },
+        },
+        mounted() {
+            this.getNews();
+            this.getLatestNews();
+        }
     }
 </script>
 
-<style scoped>
-
+<style>
+    .sidebar-post li .title {
+        width: 100%;
+        height: 60px;
+        overflow: hidden; /*设置超出的部分进行影藏*/
+        text-overflow: ellipsis; /*设置超出部分使用省略号*/
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
 </style>

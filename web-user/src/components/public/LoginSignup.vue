@@ -55,10 +55,10 @@
                                     <div class="row mt-4">
                                         <div class="col text-center">
                                             <div class="login-reg-social">
-                                                <a href="#"><i class="fa fa-qq"></i></a>
-                                                <a href="#"><i class="fa fa-wechat"></i></a>
-                                                <a href="#"><i class="fa fa-weibo"></i></a>
-                                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                                <a href="/"><i class="fa fa-qq"></i></a>
+                                                <a href="/"><i class="fa fa-wechat"></i></a>
+                                                <a href="/"><i class="fa fa-weibo"></i></a>
+                                                <a href="/"><i class="fa fa-facebook"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -94,10 +94,10 @@
                                     <div class="row mt-4">
                                         <div class="col text-center">
                                             <div class="login-reg-social">
-                                                <a href="#"><i class="fa fa-qq"></i></a>
-                                                <a href="#"><i class="fa fa-wechat"></i></a>
-                                                <a href="#"><i class="fa fa-weibo"></i></a>
-                                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                                <a href="/"><i class="fa fa-qq"></i></a>
+                                                <a href="/"><i class="fa fa-wechat"></i></a>
+                                                <a href="/"><i class="fa fa-weibo"></i></a>
+                                                <a href="/"><i class="fa fa-facebook"></i></a>
                                             </div>
                                         </div>
                                     </div>

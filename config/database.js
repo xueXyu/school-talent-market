@@ -19,7 +19,7 @@ const dbConfig = {
         'idle': 10000
     },
     'timezone': '+00:00',
-    'logging': false,
+    'logging': console.log,
 };
 
 const config = {

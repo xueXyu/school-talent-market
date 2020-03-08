@@ -70,7 +70,7 @@ export default new Router({
             component: News
         },
         {// 新闻&公告列详情
-            path: '/news-single',
+            path: '/news-single/:newsId',
             name: 'NewsSingle',
             component: NewsSingle
         },

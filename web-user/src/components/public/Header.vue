@@ -22,9 +22,9 @@
 
                     <!-- Header Links Start -->
                     <div v-if="!this.store.state.isLogin" class="header-links col-auto order-lg-3">
-                        <a href="#" v-on:click="onLogin('login')">登录</a>
+                        <a href="/" v-on:click="onLogin('login')">登录</a>
                         <span>or</span>
-                        <a href="#" v-on:click="onLogin('signup')">注册</a>
+                        <a href="/" v-on:click="onLogin('signup')">注册</a>
                     </div>
                     <!-- Header Links End -->
 
@@ -66,7 +66,7 @@
                                         <router-link :to="{name:'News'}">新闻&公告列表</router-link>
                                     </li>
                                     <li>
-                                        <router-link :to="{name:'NewsSingle'}">新闻&公告详情</router-link>
+                                        <router-link :to="{name:'NewsSingle',params:{newsId:1}}">新闻&公告详情</router-link>
                                     </li>
                                 </ul>
                             </li>

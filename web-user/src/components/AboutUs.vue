@@ -107,10 +107,10 @@
                                     <h6 class="name">李狗蛋</h6>
                                     <span class="title">创始人</span>
                                     <div class="social">
-                                        <a href="#"><i class="fa fa-qq"></i></a>
-                                        <a href="#"><i class="fa fa-wechat"></i></a>
-                                        <a href="#"><i class="fa fa-weibo"></i></a>
-                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                        <a href="/"><i class="fa fa-qq"></i></a>
+                                        <a href="/"><i class="fa fa-wechat"></i></a>
+                                        <a href="/"><i class="fa fa-weibo"></i></a>
+                                        <a href="/"><i class="fa fa-facebook"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -127,10 +127,10 @@
                                     <h6 class="name">李铁柱</h6>
                                     <span class="title">项目经理</span>
                                     <div class="social">
-                                        <a href="#"><i class="fa fa-qq"></i></a>
-                                        <a href="#"><i class="fa fa-wechat"></i></a>
-                                        <a href="#"><i class="fa fa-weibo"></i></a>
-                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                        <a href="/"><i class="fa fa-qq"></i></a>
+                                        <a href="/"><i class="fa fa-wechat"></i></a>
+                                        <a href="/"><i class="fa fa-weibo"></i></a>
+                                        <a href="/"><i class="fa fa-facebook"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -147,10 +147,10 @@
                                     <h6 class="name">王二妞</h6>
                                     <span class="title">设计师</span>
                                     <div class="social">
-                                        <a href="#"><i class="fa fa-qq"></i></a>
-                                        <a href="#"><i class="fa fa-wechat"></i></a>
-                                        <a href="#"><i class="fa fa-weibo"></i></a>
-                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                        <a href="/"><i class="fa fa-qq"></i></a>
+                                        <a href="/"><i class="fa fa-wechat"></i></a>
+                                        <a href="/"><i class="fa fa-weibo"></i></a>
+                                        <a href="/"><i class="fa fa-facebook"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -167,10 +167,10 @@
                                     <h6 class="name">张全蛋</h6>
                                     <span class="title">后端工程师</span>
                                     <div class="social">
-                                        <a href="#"><i class="fa fa-qq"></i></a>
-                                        <a href="#"><i class="fa fa-wechat"></i></a>
-                                        <a href="#"><i class="fa fa-weibo"></i></a>
-                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                        <a href="/"><i class="fa fa-qq"></i></a>
+                                        <a href="/"><i class="fa fa-wechat"></i></a>
+                                        <a href="/"><i class="fa fa-weibo"></i></a>
+                                        <a href="/"><i class="fa fa-facebook"></i></a>
                                     </div>
                                 </div>
                             </div>
