@@ -1,7 +1,7 @@
 'use strict';
 
 const _ = require('lodash');
-const joi = require('@hapi/joi');
+const Joi = require('@hapi/joi');
 const RestController = require('../rest');
 
 class UserResumeController extends RestController {
@@ -13,21 +13,39 @@ class UserResumeController extends RestController {
      * 创建对象
      */
     create(req, res) {
-        res.reply('create');
+        const rules = Joi.object({
+            user_id: Joi.number().integer().min(1).required(),
+            resume_name: Joi.string().min(2).max(32).required(),
+            resume_email: Joi.string().email().min(2).max(100).required(),
+            resume_education: Joi.string().valid('初中及以下', '中专/中技', '高中', '大专', '本科', '硕士', '博士').required(),
+            resume_working_years: Joi.string().valid('零经验', '一年', '两年', '三年', '四年', '五年', '五年以上').required(),
+            resume_job_intension: Joi.string().required(),
+        });
+        const {error, value} = rules.validate(req.body);
+        if (error) {
+            return res.replyError(error);
+        }
+
+        res.reply(this.model.create(value));
     }
 
     /**
      * 更新对象
      */
     update(req, res) {
-        res.reply('update');
-    }
+        const rules = Joi.object({
+            resume_name: Joi.string().min(2).max(32).required(),
+            resume_email: Joi.string().email().min(2).max(100).required(),
+            resume_education: Joi.string().valid('初中及以下', '中专/中技', '高中', '大专', '本科', '硕士', '博士').required(),
+            resume_working_years: Joi.string().valid('零经验', '一年', '两年', '三年', '四年', '五年', '五年以上').required(),
+            resume_job_intension: Joi.string().required(),
+        });
+        const {error, value} = rules.validate(req.body);
+        if (error) {
+            return res.replyError(error);
+        }
 
-    /**
-     * 删除单个对象
-     */
-    destroy(req, res) {
-        res.reply('destroy');
+        res.reply(this.model.update(value, {where: {id: req.params.id}}));
     }
 }
 

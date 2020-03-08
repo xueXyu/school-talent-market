@@ -35,13 +35,13 @@
                                 <router-link :to="{name:'Home'}">首页</router-link>
                             </li>
                             <li class="has-children">
-                                <router-link :to="{name:'JobList'}">工作</router-link>
+                                <router-link :to="{name:'JobList'}">招聘</router-link>
                                 <ul class="sub-menu">
                                     <li>
-                                        <router-link :to="{name:'JobList'}">工作列表</router-link>
+                                        <router-link :to="{name:'JobList'}">招聘列表</router-link>
                                     </li>
                                     <li>
-                                        <router-link :to="{name:'JobSingle'}">职位详情</router-link>
+                                        <router-link :to="{name:'JobSingle'}">招聘详情</router-link>
                                     </li>
                                     <li>
                                         <router-link :to="{name:'ResumeSingle'}">简历详情</router-link>
@@ -88,7 +88,7 @@
                                         <router-link :to="{name:'EditCompanyInfo'}">修改公司信息</router-link>
                                     </li>
                                     <li>
-                                        <router-link :to="{name:'CreateJob'}">创建职位</router-link>
+                                        <router-link :to="{name:'CreateJob'}">创£建招聘</router-link>
                                     </li>
                                     <li>
                                         <router-link :to="{name:'CreateResume'}">创建简历</router-link>
