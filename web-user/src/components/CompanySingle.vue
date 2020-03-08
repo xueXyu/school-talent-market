@@ -8,7 +8,7 @@
         <!-- Page Heading Section End -->
 
         <!-- Company List Start -->
-        <div class="section section-padding">
+        <div class="section section-padding" v-if="companyInfo">
             <div class="container">
                 <div class="row mb-n5">
 
@@ -16,31 +16,16 @@
 
                         <!-- Company Details Start -->
                         <div class="company-details">
-                            <h5 class="mb-3">About Envato</h5>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam necessitatibus doloribus soluta ut? Laudantium unde, hic itaque voluptatem nemo ut error fugiat debitis praesentium? Expedita placeat vero quia dolore reprehenderit nostrum velit. Cupiditate qui sunt excepturi dolore nihil, incidunt doloremque, cum dignissimos ex voluptatibus sed sapiente officia obcaecati mollitia distinctio repellat ab molestiae explicabo sequi.</p>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque, nesciunt? Velit placeat animi blanditiis eveniet cum doloribus voluptates illo dolore, in aliquid odio quidem quasi fugit quaerat architecto quas magnam autem quod totam deleniti! Veniam accusamus fugit perferendis ducimus enim expedita exercitationem natus porro ratione.</p>
-                            <ul>
-                                <li>Proven work experienceas a web designer</li>
-                                <li>Demonstrable graphic design skills with a strong portfolio</li>
-                                <li>Proficiency in HTML, CSS and JavaScript for rapid prototyping</li>
-                                <li>Experience working in an Agile/Scrum development process</li>
-                                <li>Proven work experienceas a web designer</li>
-                                <li>Excellent visual design skills with sensitivity to user-system interaction</li>
-                                <li>Ability to solve problems creatively and effectively</li>
-                                <li>Proven work experienceas a web designer</li>
-                                <li>Up-to-date with the latest Web trends, techniques and technologies</li>
-                                <li>BS/MS in Human-Computer Interaction, Interaction Design or a Visual Arts subject</li>
-                            </ul>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id eos enim distinctio odit nulla repellat exercitationem, fugiat nihil itaque iste amet sapiente molestias voluptas nemo error expedita? Voluptates vitae animi inventore iusto ullam facere modi corporis possimus culpa nostrum maxime delectus tempore, expedita itaque quaerat? Consequuntur quo nostrum quisquam placeat?</p>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo culpa facere perspiciatis consequatur iure repellendus molestias dolore dicta inventore unde, asperiores alias consectetur ipsum cum ea exercitationem voluptatem, veniam mollitia numquam sit et cupiditate, aperiam blanditiis iusto. Dicta officia dolores atque, delectus tempora numquam ducimus? Sunt perspiciatis omnis atque non debitis vero similique illum distinctio?</p>
+                            <h5 class="mb-3">公司简介</h5>
+                            <div v-html="companyInfo.company_detail"></div>
                         </div>
                         <!-- Company Details Start -->
 
                         <!-- Job List Wrap Start -->
                         <div class="job-list-wrap mt-5">
-
-                            <JobItem></JobItem>
-
+                            <JobItem v-for="(item,index) in companyInfo.jobs" :key="index"
+                                     :jobInfo="item"
+                                     :companyInfo="companyInfo"></JobItem>
                         </div>
                         <!-- Job List Wrap Start -->
 
@@ -53,14 +38,22 @@
                             <div class="sidebar-widget">
                                 <div class="inner">
                                     <div class="sidebar-company">
-                                        <span class="company-logo"><img src="../../static/images/companies/company-1.png" alt="company-1"></span>
-                                        <h6 class="title">公司名</h6>
+                                        <span class="company-logo">
+                                            <el-image style="width: 70px; height: 70px;"
+                                                      :src="this.util.getHost()+companyInfo.company_img"
+                                                      fit="fit"></el-image>
+                                        </span>
+                                        <h6 class="title">{{companyInfo.company_name}}</h6>
                                         <ul>
-                                            <li><strong>成立时间:</strong> 2006</li>
-                                            <li><strong>公司规模:</strong> 50 - 100</li>
-                                            <li><strong>空缺职位:</strong> 3</li>
-                                            <li><strong>网站:</strong> <a href="">envato.com</a></li>
-                                            <li><strong>地址:</strong> Melbourne, Australia</li>
+                                            <li><strong>成立时间：</strong>{{companyInfo.company_create}}</li>
+                                            <li><strong>公司规模：</strong>{{companyInfo.company_size}}</li>
+                                            <li><strong>公司地址：</strong>{{companyInfo.company_address}}</li>
+                                            <li><strong>公司网站：</strong>
+                                                <a :href="companyInfo.company_site" target="_blank">{{companyInfo.company_site}}</a>
+                                            </li>
+                                            <li><strong>空缺职位:</strong> {{companyInfo.jobs.length}} 个</li>
+                                            <li><strong>联系人：</strong>{{companyInfo.company_contacts}}</li>
+                                            <li><strong>联系电话：</strong>{{companyInfo.company_phone}}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -69,7 +62,6 @@
                         </div>
                     </div>
                     <!-- Company Sidebar Wrap End -->
-
                 </div>
             </div>
         </div>
@@ -83,22 +75,43 @@
 
     export default {
         name: "CompanySingle",
-        components:{
+        components: {
             JobItem,
             PageHeading
         },
         data() {
             return {
                 pageData: {
-                    'name':'工作名称',
-                    'navs':[
-                        {'name':'Home','to':'Home','active':false},
-                        {'name':'Jobs','to':'Jobs','active':false},
-                        {'name':'工作名称','to':'','active':true},
+                    'name': '公司详情',
+                    'navs': [
+                        {'name': 'Home', 'to': 'Home', 'active': false},
+                        {'name': '公司', 'to': 'Company', 'active': false},
+                        {'name': '公司详情', 'to': '', 'active': true},
                     ],
-                }
+                },
+                companyInfo: null,
+                jobsCount: 0,
             }
         },
+        methods: {
+            async getCompany() {
+                try {
+                    await this.http.get(this.api.Company + '/' + this.$route.params.companyId).then(res => {
+                        if (res.code == 0) {
+                            this.companyInfo = res.data;
+                            this.jobsCount = res.data.jobs.length;
+                        } else {
+                            this.$message.error(res.message);
+                        }
+                    });
+                } catch (error) {
+                    console.error(error);
+                }
+            },
+        },
+        mounted() {
+            this.getCompany();
+        }
     }
 </script>
 

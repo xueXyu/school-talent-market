@@ -55,7 +55,7 @@
                                         <router-link :to="{name:'Company'}">公司列表</router-link>
                                     </li>
                                     <li>
-                                        <router-link :to="{name:'CompanySingle'}">公司详情</router-link>
+                                        <router-link :to="{name:'CompanySingle',params:{companyId:10}}">公司详情</router-link>
                                     </li>
                                 </ul>
                             </li>

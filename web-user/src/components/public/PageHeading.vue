@@ -6,7 +6,7 @@
                 <h3 class="title">{{pageData.name}}</h3>
                 <div class="breadcrumb mt-3">
                     <el-breadcrumb separator-class="el-icon-arrow-right">
-                        <el-breadcrumb-item v-for="(item,index) in pageData.navs" :key="index" :to="item.to">
+                        <el-breadcrumb-item v-for="(item,index) in pageData.navs" :key="index" :to="{name:item.to}">
                             {{item.name}}
                         </el-breadcrumb-item>
                     </el-breadcrumb>

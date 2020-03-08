@@ -45,7 +45,7 @@ export default new Router({
             component: Company
         },
         {// 公司详情
-            path: '/company-single',
+            path: '/company-single/:companyId',
             name: 'CompanySingle',
             component: CompanySingle
         },

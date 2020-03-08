@@ -15,7 +15,7 @@
                     <div class="col-lg-8 col-12 mb-5 pr-lg-5">
                         <div class="job-list-details">
                             <div>
-                                <JobItem ref="childd" :jobInfo="jobInfo" :companyInfo="jobInfo.company" ></JobItem>
+                                <JobItem :jobInfo="jobInfo" :companyInfo="jobInfo.company" ></JobItem>
                             </div>
                             <div class="job-details-body mt-4">
                                 <h6 class="mb-3">职责描述</h6>
@@ -51,10 +51,12 @@
                                     <h6 class="title">公司信息</h6>
                                     <ul class="job-overview list-unstyled">
                                         <li><strong>公司名称：</strong>{{jobInfo.company.company_name}}</li>
-                                        <li><strong>创立时间：</strong>{{jobInfo.company.company_create}}</li>
+                                        <li><strong>成立时间：</strong>{{jobInfo.company.company_create}}</li>
                                         <li><strong>公司规模：</strong>{{jobInfo.company.company_size}}</li>
                                         <li><strong>公司地址：</strong>{{jobInfo.company.company_address}}</li>
                                         <li><strong>公司网站：</strong><a :href="jobInfo.company.company_site" target="_blank" >{{jobInfo.company.company_site}}</a></li>
+                                        <li><strong>联系人：</strong>{{jobInfo.company.company_contacts}}</li>
+                                        <li><strong>联系电话：</strong>{{jobInfo.company.company_phone}}</li>
                                     </ul>
                                 </div>
                             </div>

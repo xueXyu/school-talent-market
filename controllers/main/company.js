@@ -9,26 +9,25 @@ class CompanyController extends RestController {
         super('Company');
     }
 
-    // /**
-    //  * 创建对象
-    //  */
-    // create(req, res) {
-    //     res.reply('create');
-    // }
-    //
-    // /**
-    //  * 更新对象
-    //  */
-    // update(req, res) {
-    //     res.reply('update');
-    // }
-    //
-    // /**
-    //  * 删除单个对象
-    //  */
-    // destroy(req, res) {
-    //     res.reply('destroy');
-    // }
+    /**
+     * 查找单个对象
+     */
+    show(req, res) {
+        if (!req.params || !req.params.id) {
+            return res.replyError('missing id parameter');
+        }
+
+        const data = {
+            where: {id: req.params.id},
+            include: [{
+                model: this.models['CompanyJob'],
+                as: 'jobs',
+                attributes: ['id', 'created_at', 'job_name','job_salary','job_gender','job_way'
+                ]
+            }]
+        };
+        res.reply(this.model.findOne(data));
+    }
 }
 
 module.exports = new CompanyController();

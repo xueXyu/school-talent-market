@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- Job List Start -->
-        <router-link :to="{name:'JobSingle',params:{jobId: this.$route.params.jobId}}"
+        <router-link :to="{name:'JobSingle',params:{jobId: jobInfo.id}}"
                      class="job-list"
                      v-if="jobInfo&&companyInfo">
             <div class="company-logo col-auto">
