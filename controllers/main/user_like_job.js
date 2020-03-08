@@ -1,7 +1,7 @@
 'use strict';
 
 const _ = require('lodash');
-const joi = require('@hapi/joi');
+const Joi = require('@hapi/joi');
 const RestController = require('../rest');
 
 class UserLikeJobController extends RestController {
