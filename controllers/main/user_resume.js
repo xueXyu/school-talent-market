@@ -10,6 +10,25 @@ class UserResumeController extends RestController {
     }
 
     /**
+     * 查找单个对象
+     */
+    show(req, res) {
+        if (!req.params || !req.params.id) {
+            return res.replyError('missing id parameter');
+        }
+
+        const data = {
+            where: {id: req.params.id},
+            include: [{
+                model: this.models['User'],
+                as: 'user',
+                attributes: ['id', 'created_at', 'user_name', 'user_gender', 'user_age', 'user_phone', 'user_img']
+            }]
+        };
+        res.reply(this.model.findOne(data));
+    }
+
+    /**
      * 创建对象
      */
     create(req, res) {

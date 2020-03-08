@@ -2,7 +2,6 @@
 
 const _ = require('lodash');
 const Joi = require('@hapi/joi');
-const md5 = require('md5-node');
 const RestController = require('../rest');
 
 class AdminController extends RestController {

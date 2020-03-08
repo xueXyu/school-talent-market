@@ -128,7 +128,6 @@ module.exports = {
 
         _.each(arguments, function (arg) {
             if (_.isString(arg)) {
-                console.info(arg.magenta);
             } else if (_.isObject(arg)) {
                 if (!arg.stack) {
                     _.assign(options, arg);

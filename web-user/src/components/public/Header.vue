@@ -41,10 +41,10 @@
                                         <router-link :to="{name:'JobList'}">招聘列表</router-link>
                                     </li>
                                     <li>
-                                        <router-link :to="{name:'JobSingle'}">招聘详情</router-link>
+                                        <router-link :to="{name:'JobSingle',params:{jobId:1}}">招聘详情</router-link>
                                     </li>
                                     <li>
-                                        <router-link :to="{name:'ResumeSingle'}">简历详情</router-link>
+                                        <router-link :to="{name:'ResumeSingle',params:{resumeId:1}}">简历详情</router-link>
                                     </li>
                                 </ul>
                             </li>
@@ -88,7 +88,7 @@
                                         <router-link :to="{name:'EditCompanyInfo'}">修改公司信息</router-link>
                                     </li>
                                     <li>
-                                        <router-link :to="{name:'CreateJob'}">创£建招聘</router-link>
+                                        <router-link :to="{name:'CreateJob'}">创建招聘</router-link>
                                     </li>
                                     <li>
                                         <router-link :to="{name:'CreateResume'}">创建简历</router-link>
@@ -100,7 +100,7 @@
                                         <router-link :to="{name:'UserManagementResume'}">用户-管理简历</router-link>
                                     </li>
                                     <li>
-                                        <router-link :to="{name:'CompanyManagementJobs'}">公司-管理职位</router-link>
+                                        <router-link :to="{name:'CompanyManagementJobs'}">公司-管理招聘</router-link>
                                     </li>
                                     <li>
                                         <router-link :to="{name:'CompanyManagementResume'}">公司-管理简历</router-link>
@@ -118,7 +118,7 @@
             </div>
         </header>
 
-        <LoginSignup ref="child1"></LoginSignup>
+        <LoginSignup ref="childSignupLogin"></LoginSignup>
     </div>
 </template>
 
@@ -153,7 +153,7 @@
                 }
             },
             onLogin: function (t) {
-                this.$refs.child1.changeStatus(t);
+                this.$refs.childSignupLogin.changeStatus(t);
             },
             loginOut: function () {
                 this.util.loginOut(this);

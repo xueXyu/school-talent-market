@@ -71,8 +71,10 @@ app.use(apiPath + '/upload', uploadRouter);
 
 // 打印路由
 if (util.isNotProdEnv()) {
-    util.expressListRoutes({}, 'ROOT:', indexRouter);
-    util.expressListRoutes({prefix: '/admin'}, 'ADMIN:', adminRouter);
+    util.expressListRoutes({prefix: '/'}, 'web:', indexRouter);
+    util.expressListRoutes({prefix: '/base'}, 'base:', baseRouter);
+    util.expressListRoutes({prefix: '/backend'}, 'backend:', adminRouter);
+    util.expressListRoutes({prefix: '/upload'}, 'upload:', uploadRouter);
 }
 
 // 404处理

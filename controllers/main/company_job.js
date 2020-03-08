@@ -10,6 +10,25 @@ class CompanyJobController extends RestController {
     }
 
     /**
+     * 查找单个对象
+     */
+    show(req, res) {
+        if (!req.params || !req.params.id) {
+            return res.replyError('missing id parameter');
+        }
+
+        const data = {
+            where: {id: req.params.id},
+            include: [{
+                model: this.models['Company'],
+                as: 'company',
+                attributes: ['id', 'created_at', 'company_name', 'company_phone', 'company_contacts', 'company_create', 'company_size', 'company_address', 'company_site', 'company_detail', 'company_img']
+            }]
+        };
+        res.reply(this.model.findOne(data));
+    }
+
+    /**
      * 创建对象
      */
     create(req, res) {

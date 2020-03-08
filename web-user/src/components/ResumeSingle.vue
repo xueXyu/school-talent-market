@@ -8,40 +8,35 @@
         <!-- Page Heading Section End -->
 
         <!-- Recent Jobs Start -->
-        <div class="section section-padding">
+        <div class="section section-padding" v-if="resumeInfo">
             <div class="container">
                 <div class="row mb-n5">
                     <!-- Job List Details Start -->
                     <div class="col-lg-8 col-12 mb-5 pr-lg-5">
                         <div class="job-list-details">
                             <div v-on:click.prevent.self="doThat" v-on:click.self.prevent="doThat">
-                                <JobItem></JobItem>
+                                <!-- Job List Start -->
+                                <span class="job-list">
+                                    <div class="company-logo col-auto">
+                                        <el-image style="width: 70px; height: 70px;"
+                                                  :src="this.util.getHost()+resumeInfo.user.user_img"
+                                                  fit="fit"></el-image>
+                                    </div>
+                                    <div class="salary-type col-auto order-sm-3">
+                                    </div>
+                                    <div class="content col">
+                                        <h6 class="title">{{resumeInfo.user.user_name+'（'+resumeInfo.user.user_gender+'）'}}</h6>
+                                        <ul class="meta">
+                                            <li><strong class="text-primary">{{resumeInfo.user.user_age}}岁</strong></li>
+                                            <li><i class="fa fa-mobile-phone"></i>{{resumeInfo.user.user_phone}}</li>
+                                        </ul>
+                                    </div>
+                                </span>
+                                <!-- Job List Start -->
                             </div>
                             <div class="job-details-body mt-4">
-                                <h6 class="mb-3 mt-4">简历信息</h6>
-                                <ul>
-                                    <li>Proven work experienceas a web designer</li>
-                                    <li>Demonstrable graphic design skills with a strong portfolio</li>
-                                    <li>Proficiency in HTML, CSS and JavaScript for rapid prototyping</li>
-                                    <li>Experience working in an Agile/Scrum development process</li>
-                                    <li>Proven work experienceas a web designer</li>
-                                    <li>Excellent visual design skills with sensitivity to user-system interaction</li>
-                                    <li>Ability to solve problems creatively and effectively</li>
-                                    <li>Proven work experienceas a web designer</li>
-                                    <li>Up-to-date with the latest Web trends, techniques and technologies</li>
-                                    <li>BS/MS in Human-Computer Interaction, Interaction Design or a Visual Arts subject</li>
-                                </ul>
-                                <h6 class="mb-3 mt-4">Education + Experience</h6>
-                                <ul>
-                                    <li>Advanced degree or equivalent experience in graphic and web design</li>
-                                    <li>3 or more years of professional design experience</li>
-                                    <li>Direct response email experience</li>
-                                    <li>Ecommerce website design experience</li>
-                                    <li>Familiarity with mobile and web apps preferred</li>
-                                    <li>Excellent communication skills, most notably a demonstrated ability to solicit and address creative and design feedback</li>
-                                    <li>Must be able to work under pressure and meet deadlines while maintaining a positive attitude and providing exemplary customer service</li>
-                                    <li>Ability to work independently and to carry out assignments to completion within parameters of instructions given, prescribed routines, and standard accepted practices</li>
-                                </ul>
+                                <h6 class="mb-3 mt-4">求职意向</h6>
+                                <div v-html="resumeInfo.resume_job_intension"></div>
                             </div>
                         </div>
                     </div>
@@ -51,7 +46,7 @@
                     <div class="col-lg-4 col-12 mb-5">
                         <div class="sidebar-wrap">
                             <!-- Sidebar (Apply Buttons) Start -->
-                            <div class="sidebar-widget">
+                            <div class="sidebar-widget" v-if="this.store.state.userRole=='company'">
                                 <div class="inner">
                                     <div class="row m-n2">
                                         <div class="col-xl-auto col-lg-12 col-sm-auto col-12 p-2">
@@ -68,12 +63,11 @@
                             <!-- Sidebar (Job Overview) Start -->
                             <div class="sidebar-widget">
                                 <div class="inner">
-                                    <h6 class="title">姓名</h6>
+                                    <h6 class="title">{{resumeInfo.user.user_name}}</h6>
                                     <ul class="job-overview list-unstyled">
-                                        <li><strong>投递时间:</strong> Nov 6, 2019</li>
-                                        <li><strong>个人信息:</strong> Nov 6, 2019</li>
-                                        <li><strong>个人信息:</strong> Nov 6, 2019</li>
-                                        <li><strong>个人信息:</strong> Nov 6, 2019</li>
+                                        <li><strong>邮箱：</strong>{{resumeInfo.resume_email}}</li>
+                                        <li><strong>学历：</strong>{{resumeInfo.resume_education}}</li>
+                                        <li><strong>工作经验：</strong>{{resumeInfo.resume_working_years}}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -92,26 +86,43 @@
 
 <script>
     import PageHeading from "./public/PageHeading";
-    import JobItem from "./public/JobItem";
 
     export default {
         name: "ResumeSingle",
-        components:{
+        components: {
             PageHeading,
-            JobItem,
         },
         data() {
             return {
                 pageData: {
-                    'name':'工作名称',
-                    'navs':[
-                        {'name':'Home','to':'Home','active':false},
-                        {'name':'Jobs','to':'Jobs','active':false},
-                        {'name':'工作名称','to':'','active':true},
+                    'name': '简历详情',
+                    'navs': [
+                        {'name': 'Home', 'to': 'Home', 'active': false},
+                        {'name': '简历管理', 'to': '', 'active': false},
+                        {'name': '简历详情', 'to': '', 'active': true},
                     ],
-                }
+                },
+                resumeInfo: null,
             }
         },
+        methods: {
+            async getResume() {
+                try {
+                    await this.http.get(this.api.UserResume + '/' + this.$route.params.resumeId).then(res => {
+                        if (res.code == 0) {
+                            this.resumeInfo = res.data;
+                        } else {
+                            this.$message.error(res.message);
+                        }
+                    });
+                } catch (error) {
+                    console.error(error);
+                }
+            },
+        },
+        mounted() {
+            this.getResume();
+        }
     }
 </script>
 

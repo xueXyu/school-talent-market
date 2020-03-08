@@ -54,7 +54,6 @@ class SessionController extends BaseController {
                 }
             });
 
-            console.log(result);
             res.reply(result);
         } else if (value.usertype == 'company') {
             const result = this.models['Company'].findOne({

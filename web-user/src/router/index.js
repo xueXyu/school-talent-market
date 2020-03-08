@@ -35,7 +35,7 @@ export default new Router({
             component: JobList
         },
         {// 职位详情
-            path: '/job-single',
+            path: '/job-single/:jobId',
             name: 'JobSingle',
             component: JobSingle
         },
@@ -60,7 +60,7 @@ export default new Router({
             component: CreateResume
         },
         {// 简历详情
-            path: '/resume-single',
+            path: '/resume-single/:resumeId',
             name: 'ResumeSingle',
             component: ResumeSingle
         },
