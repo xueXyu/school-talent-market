@@ -102,11 +102,6 @@
         components: {
             PageHeading
         },
-        provide() {
-            return {
-                routerRefresh: this.routerRefresh
-            }
-        },
         data() {
             return {
                 pageData: {
@@ -134,12 +129,6 @@
                 this.getNews();
                 this.getLatestNews();
                 this.$router.go(0);
-            },
-            routerRefresh() {
-                this.routerAlive = false;
-                this.$nextTick(() => {
-                    this.routerAlive = true;
-                });
             },
             async getNews() {
                 try {
