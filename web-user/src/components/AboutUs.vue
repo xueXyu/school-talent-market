@@ -14,14 +14,14 @@
                     <!-- About Content Start -->
                     <div class="col-md-6 col-12 pr-lg-5 align-self-center mb-4">
                         <div class="about-content">
-                            <h3 class="title">About Keller</h3>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam eius, cumque eaque iste amet deleniti repudiandae debitis consequatur, vel, non nulla autem sequi qui accusamus? Tempore pariatur deleniti voluptas quas porro incidunt id, doloremque quidem at fugiat neque soluta temporibus!</p>
+                            <h3 class="title">关于校园人才网</h3>
+                            <p>
+                                集校园招聘与应聘功能的平台，为企业和待业大学生提供便利。集校园招聘与应聘功能的平台，为企业和待业大学生提供便利。集校园招聘与应聘功能的平台，为企业和待业大学生提供便利。集校园招聘与应聘功能的平台，为企业和待业大学生提供便利。</p>
                             <ul>
-                                <li>Lorem ipsum, dolor sit amet</li>
-                                <li>Consectetur adipisicing elit</li>
-                                <li>Numquam eius, cumque eaque iste</li>
-                                <li>Amet deleniti repudiandae debitis consequatur</li>
-                                <li>Tempore pariatur deleniti voluptas</li>
+                                <li>校园人才网</li>
+                                <li>集校园招聘与应聘功能的平台，为企业和待业大学生提供便利。</li>
+                                <li>校园人才网</li>
+                                <li>集校园招聘与应聘功能的平台，为企业和待业大学生提供便利。</li>
                             </ul>
                         </div>
                     </div>
@@ -40,35 +40,44 @@
         <!-- About Us End -->
 
         <!-- Funfact Section Start -->
-        <div class="section section-padding bg-parallax" style="background-image: url('static/images/bg/bg-3.jpg');" data-overlay="50">
+        <div class="section section-padding bg-parallax" style="background-image: url('static/images/bg/bg-3.jpg');"
+             data-overlay="50">
             <div class="container">
                 <div class="funfact-wrap row">
 
                     <!-- Funfact Start -->
                     <div class="funfact col-md-3 col-sm-6 col-12">
-                        <span class="counter">1354</span>
-                        <span class="title">Job Post</span>
+                        <span class="counter">
+                            <CountUp countup-start="0" countup-end="1354"></CountUp>
+                        </span>
+                        <span class="title">招聘职位</span>
                     </div>
                     <!-- Funfact Start -->
 
                     <!-- Funfact Start -->
                     <div class="funfact col-md-3 col-sm-6 col-12">
-                        <span class="counter">1741</span>
-                        <span class="title">Members</span>
+                        <span class="counter">
+                            <CountUp countup-start="0" countup-end="1741"></CountUp>
+                        </span>
+                        <span class="title">求职者</span>
                     </div>
                     <!-- Funfact Start -->
 
                     <!-- Funfact Start -->
                     <div class="funfact col-md-3 col-sm-6 col-12">
-                        <span class="counter">1204</span>
-                        <span class="title">Resume</span>
+                        <span class="counter">
+                            <CountUp countup-start="0" countup-end="1204"></CountUp>
+                        </span>
+                        <span class="title">简历</span>
                     </div>
                     <!-- Funfact Start -->
 
                     <!-- Funfact Start -->
                     <div class="funfact col-md-3 col-sm-6 col-12">
-                        <span class="counter">142</span>
-                        <span class="title">Company</span>
+                        <span class="counter">
+                            <CountUp countup-start="0" countup-end="142"></CountUp>
+                        </span>
+                        <span class="title">公司</span>
                     </div>
                     <!-- Funfact Start -->
 
@@ -82,8 +91,9 @@
             <div class="container">
 
                 <div class="section-title">
-                    <h3 class="title">Our Team</h3>
-                    <p>Our team are build by all professional members who <br> always try to get the efficiency work.</p>
+                    <h3 class="title">我们的团队</h3>
+                    <p>我们的团队是由所有专业人员组成的，<br>他们总是努力提高工作效率。
+                    </p>
                 </div>
 
                 <div class="team-wrap row">
@@ -94,8 +104,8 @@
                             <img src="../../static/images/team/team-1.jpg" alt="Team">
                             <div class="content">
                                 <div class="inner">
-                                    <h6 class="name">Matthew Wilder</h6>
-                                    <span class="title">FOUNDER</span>
+                                    <h6 class="name">李狗蛋</h6>
+                                    <span class="title">创始人</span>
                                     <div class="social">
                                         <a href="#"><i class="fa fa-qq"></i></a>
                                         <a href="#"><i class="fa fa-wechat"></i></a>
@@ -114,8 +124,8 @@
                             <img src="../../static/images/team/team-2.jpg" alt="Team">
                             <div class="content">
                                 <div class="inner">
-                                    <h6 class="name">Jameson Bau</h6>
-                                    <span class="title">PROJECT MANAGER</span>
+                                    <h6 class="name">李铁柱</h6>
+                                    <span class="title">项目经理</span>
                                     <div class="social">
                                         <a href="#"><i class="fa fa-qq"></i></a>
                                         <a href="#"><i class="fa fa-wechat"></i></a>
@@ -134,8 +144,8 @@
                             <img src="../../static/images/team/team-3.jpg" alt="Team">
                             <div class="content">
                                 <div class="inner">
-                                    <h6 class="name">Irene Simon</h6>
-                                    <span class="title">DESIGNER</span>
+                                    <h6 class="name">王二妞</h6>
+                                    <span class="title">设计师</span>
                                     <div class="social">
                                         <a href="#"><i class="fa fa-qq"></i></a>
                                         <a href="#"><i class="fa fa-wechat"></i></a>
@@ -154,8 +164,8 @@
                             <img src="../../static/images/team/team-4.jpg" alt="Team">
                             <div class="content">
                                 <div class="inner">
-                                    <h6 class="name">Chris Walker</h6>
-                                    <span class="title">BACKEND DEVELOPER</span>
+                                    <h6 class="name">张全蛋</h6>
+                                    <span class="title">后端工程师</span>
                                     <div class="social">
                                         <a href="#"><i class="fa fa-qq"></i></a>
                                         <a href="#"><i class="fa fa-wechat"></i></a>
@@ -177,20 +187,21 @@
 
 <script>
     import PageHeading from "./public/PageHeading";
+    import CountUp from "./public/CountUp";
 
     export default {
         name: "AboutUs",
         components: {
-            PageHeading
+            PageHeading,
+            CountUp
         },
         data() {
             return {
                 pageData: {
-                    'name':'工作名称',
-                    'navs':[
-                        {'name':'Home','to':'Home','active':false},
-                        {'name':'Jobs','to':'Jobs','active':false},
-                        {'name':'工作名称','to':'','active':true},
+                    'name': '关于我们',
+                    'navs': [
+                        {'name': 'Home', 'to': 'Home', 'active': false},
+                        {'name': '关于我们', 'to': '', 'active': true},
                     ],
                 }
             }
