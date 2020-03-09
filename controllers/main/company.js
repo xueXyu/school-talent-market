@@ -3,10 +3,46 @@
 const _ = require('lodash');
 const Joi = require('@hapi/joi');
 const RestController = require('../rest');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 class CompanyController extends RestController {
     constructor() {
         super('Company');
+    }
+
+    /**
+     * 返回搜索对象
+     */
+    search(req, res) {
+        const rules = Joi.object({
+            company_name: Joi.string(),
+            company_address: Joi.string(),
+            company_size: Joi.string().valid('0-20人', '20-99人', '100-499人', '500-999人', '1000-9999人', '10000人以上'),
+        });
+        const {error, value} = rules.validate(req.body);
+        if (error) {
+            return res.replyError(error);
+        }
+
+        const data = {};
+        if (value && !_.isEmpty(value)) {
+            var where = {};
+            _.forEach(value, function (val, key) {
+                where[key] = {[Op.like]: '%' + val + '%'};
+            });
+            data.where = where;
+        }
+
+        data.include = [{
+            model: this.models['CompanyJob'],
+            as: 'jobs',
+            attributes: ['id', 'created_at', 'job_name', 'job_salary', 'job_gender', 'job_way'
+            ]
+        }];
+        data.distinct = true;
+
+        res.reply(this.model.findAndCountAll(data));
     }
 
     /**

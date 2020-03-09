@@ -25,17 +25,26 @@ util.restRoute('/news', router, newsController);
 util.restRoute('/user', router, userController);
 util.restRoute('/user-resume', router, userResumeController);
 util.restRoute('/user-like-job', router, userLikeJobController);
-util.restRoute('/company', router, companyController);
+// util.restRoute('/company', router, companyController);
 util.restRoute('/company-job', router, companyJobController);
 util.restRoute('/job-to-resume', router, jobResumeAssController);
 
+util.buildRoute([
+    {path: '/company/search', method: 'post', target: 'search'},
+    {path: '/company', method: 'get', target: 'index'},
+    {path: '/company/:id', method: 'get', target: 'show'},
+    {path: '/company', method: 'post', target: 'create'},
+    {path: '/company/:id', method: 'put', target: 'update'},
+    {path: '/company', method: 'delete', target: 'destroy'},
+], router, companyController);
+
 // 自定义指定到方法，也可以重定义CURD
 util.buildRoute([
-    { path: '/admin', method: 'get', target: 'index' },
-    { path: '/admin/:id', method: 'get', target: 'show' },
-    { path: '/admin', method: 'post', target: 'create' },
-    { path: '/admin/:id', method: 'put', target: 'updatePassword' },
-    { path: '/admin', method: 'delete', target: 'destroy'},
+    {path: '/admin', method: 'get', target: 'index'},
+    {path: '/admin/:id', method: 'get', target: 'show'},
+    {path: '/admin', method: 'post', target: 'create'},
+    {path: '/admin/:id', method: 'put', target: 'updatePassword'},
+    {path: '/admin', method: 'delete', target: 'destroy'},
 ], router, adminController);
 
 module.exports = router;

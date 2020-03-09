@@ -7,6 +7,7 @@ export default {
     UserResume: '/user-resume',
     UserLikeJob: '/user-like-job',
     Company: '/company',
+    CompanySearch: '/company/search',
     CompanyJob: '/company-job',
     Job2Resume: '/job-to-resume',
 }

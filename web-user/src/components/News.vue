@@ -22,6 +22,7 @@
 
                 <el-pagination
                     class="pagination"
+                    :hide-on-single-page="true"
                     background
                     layout="prev, pager, next"
                     @current-change="currentChange"

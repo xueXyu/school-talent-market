@@ -40,6 +40,7 @@
             </el-table>
             <el-pagination
                 class="job-pagination"
+                :hide-on-single-page="true"
                 background
                 layout="prev, pager, next"
                 :total="1000">
