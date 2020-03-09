@@ -94,8 +94,6 @@
 
 <script>
     import PageHeading from "./public/PageHeading";
-    import NewsItem from "./public/NewsItem";
-    import Pagination from "./public/Pagination";
 
     export default {
         name: "NewsSingle",

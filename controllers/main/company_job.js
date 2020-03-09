@@ -3,10 +3,72 @@
 const _ = require('lodash');
 const Joi = require('@hapi/joi');
 const RestController = require('../rest');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 class CompanyJobController extends RestController {
     constructor() {
         super('CompanyJob');
+    }
+
+    /**
+     * 返回搜索对象
+     */
+    search(req, res) {
+        const rules = Joi.object({
+            job_name: Joi.string(),
+            job_way: Joi.string().valid('全职','兼职','实习'),
+        });
+        const {error, value} = rules.validate(req.body);
+        if (error) {
+            return res.replyError(error);
+        }
+
+        const data = {};
+        if (value && !_.isEmpty(value)) {
+            var where = {};
+            _.forEach(value, function (val, key) {
+                where[key] = {[Op.like]: '%' + val + '%'};
+            });
+            data.where = where;
+        }
+
+        data.include = [{
+            model: this.models['Company'],
+            as: 'company',
+            attributes: ['id', 'created_at', 'company_name', 'company_phone', 'company_contacts', 'company_create', 'company_size', 'company_address', 'company_site', 'company_img']
+        }];
+        data.distinct = true;
+
+        res.reply(this.model.findAndCountAll(data));
+    }
+
+    /**
+     * 分页返回所有对象
+     */
+    index(req, res) {
+        const params = req.query || {};
+        const data = {
+            offset: +params.offset || 0,
+            limit: +params.limit || 10
+        };
+        if (params.where && _.isObject(params.where)) {
+            data.where = params.where;
+        }
+        if (params.order && _.isObject(params.order)) {
+            data.order = [
+                params.order
+            ];
+        }
+
+        data.include = [{
+            model: this.models['Company'],
+            as: 'company',
+            attributes: ['id', 'created_at', 'company_name', 'company_phone', 'company_contacts', 'company_create', 'company_size', 'company_address', 'company_site', 'company_img']
+        }];
+        data.distinct = true;
+
+        res.reply(this.model.findAndCountAll(data));
     }
 
     /**

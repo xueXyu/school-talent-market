@@ -26,7 +26,7 @@ util.restRoute('/user', router, userController);
 util.restRoute('/user-resume', router, userResumeController);
 util.restRoute('/user-like-job', router, userLikeJobController);
 // util.restRoute('/company', router, companyController);
-util.restRoute('/company-job', router, companyJobController);
+// util.restRoute('/company-job', router, companyJobController);
 util.restRoute('/job-to-resume', router, jobResumeAssController);
 
 util.buildRoute([
@@ -37,6 +37,15 @@ util.buildRoute([
     {path: '/company/:id', method: 'put', target: 'update'},
     {path: '/company', method: 'delete', target: 'destroy'},
 ], router, companyController);
+
+util.buildRoute([
+    {path: '/company-job/search', method: 'post', target: 'search'},
+    {path: '/company-job', method: 'get', target: 'index'},
+    {path: '/company-job/:id', method: 'get', target: 'show'},
+    {path: '/company-job', method: 'post', target: 'create'},
+    {path: '/company-job/:id', method: 'put', target: 'update'},
+    {path: '/company-job', method: 'delete', target: 'destroy'},
+], router, companyJobController);
 
 // 自定义指定到方法，也可以重定义CURD
 util.buildRoute([

@@ -8,7 +8,7 @@
         <!-- Page Heading Section End -->
 
         <!-- Recent Jobs Start -->
-        <div class="section section-padding">
+        <div class="section section-padding job-all-list">
             <div class="container">
                 <div class="row mb-n5">
 
@@ -17,17 +17,23 @@
                         <!-- Job List Wrap Start -->
                         <div class="job-list-wrap">
 
-                            <JobItem></JobItem>
-                            <JobItem></JobItem>
-                            <JobItem></JobItem>
-                            <JobItem></JobItem>
-                            <JobItem></JobItem>
+                            <JobItem v-for="(item,index) in jobList" :key="index"
+                                     :jobInfo="item"
+                                     :companyInfo="item.company"></JobItem>
 
                         </div>
                         <!-- Job List Wrap Start -->
 
                         <!-- Pagination Start -->
-                        <Pagination></Pagination>
+                        <el-pagination
+                            class="pagination"
+                            :hide-on-single-page="true"
+                            background
+                            layout="prev, pager, next"
+                            @current-change="currentChange"
+                            :page-size="page_size"
+                            :total="page_count">
+                        </el-pagination>
                         <!-- Pagination End -->
 
                     </div>
@@ -38,71 +44,28 @@
                             <!-- Sidebar (Search) Start -->
                             <div class="sidebar-widget">
                                 <div class="inner">
-                                    <h6 class="title">职位名称</h6>
-                                    <form action="#">
-                                        <input type="text" placeholder="例如：前端开发工程师">
-                                    </form>
+                                    <h6 class="title" style="margin-bottom: 30px;">搜索</h6>
+                                    <el-form ref="searchForm" :model="searchForm" label-position="top"
+                                             label-width="100%">
+                                        <el-form-item label="职位名称" class="job-list-search-label">
+                                            <el-input v-model="searchForm.job_name"></el-input>
+                                        </el-form-item>
+                                        <el-form-item label="工作性质" prop="job_way" required>
+                                            <el-select v-model="searchForm.job_way" auto-complete="off">
+                                                <el-option label="所有类型" value="所有类型"></el-option>
+                                                <el-option label="全职" value="全职"></el-option>
+                                                <el-option label="兼职" value="兼职"></el-option>
+                                                <el-option label="实习" value="实习"></el-option>
+                                            </el-select>
+                                        </el-form-item>
+                                        <el-form-item>
+                                            <el-button type="primary" @click="searchJobs">搜索</el-button>
+                                        </el-form-item>
+                                    </el-form>
                                 </div>
                             </div>
                             <!-- Sidebar (Search) End -->
 
-                            <!-- Sidebar (Location) Start -->
-                            <div class="sidebar-widget">
-                                <div class="inner">
-                                    <h6 class="title">公司地址</h6>
-                                    <form action="#">
-                                        <input type="text" placeholder="Location">
-                                    </form>
-                                </div>
-                            </div>
-                            <!-- Sidebar (Location) End -->
-
-                            <!-- Sidebar (Job Type) Start -->
-                            <div class="sidebar-widget">
-                                <div class="inner">
-                                    <h6 class="title">工作类型</h6>
-                                    <form action="#" class="mb-n1">
-                                        <div class="custom-control custom-checkbox mb-1">
-                                            <input type="checkbox" class="custom-control-input" id="jobtype0">
-                                            <label class="custom-control-label" for="jobtype0">全职</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox mb-1">
-                                            <input type="checkbox" class="custom-control-input" id="jobtype1">
-                                            <label class="custom-control-label" for="jobtype1">兼职</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox mb-1">
-                                            <input type="checkbox" class="custom-control-input" id="jobtype2">
-                                            <label class="custom-control-label" for="jobtype2">实习</label>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <!-- Sidebar (Job Type) End -->
-
-                            <!-- Sidebar (Salary Range) Start -->
-                            <div class="sidebar-widget">
-                                <div class="inner">
-                                    <h6 class="title">薪资待遇</h6>
-                                    <form action="#">
-                                        <el-slider
-                                            v-model="value"
-                                            :step="500"
-                                            range
-                                            label="k"
-                                            :max="60000">
-                                        </el-slider>
-                                    </form>
-                                </div>
-                            </div>
-                            <!-- Sidebar (Salary Range) End -->
-
-                            <!-- Sidebar (Qualification) Start -->
-                            <div class="sidebar-widget">
-                                <div class="mb-3">
-                                    <input class="btn btn-primary w-100" type="submit" value="搜索">
-                                </div>
-                            </div>
-                            <!-- Sidebar (Qualification) End -->
                         </div>
                     </div>
                     <!-- Job Sidebar Wrap End -->
@@ -117,31 +80,117 @@
 <script>
     import PageHeading from "./public/PageHeading";
     import JobItem from "./public/JobItem";
-    import Pagination from "./public/Pagination";
 
     export default {
         name: "JobList",
-        components:{
+        components: {
             JobItem,
-            PageHeading,
-            Pagination
+            PageHeading
         },
         data() {
             return {
-                value: [0, 20000],
                 pageData: {
-                    'name':'工作名称',
-                    'navs':[
-                        {'name':'Home','to':'Home','active':false},
-                        {'name':'Jobs','to':'Jobs','active':false},
-                        {'name':'工作名称','to':'','active':true},
+                    'name': '招聘列表',
+                    'navs': [
+                        {'name': 'Home', 'to': 'Home', 'active': false},
+                        {'name': '招聘列表', 'to': '', 'active': true},
                     ],
-                }
+                },
+                searchWhere: null,
+                searchForm: {
+                    job_name: null,
+                    job_way: null,
+                },
+                jobList: null,
+                current_page: 1,
+                page_count: 1,
+                page_size: 12,
             }
         },
+        methods: {
+            currentChange(event) {
+                this.current_page = event;
+                this.getJobList();
+            },
+            searchJobs() {
+                var searchWhere = {};
+                _.forEach(this.searchForm, function (value, key) {
+                    if (!_.isEmpty(value) && key == 'job_name') {
+                        searchWhere.job_name = value;
+                    }
+                    if (!_.isEmpty(value) && key == 'job_way' && value !== '所有类型') {
+                        searchWhere.job_way = value;
+                    }
+                });
+
+                if (!_.isEmpty(searchWhere)) {
+                    this.searchWhere = searchWhere;
+                    this.searchJobList();
+                } else {
+                    this.getJobList();
+                }
+            },
+            async searchJobList() {
+                try {
+                    await this.http.post(this.api.CompanyJobSeearch, this.searchWhere).then(res => {
+                        if (res.code == 0) {
+                            this.page_count = 0;
+                            this.jobList = res.data.rows;
+                        } else {
+                            this.$message.error(res.message);
+                        }
+                    });
+                } catch (error) {
+                    console.error(error);
+                }
+            },
+            async getJobList() {
+                try {
+                    await this.http.get(this.api.CompanyJob, {
+                        limit: this.page_size,
+                        offset: (this.current_page - 1) * this.page_size,
+                        order: ['created_at', 'DESC'],
+                    }).then(res => {
+                        if (res.code == 0) {
+                            this.page_count = res.data.count;
+                            this.jobList = res.data.rows;
+                        } else {
+                            this.$message.error(res.message);
+                        }
+                    });
+                } catch (error) {
+                    console.error(error);
+                }
+            },
+        },
+        mounted() {
+            this.getJobList();
+        }
     }
 </script>
 
 <style scoped>
+    .pagination {
+        display: flex;
+        justify-content: center;
+        padding-top: 90px;
+    }
 
+    .job-all-list .el-form .el-form-item .el-form-item__content .el-button {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .job-list-search-label {
+        margin-bottom: 18px;
+    }
+</style>
+
+<style>
+    .job-list-search-label .el-form--label-top .el-form-item__label,
+    .job-list-search-label .el-form-item__label,
+    .job-list-search-label label {
+        padding: 0;
+        margin: 0;
+    }
 </style>

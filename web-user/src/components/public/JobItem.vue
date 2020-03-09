@@ -15,7 +15,9 @@
             </div>
             <div class="salary-type col-auto order-sm-3">
                 <span class="salary-range">{{jobInfo.job_salary}}</span>
-                <span class="badge badge-success">{{jobInfo.job_way}}</span>
+                <span v-if="jobInfo.job_way==='全职'" class="badge badge-success">{{jobInfo.job_way}}</span>
+                <span v-if="jobInfo.job_way==='兼职'" class="badge badge-info">{{jobInfo.job_way}}</span>
+                <span v-if="jobInfo.job_way==='实习'" class="badge badge-warning">{{jobInfo.job_way}}</span>
             </div>
             <div class="content col">
                 <h6 class="title">{{jobInfo.job_name}}</h6>

@@ -9,5 +9,6 @@ export default {
     Company: '/company',
     CompanySearch: '/company/search',
     CompanyJob: '/company-job',
+    CompanyJobSeearch: '/company-job/search',
     Job2Resume: '/job-to-resume',
 }

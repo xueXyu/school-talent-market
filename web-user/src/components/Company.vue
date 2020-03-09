@@ -133,7 +133,6 @@
                 this.$message.info('这是一个广告~');
             },
             searchCompany() {
-
                 var searchWhere = {};
                 _.forEach(this.searchForm, function (value, key) {
                     if (!_.isEmpty(value) && key == 'company_name') {
@@ -150,6 +149,8 @@
                 if (!_.isEmpty(searchWhere)) {
                     this.searchWhere = searchWhere;
                     this.searchCompanyList();
+                } else {
+                    this.getCompanyList();
                 }
             },
             async searchCompanyList() {
