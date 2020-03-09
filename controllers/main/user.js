@@ -12,6 +12,25 @@ class UserController extends RestController {
     }
 
     /**
+     * 查找单个对象
+     */
+    show(req, res) {
+        if (!req.params || !req.params.id) {
+            return res.replyError('missing id parameter');
+        }
+
+        const data = {
+            where: {id: req.params.id},
+            include: [{
+                model: this.models['UserResume'],
+                as: 'resumes',
+                attributes: ['id', 'created_at', 'resume_name', 'resume_email', 'resume_education', 'resume_working_years']
+            }]
+        };
+        res.reply(this.model.findOne(data));
+    }
+
+    /**
      * 用户和公司注册
      */
     create(req, res) {

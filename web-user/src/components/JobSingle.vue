@@ -7,6 +7,37 @@
         <PageHeading :page-data="pageData"></PageHeading>
         <!-- Page Heading Section End -->
 
+        <!-- User Resumes Start-->
+        <el-dialog
+            :visible.sync="dialogVisible"
+            title="请确认投递的简历"
+            width="50%"
+            :modal="true"
+            :before-close="handleClose" v-if="userInfo">
+            <el-form :model="resumeForm" :rules="resumeFormRules" ref="resumeForm"
+                     label-position="top">
+                <el-form-item label="" prop="resume">
+                    <el-radio-group v-model="resumeForm.resume_id">
+                        <el-radio v-for="(item,index) in userInfo.resumes" :key="index"
+                                  :label="item.id">
+                            <span class="resume-info">{{item.resume_name}}</span>
+                            （
+                            <router-link :to="{name:'ResumeSingle',params:{resumeId:item.id}}">
+                                简历详情
+                            </router-link>
+                            ）
+                        </el-radio>
+                    </el-radio-group>
+                </el-form-item>
+            </el-form>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogVisible = false">取 消</el-button>
+                <el-button type="primary" @click="submitForm">确 定</el-button>
+            </span>
+
+        </el-dialog>
+        <!-- User Resumes End-->
+
         <!-- Recent Jobs Start -->
         <div class="section section-padding" v-if="jobInfo">
             <div class="container">
@@ -15,7 +46,7 @@
                     <div class="col-lg-8 col-12 mb-5 pr-lg-5">
                         <div class="job-list-details">
                             <div>
-                                <JobItem :jobInfo="jobInfo" :companyInfo="jobInfo.company" ></JobItem>
+                                <JobItem :jobInfo="jobInfo" :companyInfo="jobInfo.company"></JobItem>
                             </div>
                             <div class="job-details-body mt-4">
                                 <h6 class="mb-3">职责描述</h6>
@@ -33,12 +64,21 @@
                                 <div class="inner">
                                     <div class="row m-n2">
                                         <div class="col-xl-auto col-lg-12 col-sm-auto col-12 p-2">
-                                            <a href="/" class="d-block btn btn-outline-success">
+                                            <el-button v-if="!isLikeJob" @click="likeJob" type="primary" plain>
                                                 <i class="fa fa-heart-o mr-1"></i>收藏职位
-                                            </a>
+                                            </el-button>
+                                            <el-button v-if="isLikeJob" @click="likeJob" type="primary">
+                                                <i class="fa fa-heart mr-1"></i>收藏职位
+                                            </el-button>
                                         </div>
                                         <div class="col-xl-auto col-lg-12 col-sm-auto col-12 p-2">
-                                            <a href="/" class="d-block btn btn-primary">申请职位</a>
+                                            <el-button v-if="!isApplyForJob" @click="dialogVisible = true"
+                                                       type="success" plain>
+                                                <i class="fa fa-file-text-o mr-1"></i>申请职位
+                                            </el-button>
+                                            <el-button v-if="isApplyForJob" @click="submitForm" type="success">
+                                                <i class="fa fa-file-text-o mr-1"></i>申请职位
+                                            </el-button>
                                         </div>
                                     </div>
                                 </div>
@@ -54,7 +94,9 @@
                                         <li><strong>成立时间：</strong>{{jobInfo.company.company_create}}</li>
                                         <li><strong>公司规模：</strong>{{jobInfo.company.company_size}}</li>
                                         <li><strong>公司地址：</strong>{{jobInfo.company.company_address}}</li>
-                                        <li><strong>公司网站：</strong><a :href="jobInfo.company.company_site" target="_blank" >{{jobInfo.company.company_site}}</a></li>
+                                        <li><strong>公司网站：</strong><a :href="jobInfo.company.company_site"
+                                                                     target="_blank">{{jobInfo.company.company_site}}</a>
+                                        </li>
                                         <li><strong>联系人：</strong>{{jobInfo.company.company_contacts}}</li>
                                         <li><strong>联系电话：</strong>{{jobInfo.company.company_phone}}</li>
                                     </ul>
@@ -77,6 +119,8 @@
     import PageHeading from "./public/PageHeading";
     import JobItem from "./public/JobItem";
 
+    const _ = require('lodash');
+
     export default {
         name: "JobSingle",
         components: {
@@ -93,10 +137,33 @@
                         {'name': '招聘详情', 'to': '', 'active': true},
                     ],
                 },
+                dialogVisible: false,
+                resumeForm: {
+                    resume_id: null
+                },
+                resumeFormRules: {
+                    resume_id: [
+                        {required: true, message: '请输选择简历', trigger: 'blur'}
+                    ],
+                },
                 jobInfo: null,
+                userInfo: null,
+                isLikeJob: false,
+                isApplyForJob: false,
             }
         },
         methods: {
+            handleClose(done) {
+                done();
+            },
+            submitForm() {
+                if (this.isApplyForJob) {
+                    this.$message.warning('职位已经申请了~');
+                } else {
+                    this.applyForJob(this.resumeForm.resume_id);
+                    this.dialogVisible = false;
+                }
+            },
             async getJob() {
                 try {
                     await this.http.get(this.api.CompanyJob + '/' + this.$route.params.jobId).then(res => {
@@ -110,13 +177,121 @@
                     console.error(error);
                 }
             },
-        },
+            async getUserInfo() {
+                try {
+                    await this.http.get(this.api.User + '/' + this.store.state.userInfo.id).then(res => {
+                        if (res.code == 0) {
+                            this.userInfo = res.data;
+                        } else {
+                            this.$message.error(res.message);
+                        }
+                    });
+                } catch (error) {
+                    console.error(error);
+                }
+            },
+            async applyForJob(id) {
+                try {
+                    await this.http.post(this.api.Job2Resume, {
+                        user_id: parseInt(this.store.state.userInfo.id),
+                        job_id: parseInt(this.$route.params.jobId),
+                        company_id: parseInt(this.jobInfo.company.id),
+                        resume_id: parseInt(id),
+                    }).then(res => {
+                        if (res.code == 0) {
+                            this.$message.success('申请已提交~');
+                        } else {
+                            this.$message.error(res.message);
+                        }
+                    });
+                } catch (error) {
+                    console.error(error);
+                }
+            },
+            async isApplyForJobFunc() {
+                try {
+                    await this.http.get(this.api.Job2Resume, {
+                        user_id: this.store.state.userInfo.id,
+                        job_id: this.$route.params.jobId,
+                    }).then(res => {
+                        if (res.code == 0) {
+                            if (!_.isEmpty(res.data)) {
+                                this.isApplyForJob = true;
+                            }
+                        } else {
+                            this.$message.error(res.message);
+                        }
+                    });
+                } catch (error) {
+                    console.error(error);
+                }
+            },
+            async likeJob() {
+                if (this.isLikeJob) {
+                    this.$message.warning('招聘信息，已经收藏了~');
+                } else {
+                    try {
+                        await this.http.post(this.api.UserLikeJob, {
+                            user_id: this.store.state.userInfo.id,
+                            job_id: this.$route.params.jobId,
+                        }).then(res => {
+                            if (res.code == 0) {
+                                this.$message.success('收藏成功~');
+                            } else {
+                                this.$message.error(res.message);
+                            }
+                        });
+                    } catch (error) {
+                        console.error(error);
+                    }
+                }
+            },
+            async isLikeJobFunc() {
+                try {
+                    await this.http.get(this.api.UserLikeJob, {
+                        user_id: this.store.state.userInfo.id,
+                        job_id: this.$route.params.jobId,
+                    }).then(res => {
+                        if (res.code == 0) {
+                            if (!_.isEmpty(res.data)) {
+                                this.isLikeJob = true;
+                            }
+                        } else {
+                            this.$message.error(res.message);
+                        }
+                    });
+                } catch (error) {
+                    console.error(error);
+                }
+            },
+        }
+        ,
         mounted() {
             this.getJob();
+            this.getUserInfo();
+            this.isLikeJobFunc();
+            this.isApplyForJobFunc();
         }
     }
 </script>
 
-<style scoped>
+<style>
+    .resume-info {
+        width: 100px !important;;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;;
+        white-space: nowrap !important;;
+    }
 
+    .el-form-item {
+        margin-bottom: 6px;
+    }
+
+    .el-radio-group {
+        line-height: 45px;
+    }
+
+    .el-radio {
+        width: 45%;
+    }
 </style>

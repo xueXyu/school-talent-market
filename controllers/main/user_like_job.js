@@ -10,25 +10,25 @@ class UserLikeJobController extends RestController {
     }
 
     /**
-     * 创建对象
+     * 分页返回所有对象
      */
-    create(req, res) {
-        res.reply('create');
+    index(req, res) {
+        const params = req.query || {};
+        const data = {
+            offset: +params.offset || 0,
+            limit: +params.limit || 10
+        };
+        if (params.user_id) {
+            data.where = {};
+            data.where.user_id = params.user_id;
+        }
+        if (params.job_id) {
+            data.where = data.where || {};
+            data.where.job_id = params.job_id;
+        }
+        res.reply(this.model.findAndCountAll(data));
     }
 
-    /**
-     * 更新对象
-     */
-    update(req, res) {
-        res.reply('update');
-    }
-
-    /**
-     * 删除单个对象
-     */
-    destroy(req, res) {
-        res.reply('destroy');
-    }
 }
 
 module.exports = new UserLikeJobController();

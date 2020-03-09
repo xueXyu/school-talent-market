@@ -48,7 +48,7 @@
                     <!-- Funfact Start -->
                     <div class="funfact col-md-3 col-sm-6 col-12">
                         <span class="counter">
-                            <CountUp countup-start="0" countup-end="1354"></CountUp>
+                            <CountUp :countup-start="0" :countup-end="1354"></CountUp>
                         </span>
                         <span class="title">招聘职位</span>
                     </div>
@@ -57,7 +57,7 @@
                     <!-- Funfact Start -->
                     <div class="funfact col-md-3 col-sm-6 col-12">
                         <span class="counter">
-                            <CountUp countup-start="0" countup-end="1741"></CountUp>
+                            <CountUp :countup-start="0" :countup-end="1741"></CountUp>
                         </span>
                         <span class="title">求职者</span>
                     </div>
@@ -66,7 +66,7 @@
                     <!-- Funfact Start -->
                     <div class="funfact col-md-3 col-sm-6 col-12">
                         <span class="counter">
-                            <CountUp countup-start="0" countup-end="1204"></CountUp>
+                            <CountUp :countup-start="0" :countup-end="1204"></CountUp>
                         </span>
                         <span class="title">简历</span>
                     </div>
@@ -75,7 +75,7 @@
                     <!-- Funfact Start -->
                     <div class="funfact col-md-3 col-sm-6 col-12">
                         <span class="counter">
-                            <CountUp countup-start="0" countup-end="142"></CountUp>
+                            <CountUp :countup-start="0" :countup-end="142"></CountUp>
                         </span>
                         <span class="title">公司</span>
                     </div>
