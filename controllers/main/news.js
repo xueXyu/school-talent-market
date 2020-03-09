@@ -22,12 +22,10 @@ class NewsController extends RestController {
             data.where = params.where;
         }
         if (params.order && _.isObject(params.order)) {
-            console.log(params.order, typeof params.order);
             data.order = [
                 params.order
             ];
         }
-        console.log(data);
         res.reply(this.model.findAndCountAll(data));
     }
 }

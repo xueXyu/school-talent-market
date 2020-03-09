@@ -55,10 +55,8 @@
                                 <div class="inner">
                                     <div class="row m-n2">
                                         <div class="col-xl-auto col-lg-12 col-sm-auto col-12 p-2">
-                                            <a href="/" class="d-block btn btn-primary">审核通过</a>
-                                        </div>
-                                        <div class="col-xl-auto col-lg-12 col-sm-auto col-12 p-2">
-                                            <a href="/" class="d-block btn btn-outline-secondary">审核不通过</a>
+                                            <el-button type="primary" @click="pass">审核通过</el-button>
+                                            <el-button type="info" plain @click="notpass">审核不通过</el-button>
                                         </div>
                                     </div>
                                 </div>
@@ -112,6 +110,32 @@
         },
         methods: {
             async getResume() {
+                try {
+                    await this.http.get(this.api.UserResume + '/' + this.$route.params.resumeId).then(res => {
+                        if (res.code == 0) {
+                            this.resumeInfo = res.data;
+                        } else {
+                            this.$message.error(res.message);
+                        }
+                    });
+                } catch (error) {
+                    console.error(error);
+                }
+            },
+            async pass() {
+                try {
+                    await this.http.get(this.api.UserResume + '/' + this.$route.params.resumeId).then(res => {
+                        if (res.code == 0) {
+                            this.resumeInfo = res.data;
+                        } else {
+                            this.$message.error(res.message);
+                        }
+                    });
+                } catch (error) {
+                    console.error(error);
+                }
+            },
+            async notpass() {
                 try {
                     await this.http.get(this.api.UserResume + '/' + this.$route.params.resumeId).then(res => {
                         if (res.code == 0) {

@@ -22,9 +22,9 @@
 
                     <!-- Header Links Start -->
                     <div v-if="!this.store.state.isLogin" class="header-links col-auto order-lg-3">
-                        <a href="/" v-on:click="onLogin('login')">登录</a>
+                        <a v-on:click="onLogin('login')">登录</a>
                         <span>or</span>
-                        <a href="/" v-on:click="onLogin('signup')">注册</a>
+                        <a v-on:click="onLogin('signup')">注册</a>
                     </div>
                     <!-- Header Links End -->
 

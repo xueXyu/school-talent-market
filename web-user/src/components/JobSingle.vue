@@ -9,6 +9,7 @@
 
         <!-- User Resumes Start-->
         <el-dialog
+            class="apply-for-job"
             :visible.sync="dialogVisible"
             title="请确认投递的简历"
             width="50%"
@@ -20,7 +21,7 @@
                     <el-radio-group v-model="resumeForm.resume_id">
                         <el-radio v-for="(item,index) in userInfo.resumes" :key="index"
                                   :label="item.id">
-                            <span class="resume-info">{{item.resume_name}}</span>
+                            {{item.resume_name}}
                             （
                             <router-link :to="{name:'ResumeSingle',params:{resumeId:item.id}}">
                                 简历详情
@@ -72,7 +73,7 @@
                                             </el-button>
                                         </div>
                                         <div class="col-xl-auto col-lg-12 col-sm-auto col-12 p-2">
-                                            <el-button v-if="!isApplyForJob" @click="dialogVisible = true"
+                                            <el-button v-if="!isApplyForJob" @click="showResumes"
                                                        type="success" plain>
                                                 <i class="fa fa-file-text-o mr-1"></i>申请职位
                                             </el-button>
@@ -156,6 +157,20 @@
             handleClose(done) {
                 done();
             },
+            showResumes() {
+                if (this.userInfo.resumes.length > 0) {
+                    this.dialogVisible = true;
+                } else {
+                    this.$confirm('你还没有简历，去创建简历吧~', '提示', {
+                        confirmButtonText: '确定',
+                        cancelButtonText: '取消',
+                        type: 'warning'
+                    }).then(() => {
+                        this.$router.push({name:'CreateResume'});
+                    }).catch(() => {
+                    });
+                }
+            },
             submitForm() {
                 if (this.isApplyForJob) {
                     this.$message.warning('职位已经申请了~');
@@ -200,6 +215,7 @@
                     }).then(res => {
                         if (res.code == 0) {
                             this.$message.success('申请已提交~');
+                            this.isApplyForJob = true;
                         } else {
                             this.$message.error(res.message);
                         }
@@ -237,6 +253,7 @@
                         }).then(res => {
                             if (res.code == 0) {
                                 this.$message.success('收藏成功~');
+                                this.isLikeJob = true;
                             } else {
                                 this.$message.error(res.message);
                             }
@@ -268,30 +285,25 @@
         ,
         mounted() {
             this.getJob();
-            this.getUserInfo();
-            this.isLikeJobFunc();
-            this.isApplyForJobFunc();
+            if (this.store.state.isLogin) {
+                this.getUserInfo();
+                this.isLikeJobFunc();
+                this.isApplyForJobFunc();
+            }
         }
     }
 </script>
 
-<style>
-    .resume-info {
-        width: 100px !important;;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;;
-        white-space: nowrap !important;;
-    }
-
-    .el-form-item {
+<style scoped>
+    .apply-for-job .el-form-item {
         margin-bottom: 6px;
     }
 
-    .el-radio-group {
+    .apply-for-job .el-radio-group {
         line-height: 45px;
     }
 
-    .el-radio {
+    .apply-for-job .el-radio {
         width: 45%;
     }
 </style>

@@ -148,17 +148,12 @@
     }
 </script>
 
-<style>
-    label, .el-form--label-top .el-form-item__label {
-        margin: 0;
-        padding: 0;
-    }
-
+<style scoped>
     .section-padding {
-        padding: 50px 0;
+        padding: 60px 0 90px 0;
     }
 
-    .el-button {
+    .el-form .el-form-item .el-form-item__content .el-button {
         width: 100%;
     }
 </style>

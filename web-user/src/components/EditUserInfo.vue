@@ -8,7 +8,7 @@
         <!-- Page Heading Section End -->
 
         <!-- Create Job Start -->
-        <div class="section section-padding">
+        <div class="section section-padding edit-user-info-section-padding">
             <div class="container">
                 <div class="row">
                     <div class="create-job-form col-lg-6 mx-auto">
@@ -56,6 +56,7 @@
 <script>
     import PageHeading from "./public/PageHeading";
     import Uploader from "./public/Uploader";
+    const _ = require('lodash');
 
     export default {
         name: "EditUserInfo",
@@ -148,8 +149,10 @@
                                 user_phone: res.data.user_phone,
                                 user_img: res.data.user_img,
                             };
-                            // 向子组件传值
-                            this.$refs.childUploader.childMethod(res.data.user_img);
+                            if (!_.isEmpty(res.data.user_img)) {
+                                // 向子组件传值
+                                this.$refs.childUploader.childMethod(res.data.user_img);
+                            }
                         } else {
                             this.$message.error(res.message);
                         }
@@ -194,44 +197,12 @@
     }
 </script>
 
-<style>
-    label, .el-form--label-top .el-form-item__label {
-        margin: 0;
-        padding: 0;
+<style scoped>
+    .edit-user-info-section-padding {
+        padding: 60px 0 90px 0;
     }
 
-    .section-padding {
-        padding: 50px 0;
-    }
-
-    .el-button {
+    .edit-user-info-section-padding .el-form .el-form-item .el-form-item__content .el-button {
         width: 100%;
-    }
-
-    .avatar-uploader .el-upload {
-        border: 1px dashed #d9d9d9;
-        border-radius: 6px;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .avatar-uploader .el-upload:hover {
-        border-color: #409EFF;
-    }
-
-    .avatar-uploader-icon {
-        font-size: 28px;
-        color: #8c939d;
-        width: 178px;
-        height: 178px;
-        line-height: 178px;
-        text-align: center;
-    }
-
-    .avatar {
-        width: 178px;
-        height: 178px;
-        display: block;
     }
 </style>

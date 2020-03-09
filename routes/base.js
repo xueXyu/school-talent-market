@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 util.buildRoute([
     {path: '/sessions', method: 'get', target: 'index'},
     {path: '/sessions', method: 'post', target: 'create'},
-    {path: '/sessions', method: 'delete', target: 'destroy', middlewares: [authMiddleware.login]},
+    {path: '/sessions', method: 'delete', target: 'destroy'},
     {path: '/sessions/update-password', method: 'post', target: 'updatePassword', middlewares: [authMiddleware.login]}
 ], router, sessionController);
 

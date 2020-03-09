@@ -167,7 +167,7 @@
     }
 </script>
 
-<style>
+<style scoped>
     .sidebar-post li .title {
         width: 100%;
         height: 60px;

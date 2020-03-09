@@ -11,9 +11,9 @@
                     </div>
                 </el-image>
             </span>
-            <h6 class="title">{{companyItem.company_name}}</h6>
-            <span class="open-job">1 open positions</span>
-            <span class="location"><i class="fa fa-map-o"></i>{{companyItem.company_address}}</span>
+            <h6 class="title">{{companyItem.company_name||'未设置公司名称'}}</h6>
+            <span class="open-job">{{companyItem.jobs.length}} 个正在招聘的职位</span>
+            <span class="location"><i class="fa fa-map-o"></i>{{companyItem.company_address||'未设置公司地址'}}</span>
         </router-link>
     </div>
     <!-- Company List Start -->
@@ -26,8 +26,9 @@
     }
 </script>
 
-<style>
-    .company-item .title, .company-item .location {
+<style scoped>
+    .company-item .title,
+    .company-item .location {
         width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;

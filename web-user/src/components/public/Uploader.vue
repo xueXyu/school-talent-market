@@ -1,7 +1,7 @@
 <template>
     <div>
         <el-upload
-            class="avatar-uploader"
+            class="user-head-uploader"
             :action="uploadHost"
             file="file"
             with-credentials
@@ -10,7 +10,7 @@
             :on-error="handleError"
             :before-upload="beforeAvatarUpload">
             <img v-if="imageUrl" :src="imageUrl" class="avatar">
-            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+            <i v-else class="el-icon-plus user-head-uploader-icon"></i>
             <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过1MB</div>
         </el-upload>
     </div>
@@ -64,5 +64,33 @@
 </script>
 
 <style scoped>
+    .user-head-uploader-icon {
+        font-size: 28px;
+        color: #8c939d;
+        width: 178px;
+        height: 178px;
+        line-height: 178px;
+        text-align: center;
+    }
 
+    .user-head-uploader .el-upload .avatar {
+        width: 178px;
+        height: 178px;
+        display: block;
+    }
+</style>
+
+<style>
+
+    .user-head-uploader .el-upload {
+        border: 1px dashed #d9d9d9;
+        border-radius: 6px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .user-head-uploader .el-upload:hover {
+        border-color: #409EFF;
+    }
 </style>

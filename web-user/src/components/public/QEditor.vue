@@ -62,7 +62,7 @@
 </script>
 
 <style>
-    .ql-picker-label {
+    .quill-editor .ql-toolbar.ql-snow .ql-formats .ql-icon-picker .ql-picker-label {
         position: absolute;
         top: -13px;
     }

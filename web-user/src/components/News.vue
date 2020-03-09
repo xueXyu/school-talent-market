@@ -14,7 +14,8 @@
                 <!-- Blog Wrapper Start -->
                 <div class="blog-wrap row">
 
-                    <NewsItem v-for="(item,index) in newsList" :key="index" :news-item-data="item"></NewsItem>
+                    <NewsItem v-for="(item,index) in newsList" :key="index"
+                              :news-item-data="item"></NewsItem>
 
                 </div>
                 <!-- Blog Wrapper End -->

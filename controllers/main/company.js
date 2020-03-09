@@ -10,6 +10,35 @@ class CompanyController extends RestController {
     }
 
     /**
+     * 分页返回所有对象
+     */
+    index(req, res) {
+        const params = req.query || {};
+        const data = {
+            offset: +params.offset || 0,
+            limit: +params.limit || 10
+        };
+        if (params.where && _.isObject(params.where)) {
+            data.where = params.where;
+        }
+        if (params.order && _.isObject(params.order)) {
+            data.order = [
+                params.order
+            ];
+        }
+
+        data.include = [{
+            model: this.models['CompanyJob'],
+            as: 'jobs',
+            attributes: ['id', 'created_at', 'job_name', 'job_salary', 'job_gender', 'job_way'
+            ]
+        }];
+        data.distinct = true;
+
+        res.reply(this.model.findAndCountAll(data));
+    }
+
+    /**
      * 查找单个对象
      */
     show(req, res) {
@@ -22,7 +51,7 @@ class CompanyController extends RestController {
             include: [{
                 model: this.models['CompanyJob'],
                 as: 'jobs',
-                attributes: ['id', 'created_at', 'job_name','job_salary','job_gender','job_way'
+                attributes: ['id', 'created_at', 'job_name', 'job_salary', 'job_gender', 'job_way'
                 ]
             }]
         };

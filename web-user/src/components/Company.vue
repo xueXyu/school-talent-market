@@ -112,7 +112,7 @@
                 companyList: null,
                 current_page: 1,
                 page_count: 1,
-                page_size: 12,
+                page_size: 9,
             }
         },
         methods: {
@@ -125,7 +125,7 @@
                     await this.http.get(this.api.Company, {
                         limit: this.page_size,
                         offset: (this.current_page - 1) * this.page_size,
-                        order: ['created_at', 'DESC'],
+                        // order: ['created_at', 'DESC'],
                     }).then(res => {
                         if (res.code == 0) {
                             this.page_count = res.data.count;
@@ -145,7 +145,7 @@
     }
 </script>
 
-<style>
+<style scoped>
     .pagination {
         display: flex;
         justify-content: center;
