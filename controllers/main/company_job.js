@@ -17,7 +17,7 @@ class CompanyJobController extends RestController {
     search(req, res) {
         const rules = Joi.object({
             job_name: Joi.string(),
-            job_way: Joi.string().valid('全职','兼职','实习'),
+            job_way: Joi.string().valid('全职', '兼职', '实习'),
         });
         const {error, value} = rules.validate(req.body);
         if (error) {
@@ -54,6 +54,10 @@ class CompanyJobController extends RestController {
         };
         if (params.where && _.isObject(params.where)) {
             data.where = params.where;
+        }
+        if (params.company_id && !_.isEmpty(params.company_id)) {
+            data.where = data.where || {};
+            data.where.company_id = params.company_id;
         }
         if (params.order && _.isObject(params.order)) {
             data.order = [
@@ -129,6 +133,23 @@ class CompanyJobController extends RestController {
         }
 
         res.reply(this.model.update(value, {where: {id: req.params.id}}));
+    }
+
+    /**
+     * 删除单个对象
+     */
+    destroy(req, res) {
+        if (!req.params || !req.params.id) {
+            return res.replyError('missing id parameter');
+        }
+
+        this.model.findByPk(req.params.id).then((obj) => {
+            if (obj) {
+                res.reply(obj.destroy());
+            } else {
+                res.replyError(this.modelName + ' not found');
+            }
+        });
     }
 }
 

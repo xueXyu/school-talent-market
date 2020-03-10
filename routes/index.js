@@ -36,7 +36,7 @@ util.buildRoute([
     {path: '/news/:id', method: 'get', target: 'show'},
     {path: '/news', method: 'post', target: 'create'},
     {path: '/news/:id', method: 'put', target: 'update'},
-    {path: '/news', method: 'delete', target: 'destroy'},
+    {path: '/news/:id', method: 'delete', target: 'destroy'},
 ], router, newsController);
 
 util.buildRoute([
@@ -45,7 +45,7 @@ util.buildRoute([
     {path: '/company/:id', method: 'get', target: 'show'},
     {path: '/company', method: 'post', target: 'create'},
     {path: '/company/:id', method: 'put', target: 'update'},
-    {path: '/company', method: 'delete', target: 'destroy'},
+    {path: '/company/:id', method: 'delete', target: 'destroy'},
 ], router, companyController);
 
 util.buildRoute([
@@ -54,7 +54,7 @@ util.buildRoute([
     {path: '/company-job/:id', method: 'get', target: 'show'},
     {path: '/company-job', method: 'post', target: 'create'},
     {path: '/company-job/:id', method: 'put', target: 'update'},
-    {path: '/company-job', method: 'delete', target: 'destroy'},
+    {path: '/company-job/:id', method: 'delete', target: 'destroy'},
 ], router, companyJobController);
 
 // 自定义指定到方法，也可以重定义CURD
@@ -63,7 +63,7 @@ util.buildRoute([
     {path: '/admin/:id', method: 'get', target: 'show'},
     {path: '/admin', method: 'post', target: 'create'},
     {path: '/admin/:id', method: 'put', target: 'updatePassword'},
-    {path: '/admin', method: 'delete', target: 'destroy'},
+    {path: '/admin/:id', method: 'delete', target: 'destroy'},
 ], router, adminController);
 
 module.exports = router;

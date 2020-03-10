@@ -7,8 +7,10 @@ import JobSingle from '_c/JobSingle';
 import Company from '_c/Company';
 import CompanySingle from '_c/CompanySingle';
 import CreateJob from '_c/CreateJob';
+import EditJob from "_c/EditJob";
 import CreateResume from '_c/CreateResume';
 import ResumeSingle from "_c/ResumeSingle";
+import EditResume from '_c/EditResume';
 import News from '_c/News';
 import NewsSingle from '_c/NewsSingle';
 import AboutUs from '_c/AboutUs';
@@ -29,12 +31,12 @@ export default new Router({
             name: 'Home',
             component: Home
         },
-        { // 职位列表
+        { // 招聘列表
             path: '/job-list',
             name: 'JobList',
             component: JobList
         },
-        {// 职位详情
+        {// 招聘详情
             path: '/job-single/:jobId',
             name: 'JobSingle',
             component: JobSingle
@@ -49,7 +51,7 @@ export default new Router({
             name: 'CompanySingle',
             component: CompanySingle
         },
-        {// 创建职位
+        {// 创建招聘
             path: '/create-job',
             name: 'CreateJob',
             component: CreateJob
@@ -58,6 +60,16 @@ export default new Router({
             path: '/create-resume',
             name: 'CreateResume',
             component: CreateResume
+        },
+        {// 修改招聘
+            path: '/edit-job/:jobId',
+            name: 'EditJob',
+            component: EditJob
+        },
+        {// 修改简历
+            path: '/edit-resume/:resumeId',
+            name: 'EditResume',
+            component: EditResume
         },
         {// 简历详情
             path: '/resume-single/:resumeId',
@@ -94,7 +106,7 @@ export default new Router({
             name: 'EditCompanyInfo',
             component: EditCompanyInfo
         },
-        {// 用户-管理职位
+        {// 用户-管理招聘
             path: '/user-management-jobs',
             name: 'UserManagementJobs',
             component: UserManagementJobs
@@ -104,7 +116,7 @@ export default new Router({
             name: 'UserManagementResume',
             component: UserManagementResume
         },
-        {// 公司-管理职位
+        {// 公司-管理招聘
             path: '/company-management-jobs',
             name: 'CompanyManagementJobs',
             component: CompanyManagementJobs
