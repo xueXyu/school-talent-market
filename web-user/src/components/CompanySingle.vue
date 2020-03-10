@@ -56,7 +56,7 @@
                                             <li><strong>公司网站：</strong>
                                                 <a :href="companyInfo.company_site" target="_blank">{{companyInfo.company_site}}</a>
                                             </li>
-                                            <li><strong>空缺职位:</strong> {{companyInfo.jobs.length}} 个</li>
+                                            <li><strong>招聘职位:</strong> {{companyInfo.jobs.length}} 个</li>
                                             <li><strong>联系人：</strong>{{companyInfo.company_contacts}}</li>
                                             <li><strong>联系电话：</strong>{{companyInfo.company_phone}}</li>
                                         </ul>
