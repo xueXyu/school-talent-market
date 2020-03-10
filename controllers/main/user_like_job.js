@@ -26,6 +26,23 @@ class UserLikeJobController extends RestController {
             data.where = data.where || {};
             data.where.job_id = params.job_id;
         }
+
+        data.include = [{
+            model: this.models['User'],
+            as: 'user',
+            attributes: ['id', 'created_at', 'user_name', 'user_gender', 'user_age', 'user_phone', 'user_img']
+        }, {
+            model: this.models['Company'],
+            as: 'company',
+            attributes: ['id', 'created_at', 'company_name', 'company_phone', 'company_contacts', 'company_create', 'company_size', 'company_address', 'company_site', 'company_img']
+        }, {
+            model: this.models['CompanyJob'],
+            as: 'jobs',
+            attributes: ['id', 'created_at', 'job_name', 'job_salary', 'job_gender', 'job_way']
+        }];
+
+        data.distinct = true;
+
         res.reply(this.model.findAndCountAll(data));
     }
 

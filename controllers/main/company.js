@@ -37,8 +37,7 @@ class CompanyController extends RestController {
         data.include = [{
             model: this.models['CompanyJob'],
             as: 'jobs',
-            attributes: ['id', 'created_at', 'job_name', 'job_salary', 'job_gender', 'job_way'
-            ]
+            attributes: ['id', 'created_at', 'job_name', 'job_salary', 'job_gender', 'job_way']
         }];
         data.distinct = true;
 

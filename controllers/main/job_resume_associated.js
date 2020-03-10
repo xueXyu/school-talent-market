@@ -34,7 +34,43 @@ class JobResumeAssociatedController extends RestController {
             data.where = data.where || {};
             data.where.resume_id = params.resume_id;
         }
+
+        data.include = [{
+            model: this.models['User'],
+            as: 'user',
+            attributes: ['id', 'created_at', 'user_name', 'user_gender', 'user_age', 'user_phone', 'user_img']
+        }, {
+            model: this.models['Company'],
+            as: 'company',
+            attributes: ['id', 'created_at', 'company_name', 'company_phone', 'company_contacts', 'company_create', 'company_size', 'company_address', 'company_site', 'company_img']
+        }, {
+            model: this.models['CompanyJob'],
+            as: 'jobs',
+            attributes: ['id', 'created_at', 'job_name', 'job_salary', 'job_gender', 'job_way']
+        }, {
+            model: this.models['UserResume'],
+            as: 'resumes',
+            attributes: ['id', 'created_at', 'resume_name', 'resume_email', 'resume_education', 'resume_working_years']
+        }];
+
+        data.distinct = true;
+
         res.reply(this.model.findAndCountAll(data));
+    }
+
+    /**
+     * 创建对象
+     */
+    create(req, res) {
+        let data = req.body;
+        if (this.restRules.create) {
+            const validate = joi.validate(req.body, this.restRules.create);
+            if (validate.error) {
+                return res.replyError(validate.error);
+            }
+            data = validate.value;
+        }
+        res.reply(this.model.create(data));
     }
 }
 

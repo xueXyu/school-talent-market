@@ -91,7 +91,7 @@ CREATE TABLE `job_resume_associated` (
 	`user_id` int(11) NOT NULL COMMENT '用户表id',
 	`job_id` int(11) NOT NULL COMMENT '职位表id',
 	`resume_id` int(11) NOT NULL COMMENT '简历表id',
-	`status` tinyint(1) DEFAULT 0 COMMENT '简历状态 0 已投递 1 录用 2 不合适',
+	`status` char(5) NOT NULL DEFAULT '申请中' COMMENT '简历状态 申请中 通过 未通过',
 	PRIMARY KEY (`id`),
 	FOREIGN KEY (`company_id`) REFERENCES `company` (`id`) ON DELETE CASCADE,
 	FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE,
@@ -107,9 +107,11 @@ CREATE TABLE `user_like_job` (
 
 	`user_id` int(11) NOT NULL COMMENT '用户表id',
 	`job_id` int(11) NOT NULL COMMENT '职位表id',
+	`company_id` int(11) NOT NULL COMMENT '公司表id',
 	PRIMARY KEY (`id`),
 	FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE,
-	FOREIGN KEY (`job_id`) REFERENCES `company_job` (`id`) ON DELETE CASCADE
+	FOREIGN KEY (`job_id`) REFERENCES `company_job` (`id`) ON DELETE CASCADE,
+	FOREIGN KEY (`company_id`) REFERENCES `company` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户收藏公司职位表';
 
 CREATE TABLE `news` (
