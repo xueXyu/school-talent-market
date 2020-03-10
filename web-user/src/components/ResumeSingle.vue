@@ -50,18 +50,6 @@
                     <!-- Job Sidebar Wrap Start -->
                     <div class="col-lg-4 col-12 mb-5">
                         <div class="sidebar-wrap">
-                            <!-- Sidebar (Apply Buttons) Start -->
-                            <div class="sidebar-widget" v-if="this.store.state.userRole=='company'">
-                                <div class="inner">
-                                    <div class="row m-n2">
-                                        <div class="col-xl-auto col-lg-12 col-sm-auto col-12 p-2">
-                                            <el-button type="primary" @click="pass">审核通过</el-button>
-                                            <el-button type="info" plain @click="notpass">审核不通过</el-button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Sidebar (Apply Buttons) End -->
 
                             <!-- Sidebar (Job Overview) Start -->
                             <div class="sidebar-widget">
@@ -110,32 +98,6 @@
         },
         methods: {
             async getResume() {
-                try {
-                    await this.http.get(this.api.UserResume + '/' + this.$route.params.resumeId).then(res => {
-                        if (res.code == 0) {
-                            this.resumeInfo = res.data;
-                        } else {
-                            this.$message.error(res.message);
-                        }
-                    });
-                } catch (error) {
-                    console.error(error);
-                }
-            },
-            async pass() {
-                try {
-                    await this.http.get(this.api.UserResume + '/' + this.$route.params.resumeId).then(res => {
-                        if (res.code == 0) {
-                            this.resumeInfo = res.data;
-                        } else {
-                            this.$message.error(res.message);
-                        }
-                    });
-                } catch (error) {
-                    console.error(error);
-                }
-            },
-            async notpass() {
                 try {
                     await this.http.get(this.api.UserResume + '/' + this.$route.params.resumeId).then(res => {
                         if (res.code == 0) {

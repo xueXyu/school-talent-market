@@ -34,6 +34,10 @@ class JobResumeAssociatedController extends RestController {
             data.where = data.where || {};
             data.where.resume_id = params.resume_id;
         }
+        if (params.status && (params.status === '申请中' || params.status === '通过' || params.status === '未通过')) {
+            data.where = data.where || {};
+            data.where.status = params.status;
+        }
 
         data.include = [{
             model: this.models['User'],

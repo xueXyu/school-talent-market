@@ -166,7 +166,7 @@
                         cancelButtonText: '取消',
                         type: 'warning'
                     }).then(() => {
-                        this.$router.push({name:'CreateResume'});
+                        this.$router.push({name: 'CreateResume'});
                     }).catch(() => {
                     });
                 }
@@ -248,8 +248,9 @@
                 } else {
                     try {
                         await this.http.post(this.api.UserLikeJob, {
-                            user_id: this.store.state.userInfo.id,
-                            job_id: this.$route.params.jobId,
+                            user_id: parseInt(this.store.state.userInfo.id),
+                            job_id: parseInt(this.$route.params.jobId),
+                            company_id: parseInt(this.jobInfo.company.id),
                         }).then(res => {
                             if (res.code == 0) {
                                 this.$message.success('收藏成功~');
@@ -266,8 +267,9 @@
             async isLikeJobFunc() {
                 try {
                     await this.http.get(this.api.UserLikeJob, {
-                        user_id: this.store.state.userInfo.id,
-                        job_id: this.$route.params.jobId,
+                        user_id: parseInt(this.store.state.userInfo.id),
+                        job_id: parseInt(this.$route.params.jobId),
+                        company_id: parseInt(this.jobInfo.company.id),
                     }).then(res => {
                         if (res.code == 0) {
                             if (!_.isEmpty(res.data)) {
