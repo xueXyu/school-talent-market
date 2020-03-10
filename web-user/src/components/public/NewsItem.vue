@@ -4,7 +4,7 @@
         <div class="blog">
             <div class="media">
                 <el-image
-                    style="width: 100%;"
+                    style="width:370px; height: 240px;"
                     :src="this.util.getHost()+newsItemData.title_img"
                     fit="fit"></el-image>
             </div>

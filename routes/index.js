@@ -21,13 +21,23 @@ router.get('/', function (req, res, next) {
 });
 
 // 使用rest的CURD
-util.restRoute('/news', router, newsController);
+// util.restRoute('/news', router, newsController);
 util.restRoute('/user', router, userController);
 util.restRoute('/user-resume', router, userResumeController);
 util.restRoute('/user-like-job', router, userLikeJobController);
 // util.restRoute('/company', router, companyController);
 // util.restRoute('/company-job', router, companyJobController);
 util.restRoute('/job-to-resume', router, jobResumeAssController);
+
+util.buildRoute([
+    {path: '/news/home-statistics', method: 'get', target: 'homeStatistics'},
+    {path: '/news/home-feedback', method: 'get', target: 'homeFeedback'},
+    {path: '/news', method: 'get', target: 'index'},
+    {path: '/news/:id', method: 'get', target: 'show'},
+    {path: '/news', method: 'post', target: 'create'},
+    {path: '/news/:id', method: 'put', target: 'update'},
+    {path: '/news', method: 'delete', target: 'destroy'},
+], router, newsController);
 
 util.buildRoute([
     {path: '/company/search', method: 'post', target: 'search'},

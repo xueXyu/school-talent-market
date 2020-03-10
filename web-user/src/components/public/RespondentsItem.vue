@@ -2,10 +2,10 @@
     <!-- Testimonial Start -->
     <div class="col">
         <div class="testimonial text-center text-white">
-            <p>求职者反馈求职者反馈求职者反馈求职者反馈求职者反馈求职者反馈求职者反馈求职者反馈求职者反馈</p>
-            <img src="static/images/authors/author-1.jpg" alt="">
-            <h6 class="name">李二妞</h6>
-            <span class="title">华北销售负责人</span>
+            <p>{{feedbaItem.feedback}}</p>
+            <img :src="feedbaItem.head" alt="">
+            <h6 class="name">{{feedbaItem.name}}</h6>
+            <span class="title">{{feedbaItem.title}}</span>
         </div>
     </div>
     <!-- Testimonial End -->
@@ -13,7 +13,8 @@
 
 <script>
     export default {
-        name: "RespondentsItem"
+        name: "RespondentsItem",
+        props: ['feedbaItem']
     }
 </script>
 

@@ -11,4 +11,6 @@ export default {
     CompanyJob: '/company-job',
     CompanyJobSeearch: '/company-job/search',
     Job2Resume: '/job-to-resume',
+    HomeStatistics: '/news/home-statistics',
+    HomeFeedback: '/news/home-feedback',
 }

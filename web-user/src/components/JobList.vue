@@ -50,7 +50,7 @@
                                         <el-form-item label="职位名称" class="job-list-search-label">
                                             <el-input v-model="searchForm.job_name"></el-input>
                                         </el-form-item>
-                                        <el-form-item label="工作性质" prop="job_way" required>
+                                        <el-form-item label="工作性质">
                                             <el-select v-model="searchForm.job_way" auto-complete="off">
                                                 <el-option label="所有类型" value="所有类型"></el-option>
                                                 <el-option label="全职" value="全职"></el-option>
@@ -112,6 +112,22 @@
                 this.current_page = event;
                 this.getJobList();
             },
+            homeSearchJobs() {
+                // 是否有首页搜索跳转
+                if (!_.isEmpty(this.$route.params)) {
+                    this.searchWhere = this.$route.params;
+                    if (!_.isEmpty(this.searchWhere.job_name)) {
+                        this.searchForm.job_name = this.searchWhere.job_name;
+                    }
+                    if (!_.isEmpty(this.searchWhere.job_way)) {
+                        this.searchForm.job_way = this.searchWhere.job_way;
+                    }
+
+                    this.searchJobList();
+                } else {
+                    this.getJobList();
+                }
+            },
             searchJobs() {
                 var searchWhere = {};
                 _.forEach(this.searchForm, function (value, key) {
@@ -164,7 +180,7 @@
             },
         },
         mounted() {
-            this.getJobList();
+            this.homeSearchJobs();
         }
     }
 </script>
