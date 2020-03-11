@@ -3,10 +3,12 @@
     <div class="col-lg-4 col-md-6 col-12">
         <div class="blog">
             <div class="media">
-                <el-image
-                    style="width:370px; height: 240px;"
-                    :src="this.util.getHost()+newsItemData.title_img"
-                    fit="fit"></el-image>
+                <router-link :to="{name:'NewsSingle',params: {newsId: newsItemData.id}}">
+                    <el-image
+                        style="width:370px; height: 240px;"
+                        :src="this.util.getHost()+newsItemData.title_img"
+                        fit="fit"></el-image>
+                </router-link>
             </div>
             <div class="content">
                 <h6 class="title">

@@ -36,39 +36,12 @@
                             </li>
                             <li class="has-children">
                                 <router-link :to="{name:'JobList'}">招聘</router-link>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <router-link :to="{name:'JobList'}">招聘列表</router-link>
-                                    </li>
-                                    <li>
-                                        <router-link :to="{name:'JobSingle',params:{jobId:1}}">招聘详情</router-link>
-                                    </li>
-                                    <li>
-                                        <router-link :to="{name:'ResumeSingle',params:{resumeId:1}}">简历详情</router-link>
-                                    </li>
-                                </ul>
                             </li>
                             <li>
                                 <router-link :to="{name:'Company'}">公司</router-link>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <router-link :to="{name:'Company'}">公司列表</router-link>
-                                    </li>
-                                    <li>
-                                        <router-link :to="{name:'CompanySingle',params:{companyId:10}}">公司详情</router-link>
-                                    </li>
-                                </ul>
                             </li>
                             <li>
                                 <router-link :to="{name:'News'}">新闻&公告</router-link>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <router-link :to="{name:'News'}">新闻&公告列表</router-link>
-                                    </li>
-                                    <li>
-                                        <router-link :to="{name:'NewsSingle',params:{newsId:1}}">新闻&公告详情</router-link>
-                                    </li>
-                                </ul>
                             </li>
                             <li>
                                 <router-link :to="{name:'AboutUs'}">关于我们</router-link>
@@ -81,29 +54,29 @@
                                     {{this.store.state.userInfo.user_account || this.store.state.userInfo.company_account}}-个人中心
                                 </span>
                                 <ul class="sub-menu">
-                                    <li>
+                                    <li v-if="this.store.state.userRole==='user'">
                                         <router-link :to="{name:'EditUserInfo'}">修改个人信息</router-link>
                                     </li>
-                                    <li>
+                                    <li v-if="this.store.state.userRole==='company'">
                                         <router-link :to="{name:'EditCompanyInfo'}">修改公司信息</router-link>
                                     </li>
-                                    <li>
+                                    <li v-if="this.store.state.userRole==='company'">
                                         <router-link :to="{name:'CreateJob'}">创建招聘</router-link>
                                     </li>
-                                    <li>
+                                    <li v-if="this.store.state.userRole==='user'">
                                         <router-link :to="{name:'CreateResume'}">创建简历</router-link>
                                     </li>
-                                    <li>
-                                        <router-link :to="{name:'UserManagementJobs'}">用户-管理职位</router-link>
+                                    <li v-if="this.store.state.userRole==='user'">
+                                        <router-link :to="{name:'UserManagementJobs'}">管理职位</router-link>
                                     </li>
-                                    <li>
-                                        <router-link :to="{name:'UserManagementResume'}">用户-管理简历</router-link>
+                                    <li v-if="this.store.state.userRole==='user'">
+                                        <router-link :to="{name:'UserManagementResume'}">管理简历</router-link>
                                     </li>
-                                    <li>
-                                        <router-link :to="{name:'CompanyManagementJobs'}">公司-管理招聘</router-link>
+                                    <li v-if="this.store.state.userRole==='company'">
+                                        <router-link :to="{name:'CompanyManagementJobs'}">管理招聘</router-link>
                                     </li>
-                                    <li>
-                                        <router-link :to="{name:'CompanyManagementResume'}">公司-管理简历</router-link>
+                                    <li v-if="this.store.state.userRole==='company'">
+                                        <router-link :to="{name:'CompanyManagementResume'}">管理简历</router-link>
                                     </li>
                                     <li>
                                         <a @click="loginOut">退出登录</a>

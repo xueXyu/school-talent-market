@@ -61,7 +61,7 @@
                     <div class="col-lg-4 col-12 mb-5">
                         <div class="sidebar-wrap">
                             <!-- Sidebar (Apply Buttons) Start -->
-                            <div class="sidebar-widget" v-if="this.store.state.userRole=='user'">
+                            <div class="sidebar-widget" v-if="this.store.state.userRole==='user'">
                                 <div class="inner">
                                     <div class="row m-n2">
                                         <div class="col-xl-auto col-lg-12 col-sm-auto col-12 p-2">
@@ -184,6 +184,8 @@
                     await this.http.get(this.api.CompanyJob + '/' + this.$route.params.jobId).then(res => {
                         if (res.code == 0) {
                             this.jobInfo = res.data;
+                            this.isLikeJobFunc();
+                            this.isApplyForJobFunc();
                         } else {
                             this.$message.error(res.message);
                         }
@@ -269,7 +271,6 @@
                     await this.http.get(this.api.UserLikeJob, {
                         user_id: parseInt(this.store.state.userInfo.id),
                         job_id: parseInt(this.$route.params.jobId),
-                        company_id: parseInt(this.jobInfo.company.id),
                     }).then(res => {
                         if (res.code == 0) {
                             if (!_.isEmpty(res.data)) {
@@ -289,8 +290,6 @@
             this.getJob();
             if (this.store.state.isLogin) {
                 this.getUserInfo();
-                this.isLikeJobFunc();
-                this.isApplyForJobFunc();
             }
         }
     }

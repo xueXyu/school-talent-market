@@ -24,5 +24,7 @@
 </script>
 
 <style>
-
+    body {
+        overflow: auto !important;
+    }
 </style>

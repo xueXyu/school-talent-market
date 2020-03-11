@@ -57,6 +57,10 @@
 
                         <el-table-column v-if="activeState==='likejob'" fixed="right" label="操作">
                             <template slot-scope="scope" v-if="activeState==='likejob'">
+                                <el-button type="info"
+                                           @click.native.prevent="singleRow(scope.$index, scope.row)"
+                                           plain>查看
+                                </el-button>
                                 <el-button type="primary"
                                            @click.native.prevent="editRow(scope.$index, scope.row)"
                                            plain>取消收藏
@@ -135,6 +139,12 @@
             filterState(value, row) {
                 return row.status === value;
             },
+            singleRow(index, row) {
+                this.$router.push({
+                    name: 'JobSingle',
+                    params: {jobId: row.jobs.id}
+                });
+            },
             editRow(index, row) {
                 this.cancelLikeJob(row.id);
             },
@@ -188,7 +198,7 @@
                 try {
                     await this.http.delete(this.api.UserLikeJob + '/' + id).then(res => {
                         if (res.code == 0) {
-                            this.$message.error('取消收藏成功！');
+                            this.$message.success('取消收藏成功！');
                             this.getLikeJobList();
                         } else {
                             this.$message.error(res.message);

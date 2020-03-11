@@ -14,7 +14,7 @@
                     <!-- Job List Details Start -->
                     <div class="col-lg-8 col-12 mb-5 pr-lg-5">
                         <div class="job-list-details">
-                            <div v-on:click.prevent.self="doThat" v-on:click.self.prevent="doThat">
+                            <div v-on:click.prevent.self="" v-on:click.self.prevent="">
                                 <!-- Job List Start -->
                                 <span class="job-list">
                                     <div class="company-logo col-auto">
