@@ -5,15 +5,17 @@
 
         <!-- Slider Section Start -->
         <div class="slider-section section">
-            <!--        <parallax>-->
-            <!--            <img src="static/images/slider/slider-1.jpg" style="z-index: 0;">-->
-            <!--        </parallax>-->
             <div class="slide-item bg-parallax" style="background-image: url('static/images/slider/slider-1.jpg');"
                  data-overlay="50">
                 <div class="container">
                     <div class="slider-content text-center">
                         <h2 class="title">千里马常有&nbsp;&nbsp;而伯乐不常有</h2>
-                        <p>全站已发布 <span>3,527</span> 个职位</p>
+                        <p class="home-count-p" v-if="homeStatistics">全站已发布
+                            <span class="home-count-span">
+                                <CountUp :countup-start="0" :countup-end="homeStatistics.count_job"></CountUp>
+                            </span>
+                            个职位
+                        </p>
                     </div>
                 </div>
             </div>
@@ -28,23 +30,6 @@
                     <!-- Job Search Form Start -->
                     <div class="job-search-form">
                         <div class="row mb-n3">
-
-                            <!--                                <div class="col-lg-auto col-sm-6 col-12 flex-grow-1 mb-3">-->
-                            <!--                                    <input type="text" placeholder="例如：前端工程师">-->
-                            <!--                                </div>-->
-
-                            <!--                                <div class="col-lg-auto col-sm-6 col-12 flex-grow-1 mb-3">-->
-                            <!--                                    <select>-->
-                            <!--                                        <option value="1">全职</option>-->
-                            <!--                                        <option value="2">兼职</option>-->
-                            <!--                                        <option value="3">实习</option>-->
-                            <!--                                    </select>-->
-                            <!--                                </div>-->
-
-                            <!--                                <div class="col-lg-auto col-sm-6 col-12 flex-grow-1 mb-3">-->
-                            <!--                                    <button class="btn btn-primary">搜索</button>-->
-                            <!--                                </div>-->
-
                             <el-form ref="searchForm" :model="searchForm" label-position="top"
                                      label-width="100%">
                                 <el-form-item label="" class="home-search-label">
@@ -362,6 +347,17 @@
 </script>
 
 <style scoped>
+    .section .bg-parallax .container .slider-content .home-count-p {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .section .bg-parallax .container .slider-content .home-count-p .home-count-span {
+        width: 100px;
+        text-align: center;
+    }
+
     .job-search-form .row .el-form {
         width: 100%;
         display: flex;

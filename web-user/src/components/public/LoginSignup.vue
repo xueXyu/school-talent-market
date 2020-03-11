@@ -126,6 +126,14 @@
                     callback();
                 }
             };
+            var checkUserName = (rule, value, callback) => {
+                var patt = /^[a-zA-Z0-9]{3,30}$/;
+                if (patt.test(value)) {
+                    callback();
+                } else {
+                    callback(new Error('密码只能包含数字和字母!'));
+                }
+            };
             return {
                 openLoginSign: false,
                 activeLogin: true,
@@ -146,7 +154,8 @@
                 signupRules: {
                     username: [
                         {required: true, message: '请输入账号', trigger: 'blur'},
-                        {min: 3, max: 30, message: '账号长度在 3 到 30 个字符', trigger: 'blur'}
+                        {min: 3, max: 30, message: '账号长度在 3 到 30 个字符', trigger: 'blur'},
+                        {validator: checkUserName, trigger: 'blur'}
                     ],
                     password: [
                         {required: true, message: '请输入密码', trigger: 'blur'},
@@ -162,7 +171,8 @@
                 loginRules: {
                     username: [
                         {required: true, message: '请输入账号', trigger: 'blur'},
-                        {min: 3, max: 30, message: '账号长度在 3 到 30 个字符', trigger: 'blur'}
+                        {min: 3, max: 30, message: '账号长度在 3 到 30 个字符', trigger: 'blur'},
+                        {validator: checkUserName, trigger: 'blur'}
                     ],
                     password: [
                         {required: true, message: '请输入密码', trigger: 'blur'},
@@ -194,7 +204,7 @@
                 }
             },
             forgotPassword() {
-                this.$message.success('哈哈哈，忘记就忘记吧~');
+                this.$message.success('所有账号密码都是：123456');
             },
             submitForm(formName) {
                 this.$refs[formName].validate((valid) => {
@@ -234,6 +244,7 @@
                             } else {
                                 this.$message.error(res.message);
                             }
+                            this.signupLoading = false;
                         });
                 } catch (error) {
                     console.error(error);
@@ -249,6 +260,7 @@
                         } else {
                             this.$message.error(res.message);
                         }
+                        this.loginLoading = false;
                     });
                 } catch (error) {
                     console.error(error);

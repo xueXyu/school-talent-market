@@ -123,7 +123,7 @@
 </template>
 
 <script>
-    import LoginSignup from "./LoginSignup"
+    import LoginSignup from "./LoginSignup";
 
     export default {
         name: "Header",

@@ -102,8 +102,15 @@
 </template>
 
 <script>
+    import '../../../src/assets/js/plugins/jquery.scrollUp.min';
+
     export default {
-        name: "Footer"
+        name: "Footer",
+        mounted() {
+            $.scrollUp({
+                scrollText: '<i class="fa fa-long-arrow-up"></i>',
+            });
+        }
     }
 </script>
 

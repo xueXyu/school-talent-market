@@ -20,8 +20,8 @@ class SessionController extends BaseController {
      */
     create(req, res) {
         const rules = Joi.object({
-            // 3 - 30 个 数字、字符
-            username: Joi.string().alphanum().min(3).max(30).required(),
+            // 3 - 30 个 数字字母
+            username: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).required(),
             // 6 - 30 位 字母数字组合密码
             password: Joi.string().regex(/^[a-zA-Z0-9]{6,30}$/).required(),
             // 只有：用户，公司
