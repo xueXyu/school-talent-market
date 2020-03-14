@@ -29,7 +29,7 @@
                             class="pagination"
                             :hide-on-single-page="true"
                             background
-                            layout="prev, pager, next"
+                            layout="total,prev, pager, next"
                             @current-change="currentChange"
                             :page-size="page_size"
                             :total="page_count">

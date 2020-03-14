@@ -12,6 +12,27 @@ class UserController extends RestController {
     }
 
     /**
+     * 分页返回所有对象
+     */
+    index(req, res) {
+        const params = req.query || {};
+        const data = {
+            offset: +params.offset || 0,
+            limit: +params.limit || 10
+        };
+        if (params.where && _.isObject(params.where)) {
+            data.where = params.where;
+        }
+        if (params.order && _.isObject(params.order)) {
+            data.order = [
+                params.order
+            ];
+        }
+
+        res.reply(this.model.findAndCountAll(data));
+    }
+
+    /**
      * 查找单个对象
      */
     show(req, res) {
@@ -29,6 +50,8 @@ class UserController extends RestController {
         };
         res.reply(this.model.findOne(data));
     }
+
+
 
     /**
      * 用户和公司注册
@@ -91,6 +114,57 @@ class UserController extends RestController {
 
 
         res.reply(result);
+    }
+
+    /**
+     * 创建对象
+     */
+    createUser(req, res) {
+        let data = req.body;
+        if (this.restRules.create) {
+            const validate = Joi.validate(req.body, this.restRules.create);
+            if (validate.error) {
+                return res.replyError(validate.error);
+            }
+            data = validate.value;
+        }
+        res.reply(this.model.create(data));
+    }
+
+    /**
+     * 更新对象
+     */
+    update(req, res) {
+        if (!req.params || !req.params.id) {
+            return res.replyError('missing id parameter');
+        }
+
+        let data = req.body;
+        if (this.restRules.update) {
+            const validate = Joi.validate(req.body, this.restRules.update);
+            if (validate.error) {
+                return res.replyError(validate.error);
+            }
+            data = validate.value;
+        }
+        res.reply(this.model.update(data, {where: {id: req.params.id}}));
+    }
+
+    /**
+     * 删除单个对象
+     */
+    destroy(req, res) {
+        if (!req.params || !req.params.id) {
+            return res.replyError('missing id parameter');
+        }
+
+        this.model.findByPk(req.params.id).then((obj) => {
+            if (obj) {
+                res.reply(obj.destroy());
+            } else {
+                res.replyError(this.modelName + ' not found');
+            }
+        });
     }
 }
 

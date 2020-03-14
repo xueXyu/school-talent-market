@@ -20,7 +20,7 @@
         <el-input
           ref="username"
           v-model="loginForm.username"
-          placeholder="管理员账号"
+          placeholder="账号"
           name="username"
           type="text"
           tabindex="1"
@@ -53,7 +53,7 @@
         type="primary"
         style="width:100%;margin-bottom:30px;"
         @click.native.prevent="handleLogin"
-      >登 录
+      >登录
       </el-button>
 
     </el-form>
@@ -82,8 +82,8 @@ export default {
     }
     return {
       loginForm: {
-        username: '',
-        password: ''
+        username: 'admin',
+        password: '123456'
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
@@ -124,26 +124,10 @@ export default {
             this.loading = false
           })
         } else {
-          console.log('error submit!!')
+          console.log('登录出错!!')
           return false
         }
       })
-    },
-    async adminLogin() {
-      try {
-        await this.http.post(this.api.Sessions, this.loginForm).then(res => {
-          if (res.code === 0) {
-            this.$message.success('登录成功')
-            this.usertype = this.loginForm.usertype
-            this.submitSuccess(res.data)
-          } else {
-            this.$message.error(res.message)
-          }
-          this.loginLoading = false
-        })
-      } catch (error) {
-        console.error(error)
-      }
     }
   }
 }

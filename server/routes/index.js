@@ -22,12 +22,21 @@ router.get('/', function (req, res, next) {
 
 // 使用rest的CURD
 // util.restRoute('/news', router, newsController);
-util.restRoute('/user', router, userController);
+// util.restRoute('/user', router, userController);
 util.restRoute('/user-resume', router, userResumeController);
 util.restRoute('/user-like-job', router, userLikeJobController);
 // util.restRoute('/company', router, companyController);
 // util.restRoute('/company-job', router, companyJobController);
 util.restRoute('/job-to-resume', router, jobResumeAssController);
+
+util.buildRoute([
+    {path: '/user/create', method: 'post', target: 'createUser'},
+    {path: '/user', method: 'get', target: 'index'},
+    {path: '/user/:id', method: 'get', target: 'show'},
+    {path: '/user', method: 'post', target: 'create'},
+    {path: '/user/:id', method: 'put', target: 'update'},
+    {path: '/user/:id', method: 'delete', target: 'destroy'},
+], router, userController);
 
 util.buildRoute([
     {path: '/news/home-statistics', method: 'get', target: 'homeStatistics'},
@@ -59,9 +68,12 @@ util.buildRoute([
 
 // 自定义指定到方法，也可以重定义CURD
 util.buildRoute([
+    {path: '/admin/login', method: 'post', target: 'login'},
+    {path: '/admin/info', method: 'get', target: 'info'},
+    {path: '/admin/logout', method: 'post', target: 'logout'},
+
     {path: '/admin', method: 'get', target: 'index'},
     {path: '/admin/:id', method: 'get', target: 'show'},
-    {path: '/admin/login', method: 'post', target: 'login'},
     {path: '/admin', method: 'post', target: 'create'},
     {path: '/admin/:id', method: 'put', target: 'updatePassword'},
     {path: '/admin/:id', method: 'delete', target: 'destroy'},

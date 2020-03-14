@@ -73,7 +73,7 @@ function reply(req, res, next) {
         console.error('Error', err);
 
         let message = err.message || err;
-        let status = err.status || 400;
+        let status = err.status || 200;
 
         // process joi error
         if (err.details && err.details.length) {
