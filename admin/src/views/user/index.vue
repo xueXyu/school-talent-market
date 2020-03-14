@@ -116,8 +116,7 @@
 </template>
 
 <script>
-// createUser, updateUser, deleteUser
-import { userList, createUser, updateUser } from '@/api/user'
+import { userList, createUser, updateUser, deleteUser } from '@/api/user'
 import { isvalidPhone } from '@/utils/index'
 import Uploader from '../public/Uploader'
 
@@ -294,8 +293,24 @@ export default {
       })
     },
     handleDelete(row) {
+      this.$confirm('此操作将永久删除用户数据, 是否继续?', '删除提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.deleteData(row.id)
+      }).catch(() => {
+      })
     },
-    deleteData(row) {
+    deleteData(id) {
+      deleteUser(id).then(res => {
+        if (res.code === 0) {
+          this.$message.success('用户信息，删除成功')
+          this.fetchData()
+        } else {
+          this.$message.error(res.message)
+        }
+      })
     },
     getUploadUrl(data) {
       // console.log('父组件获取URL：'+data);

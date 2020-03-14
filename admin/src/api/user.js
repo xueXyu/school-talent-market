@@ -46,11 +46,10 @@ export function updateUser(id, data) {
     data
   })
 }
-//
-// export function deleteUser(params) {
-//   return request({
-//     url: '/user',
-//     method: 'delete',
-//     params: params
-//   })
-// }
+
+export function deleteUser(id) {
+  return request({
+    url: '/user/' + id,
+    method: 'delete'
+  })
+}
