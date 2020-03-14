@@ -31,11 +31,11 @@
     watch: {
       imgurl: {
         handler(url) {
-          // if (!_.isEmpty(url)) {
-          //   this.imageUrl = process.env.VUE_APP_BASE_API + url
-          // } else {
-          //   this.imageUrl = ''
-          // }
+          if (!_.isEmpty(url)) {
+            this.imageUrl = process.env.VUE_APP_BASE_API + url
+          } else {
+            this.imageUrl = ''
+          }
         },
         immediate: true
       }

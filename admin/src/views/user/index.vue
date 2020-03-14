@@ -2,7 +2,7 @@
   <div class="app-container">
     <div class="add-user">
       <el-button type="success" @click="handleCreate">
-        添加用户
+        新增用户
       </el-button>
     </div>
 
@@ -106,7 +106,7 @@
         <el-button @click="dialogVisible = false">
           取消
         </el-button>
-        <el-button type="primary" :loading="buttonLoading" @click="dialogStatus==='create'?createData():updateData()">
+        <el-button type="primary" @click="dialogStatus==='create'?createData():updateData()">
           确认
         </el-button>
       </div>
@@ -119,8 +119,6 @@
 import { userList, createUser, updateUser, deleteUser } from '@/api/user'
 import { isvalidPhone } from '@/utils/index'
 import Uploader from '../public/Uploader'
-
-// const _ = require('lodash')
 
 export default {
   components: {
@@ -136,7 +134,7 @@ export default {
         callback()
       }
     }
-    var checkUserName = (rule, value, callback) => {
+    var checkUsername = (rule, value, callback) => {
       var patt = /^[a-zA-Z0-9]{3,30}$/
       if (patt.test(value)) {
         callback()
@@ -157,7 +155,6 @@ export default {
         'create': '新增用户',
         'update': '修改用户信息'
       },
-      buttonLoading: false,
       temp: {
         id: null,
         user_account: null,
@@ -172,7 +169,7 @@ export default {
         user_account: [
           { required: true, message: '请输入账号', trigger: 'blur' },
           { min: 3, max: 30, message: '账号长度在 3 到 30 个字符', trigger: 'blur' },
-          { validator: checkUserName, trigger: 'blur' }
+          { validator: checkUsername, trigger: 'blur' }
         ],
         user_password: [
           { required: true, message: '请输入密码', trigger: 'blur' },
