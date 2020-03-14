@@ -160,7 +160,7 @@
 
                     <div style="width: 100%;">
                         <el-carousel height="285px" indicator-position="none" arrow="always">
-                            <el-carousel-item v-for="(item,index) in homeFeedback">
+                            <el-carousel-item v-for="(item,index) in homeFeedback" :key="index">
                                 <!-- Testimonial Start -->
                                 <RespondentsItem :feedba-item="item"></RespondentsItem>
                                 <!-- Testimonial End -->
