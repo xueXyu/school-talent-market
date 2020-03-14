@@ -38,3 +38,10 @@ export function siteCount() {
   })
 }
 
+export function siteDailyIncrease() {
+  return request({
+    url: '/news/daily-increase',
+    method: 'get'
+  })
+}
+

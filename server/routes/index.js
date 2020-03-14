@@ -39,6 +39,7 @@ util.buildRoute([
 ], router, userController);
 
 util.buildRoute([
+    {path: '/news/daily-increase', method: 'get', target: 'dailyIncrease'},
     {path: '/news/home-statistics', method: 'get', target: 'homeStatistics'},
     {path: '/news/home-feedback', method: 'get', target: 'homeFeedback'},
     {path: '/news', method: 'get', target: 'index'},
