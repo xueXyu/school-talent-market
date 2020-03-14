@@ -30,6 +30,57 @@ class NewsController extends RestController {
     }
 
     /**
+     * 创建对象
+     */
+    create(req, res) {
+        let data = req.body;
+        if (this.restRules.create) {
+            const validate = joi.validate(req.body, this.restRules.create);
+            if (validate.error) {
+                return res.replyError(validate.error);
+            }
+            data = validate.value;
+        }
+        res.reply(this.model.create(data));
+    }
+
+    /**
+     * 更新对象
+     */
+    update(req, res) {
+        if (!req.params || !req.params.id) {
+            return res.replyError('missing id parameter');
+        }
+
+        let data = req.body;
+        if (this.restRules.update) {
+            const validate = joi.validate(req.body, this.restRules.update);
+            if (validate.error) {
+                return res.replyError(validate.error);
+            }
+            data = validate.value;
+        }
+        res.reply(this.model.update(data, {where: {id: req.params.id}}));
+    }
+
+    /**
+     * 删除单个对象
+     */
+    destroy(req, res) {
+        if (!req.params || !req.params.id) {
+            return res.replyError('missing id parameter');
+        }
+
+        this.model.findByPk(req.params.id).then((obj) => {
+            if (obj) {
+                res.reply(obj.destroy());
+            } else {
+                res.replyError(this.modelName + ' not found');
+            }
+        });
+    }
+
+    /**
      * 统计数据
      */
     homeStatistics(req, res) {

@@ -244,7 +244,7 @@ export default {
     },
     getQEditorContent(data) {
       // 接受子组件的传值
-      this.ruleForm.company_detail = data
+      this.temp.job_description = data
     }
   }
 }
