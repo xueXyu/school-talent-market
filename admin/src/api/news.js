@@ -30,3 +30,11 @@ export function deleteNews(id) {
     method: 'delete'
   })
 }
+
+export function siteCount() {
+  return request({
+    url: '/news/home-statistics',
+    method: 'get'
+  })
+}
+

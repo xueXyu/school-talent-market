@@ -1,18 +1,33 @@
 <template>
   <div class="dashboard-container">
     <div class="dashboard-text">欢迎来到：《校园人才网管理后台》</div>
+    <panel-group :props-data="siteCount" />
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { siteCount } from '@/api/news'
+import PanelGroup from '../public/PanelGroup'
 
 export default {
   name: 'Dashboard',
-  computed: {
-    ...mapGetters([
-      'name'
-    ])
+  components: {
+    PanelGroup
+  },
+  data() {
+    return {
+      siteCount: null
+    }
+  },
+  mounted() {
+    this.fetchData()
+  },
+  methods: {
+    fetchData() {
+      siteCount().then(res => {
+        this.siteCount = res.data
+      })
+    }
   }
 }
 </script>
