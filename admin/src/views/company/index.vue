@@ -35,7 +35,7 @@
           />
         </template>
       </el-table-column>
-      <el-table-column prop="company_img" label="公司照片" align="center" width="200">
+      <el-table-column prop="company_img" label="公司照片" align="center" width="120">
         <template slot-scope="scope">
           <el-image
             style="width: 70px; height: 70px; line-height: 70px;"
