@@ -138,7 +138,7 @@
         <el-button @click="dialogVisible = false">
           取消
         </el-button>
-        <el-button type="primary" @click="dialogStatus==='create'?createData():updateData()">
+        <el-button type="primary" :loading="buttonLoading" @click="dialogStatus==='create'?createData():updateData()">
           确认
         </el-button>
       </div>
@@ -179,6 +179,7 @@ export default {
     return {
       companyList: null,
       listLoading: true,
+      buttonLoading: false,
       imgHost: process.env.VUE_APP_BASE_API,
       current_page: 1,
       page_count: 1,
@@ -296,6 +297,7 @@ export default {
       })
     },
     createData() {
+      this.buttonLoading = true
       this.$refs['dataForm'].validate((valid) => {
         if (valid) {
           delete this.temp.id
@@ -307,6 +309,7 @@ export default {
             } else {
               this.$message.error(res.message)
             }
+            this.buttonLoading = false
           })
         }
       })
@@ -321,6 +324,7 @@ export default {
       })
     },
     updateData() {
+      this.buttonLoading = true
       this.$refs['dataForm'].validate((valid) => {
         if (valid) {
           var id = this.temp.id
@@ -334,6 +338,7 @@ export default {
             } else {
               this.$message.error(res.message)
             }
+            this.buttonLoading = false
           })
         }
       })

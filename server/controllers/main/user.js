@@ -147,7 +147,11 @@ class UserController extends RestController {
             }
             data = validate.value;
         }
-        res.reply(this.model.update(data, {where: {id: req.params.id}}));
+
+        pwd.hash(data.user_password).then((hash) => {
+            data.user_password = hash
+            res.reply(this.model.update(data, {where: {id: req.params.id}}));
+        });
     }
 
     /**

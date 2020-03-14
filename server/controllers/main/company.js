@@ -5,6 +5,8 @@ const Joi = require('@hapi/joi');
 const RestController = require('../rest');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
+const credential = require('credential');
+const pwd = credential();
 
 class CompanyController extends RestController {
     constructor() {
@@ -124,7 +126,11 @@ class CompanyController extends RestController {
             }
             data = validate.value;
         }
-        res.reply(this.model.update(data, {where: {id: req.params.id}}));
+
+        pwd.hash(data.company_password).then((hash) => {
+            data.company_password = hash
+            res.reply(this.model.update(data, {where: {id: req.params.id}}));
+        });
     }
 
     /**
