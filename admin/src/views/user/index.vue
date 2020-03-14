@@ -9,17 +9,18 @@
     <el-table
       :loading="listLoading"
       :data="userList"
+      :stripe="true"
       element-loading-text="Loading"
       border
       fit
       highlight-current-row
     >
-      <el-table-column align="center" label="序号" width="60">
+      <el-table-column fixed align="center" label="序号" width="60">
         <template slot-scope="scope">
           {{ scope.$index+1 }}
         </template>
       </el-table-column>
-      <el-table-column prop="user_account" label="账号" align="center" />
+      <el-table-column fixed prop="user_account" label="账号" align="center" />
       <el-table-column prop="user_name" label="姓名" align="center" />
       <el-table-column prop="user_gender" label="性别" align="center" />
       <el-table-column prop="user_age" label="年龄" align="center" />
@@ -277,6 +278,7 @@ export default {
         if (valid) {
           var id = this.temp.id
           delete this.temp.id
+          delete this.temp.created_at
           updateUser(id, this.temp).then(res => {
             if (res.code === 0) {
               this.$message.success('用户信息，修改成功')

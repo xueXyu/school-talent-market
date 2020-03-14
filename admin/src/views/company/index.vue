@@ -9,17 +9,18 @@
     <el-table
       :loading="listLoading"
       :data="companyList"
+      :stripe="true"
       element-loading-text="Loading"
       border
       fit
       highlight-current-row
     >
-      <el-table-column align="center" label="序号" width="60">
+      <el-table-column fixed align="center" label="序号" width="60">
         <template slot-scope="scope">
           {{ scope.$index+1 }}
         </template>
       </el-table-column>
-      <el-table-column prop="company_account" label="账号" align="center" width="120" />
+      <el-table-column fixed prop="company_account" label="账号" align="center" width="120" />
       <el-table-column prop="company_name" label="公司名称" align="center" width="240" />
       <el-table-column prop="company_create" label="创立日期" align="center" width="120" />
       <el-table-column prop="company_size" label="公司规模" align="center" width="120" />
@@ -324,6 +325,7 @@ export default {
         if (valid) {
           var id = this.temp.id
           delete this.temp.id
+          delete this.temp.created_at
           updateCompany(id, this.temp).then(res => {
             if (res.code === 0) {
               this.$message.success('公司信息，修改成功')
