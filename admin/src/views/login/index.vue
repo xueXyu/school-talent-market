@@ -66,18 +66,12 @@ import { validUsername } from '@/utils/validate'
 export default {
   name: 'Login',
   data() {
-    const validateUsername = (rule, value, callback) => {
-      if (!validUsername(value)) {
-        callback(new Error('请输入正确的用户名'))
-      } else {
+    var checkUsername = (rule, value, callback) => {
+      var patt = /^[a-zA-Z0-9]{3,30}$/
+      if (patt.test(value)) {
         callback()
-      }
-    }
-    const validatePassword = (rule, value, callback) => {
-      if (value.length < 6) {
-        callback(new Error('密码不能少于6位'))
       } else {
-        callback()
+        callback(new Error('密码只能包含数字和字母!'))
       }
     }
     return {
@@ -86,8 +80,15 @@ export default {
         password: '123456'
       },
       loginRules: {
-        username: [{ required: true, trigger: 'blur', validator: validateUsername }],
-        password: [{ required: true, trigger: 'blur', validator: validatePassword }]
+        username: [
+          { required: true, message: '请输入账号', trigger: 'blur' },
+          { min: 3, max: 30, message: '账号长度在 3 到 30 个字符', trigger: 'blur' },
+          { validator: checkUsername, trigger: 'blur' }
+        ],
+        password: [
+          { required: true, message: '请输入密码', trigger: 'blur' },
+          { min: 6, max: 30, message: '密码长度在 6 到 30 个字符', trigger: 'blur' }
+        ]
       },
       loading: false,
       passwordType: 'password',
