@@ -42,13 +42,13 @@
         <!-- Funfact Section Start -->
         <div class="section section-padding bg-parallax" style="background-image: url('static/images/bg/bg-3.jpg');"
              data-overlay="50">
-            <div class="container">
+            <div class="container" v-if="homeStatistics">
                 <div class="funfact-wrap row">
 
                     <!-- Funfact Start -->
                     <div class="funfact col-md-3 col-sm-6 col-12">
                         <span class="counter">
-                            <CountUp :countup-start="0" :countup-end="1354"></CountUp>
+                            <CountTo :startVal="0" :endVal='homeStatistics.count_job'></CountTo>
                         </span>
                         <span class="title">招聘职位</span>
                     </div>
@@ -57,7 +57,7 @@
                     <!-- Funfact Start -->
                     <div class="funfact col-md-3 col-sm-6 col-12">
                         <span class="counter">
-                            <CountUp :countup-start="0" :countup-end="1741"></CountUp>
+                            <CountTo :startVal="0" :endVal='homeStatistics.count_user'></CountTo>
                         </span>
                         <span class="title">求职者</span>
                     </div>
@@ -66,7 +66,7 @@
                     <!-- Funfact Start -->
                     <div class="funfact col-md-3 col-sm-6 col-12">
                         <span class="counter">
-                            <CountUp :countup-start="0" :countup-end="1204"></CountUp>
+                            <CountTo :startVal="0" :endVal='homeStatistics.count_resume'></CountTo>
                         </span>
                         <span class="title">简历</span>
                     </div>
@@ -75,7 +75,7 @@
                     <!-- Funfact Start -->
                     <div class="funfact col-md-3 col-sm-6 col-12">
                         <span class="counter">
-                            <CountUp :countup-start="0" :countup-end="142"></CountUp>
+                            <CountTo :startVal="0" :endVal='homeStatistics.count_company'></CountTo>
                         </span>
                         <span class="title">公司</span>
                     </div>
@@ -186,26 +186,45 @@
 </template>
 
 <script>
-    import PageHeading from "./public/PageHeading";
-    import CountUp from "./public/CountUp";
+    import PageHeading from './public/PageHeading'
+    import CountTo from 'vue-count-to'
 
     export default {
-        name: "AboutUs",
+        name: 'AboutUs',
         components: {
             PageHeading,
-            CountUp
+            CountTo
         },
         data() {
             return {
                 pageData: {
                     'name': '关于我们',
                     'navs': [
-                        {'name': 'Home', 'to': 'Home', 'active': false},
-                        {'name': '关于我们', 'to': '', 'active': true},
-                    ],
+                        { 'name': 'Home', 'to': 'Home', 'active': false },
+                        { 'name': '关于我们', 'to': '', 'active': true }
+                    ]
+                },
+                homeStatistics: null
+            }
+        },
+        methods: {
+            async getHomeStatistics() {
+                try {
+                    await this.http.get(this.api.HomeStatistics).then(res => {
+                        if (res.code == 0) {
+                            this.homeStatistics = res.data
+                        } else {
+                            this.$message.error(res.message)
+                        }
+                    })
+                } catch (error) {
+                    console.error(error)
                 }
             }
         },
+        mounted() {
+            this.getHomeStatistics()
+        }
     }
 </script>
 

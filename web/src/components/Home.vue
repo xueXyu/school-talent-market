@@ -12,7 +12,7 @@
                         <h2 class="title">千里马常有&nbsp;&nbsp;而伯乐不常有</h2>
                         <p class="home-count-p" v-if="homeStatistics">全站已发布
                             <span class="home-count-span">
-                                <CountUp :countup-start="0" :countup-end="homeStatistics.count_job"></CountUp>
+                                <CountTo :startVal="0" :endVal='homeStatistics.count_job'></CountTo>
                             </span>
                             个职位
                         </p>
@@ -92,7 +92,7 @@
                     <!-- Funfact Start -->
                     <div class="funfact col-md-3 col-sm-6 col-12">
                     <span class="counter">
-                        <CountUp :countup-start="0" :countup-end="homeStatistics.count_job"></CountUp>
+                        <CountTo :startVal="0" :endVal='homeStatistics.count_job'></CountTo>
                     </span>
                         <span class="title">招聘职位</span>
                     </div>
@@ -101,7 +101,7 @@
                     <!-- Funfact Start -->
                     <div class="funfact col-md-3 col-sm-6 col-12">
                     <span class="counter">
-                        <CountUp :countup-start="0" :countup-end="homeStatistics.count_user"></CountUp>
+                        <CountTo :startVal="0" :endVal='homeStatistics.count_user'></CountTo>
                     </span>
                         <span class="title">求职者</span>
                     </div>
@@ -110,7 +110,7 @@
                     <!-- Funfact Start -->
                     <div class="funfact col-md-3 col-sm-6 col-12">
                     <span class="counter">
-                        <CountUp :countup-start="0" :countup-end="homeStatistics.count_resume"></CountUp>
+                        <CountTo :startVal="0" :endVal='homeStatistics.count_resume'></CountTo>
                     </span>
                         <span class="title">简历</span>
                     </div>
@@ -119,7 +119,7 @@
                     <!-- Funfact Start -->
                     <div class="funfact col-md-3 col-sm-6 col-12">
                     <span class="counter">
-                        <CountUp :countup-start="0" :countup-end="homeStatistics.count_company"></CountUp>
+                        <CountTo :startVal="0" :endVal='homeStatistics.count_company'></CountTo>
                     </span>
                         <span class="title">公司</span>
                     </div>
@@ -200,8 +200,8 @@
 </template>
 
 <script>
+    import CountTo from 'vue-count-to';
     import JobItem from "./public/JobItem";
-    import CountUp from "./public/CountUp";
     import HomeCompanyItem from "./public/HomeCompanyItem";
     import RespondentsItem from './public/RespondentsItem';
     import NewsItem from './public/NewsItem';
@@ -211,7 +211,7 @@
         name: 'Home',
         components: {
             JobItem,
-            CountUp,
+            CountTo,
             NewsItem,
             HomeCompanyItem,
             RespondentsItem
