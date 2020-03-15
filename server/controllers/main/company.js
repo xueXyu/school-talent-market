@@ -1,16 +1,16 @@
-'use strict';
+'use strict'
 
-const _ = require('lodash');
-const Joi = require('@hapi/joi');
-const RestController = require('../rest');
-const Sequelize = require('sequelize');
-const Op = Sequelize.Op;
-const credential = require('credential');
-const pwd = credential();
+const _ = require('lodash')
+const Joi = require('@hapi/joi')
+const RestController = require('../rest')
+const Sequelize = require('sequelize')
+const Op = Sequelize.Op
+const credential = require('credential')
+const pwd = credential()
 
 class CompanyController extends RestController {
     constructor() {
-        super('Company');
+        super('Company')
     }
 
     /**
@@ -20,48 +20,48 @@ class CompanyController extends RestController {
         const rules = Joi.object({
             company_name: Joi.string(),
             company_address: Joi.string(),
-            company_size: Joi.string().valid('0-20人', '20-99人', '100-499人', '500-999人', '1000-9999人', '10000人以上'),
-        });
-        const {error, value} = rules.validate(req.body);
+            company_size: Joi.string().valid('0-20人', '20-99人', '100-499人', '500-999人', '1000-9999人', '10000人以上')
+        })
+        const { error, value } = rules.validate(req.body)
         if (error) {
-            return res.replyError(error);
+            return res.replyError(error)
         }
 
-        const data = {};
+        const data = {}
         if (value && !_.isEmpty(value)) {
-            var where = {};
-            _.forEach(value, function (val, key) {
-                where[key] = {[Op.like]: '%' + val + '%'};
-            });
-            data.where = where;
+            var where = {}
+            _.forEach(value, function(val, key) {
+                where[key] = { [Op.like]: '%' + val + '%' }
+            })
+            data.where = where
         }
 
         data.include = [{
             model: this.models['CompanyJob'],
             as: 'jobs',
             attributes: ['id', 'created_at', 'job_name', 'job_salary', 'job_gender', 'job_way']
-        }];
-        data.distinct = true;
+        }]
+        data.distinct = true
 
-        res.reply(this.model.findAndCountAll(data));
+        res.reply(this.model.findAndCountAll(data))
     }
 
     /**
      * 分页返回所有对象
      */
     index(req, res) {
-        const params = req.query || {};
+        const params = req.query || {}
         const data = {
             offset: +params.offset || 0,
             limit: +params.limit || 10
-        };
+        }
         if (params.where && _.isObject(params.where)) {
-            data.where = params.where;
+            data.where = params.where
         }
         if (params.order && _.isObject(params.order)) {
             data.order = [
                 params.order
-            ];
+            ]
         }
 
         data.include = [{
@@ -69,10 +69,10 @@ class CompanyController extends RestController {
             as: 'jobs',
             attributes: ['id', 'created_at', 'job_name', 'job_salary', 'job_gender', 'job_way'
             ]
-        }];
-        data.distinct = true;
+        }]
+        data.distinct = true
 
-        res.reply(this.model.findAndCountAll(data));
+        res.reply(this.model.findAndCountAll(data))
     }
 
     /**
@@ -80,34 +80,34 @@ class CompanyController extends RestController {
      */
     show(req, res) {
         if (!req.params || !req.params.id) {
-            return res.replyError('missing id parameter');
+            return res.replyError('missing id parameter')
         }
 
         const data = {
-            where: {id: req.params.id},
+            where: { id: req.params.id },
             include: [{
                 model: this.models['CompanyJob'],
                 as: 'jobs',
                 attributes: ['id', 'created_at', 'job_name', 'job_salary', 'job_gender', 'job_way'
                 ]
             }]
-        };
-        res.reply(this.model.findOne(data));
+        }
+        res.reply(this.model.findOne(data))
     }
 
     /**
      * 创建对象
      */
     create(req, res) {
-        let data = req.body;
+        let data = req.body
         if (this.restRules.create) {
-            const validate = joi.validate(req.body, this.restRules.create);
+            const validate = joi.validate(req.body, this.restRules.create)
             if (validate.error) {
-                return res.replyError(validate.error);
+                return res.replyError(validate.error)
             }
-            data = validate.value;
+            data = validate.value
         }
-        res.reply(this.model.create(data));
+        res.reply(this.model.create(data))
     }
 
     /**
@@ -115,22 +115,26 @@ class CompanyController extends RestController {
      */
     update(req, res) {
         if (!req.params || !req.params.id) {
-            return res.replyError('missing id parameter');
+            return res.replyError('missing id parameter')
         }
 
-        let data = req.body;
+        let data = req.body
         if (this.restRules.update) {
-            const validate = joi.validate(req.body, this.restRules.update);
+            const validate = joi.validate(req.body, this.restRules.update)
             if (validate.error) {
-                return res.replyError(validate.error);
+                return res.replyError(validate.error)
             }
-            data = validate.value;
+            data = validate.value
         }
-
-        pwd.hash(data.company_password).then((hash) => {
-            data.company_password = hash
-            res.reply(this.model.update(data, {where: {id: req.params.id}}));
-        });
+        
+        if (!_.isEmpty(data.company_password)) {
+            pwd.hash(data.company_password).then((hash) => {
+                data.company_password = hash
+                res.reply(this.model.update(data, { where: { id: req.params.id } }))
+            })
+        } else {
+            res.reply(this.model.update(data, { where: { id: req.params.id } }))
+        }
     }
 
     /**
@@ -138,17 +142,17 @@ class CompanyController extends RestController {
      */
     destroy(req, res) {
         if (!req.params || !req.params.id) {
-            return res.replyError('missing id parameter');
+            return res.replyError('missing id parameter')
         }
 
         this.model.findByPk(req.params.id).then((obj) => {
             if (obj) {
-                res.reply(obj.destroy());
+                res.reply(obj.destroy())
             } else {
-                res.replyError(this.modelName + ' not found');
+                res.replyError(this.modelName + ' not found')
             }
-        });
+        })
     }
 }
 
-module.exports = new CompanyController();
+module.exports = new CompanyController()

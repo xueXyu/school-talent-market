@@ -142,7 +142,7 @@
                 try {
                     await this.http.delete(this.api.UserResume + '/' + resumeId).then(res => {
                         if (res.code == 0) {
-                            this.$message.error('删除成功！');
+                            this.$message.success('删除成功！');
                             this.getResumeList();
                         } else {
                             this.$message.error(res.message);

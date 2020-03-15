@@ -39,7 +39,7 @@
                         </el-table-column>
                         <el-table-column prop="user.user_phone" label="电话" width="120">
                         </el-table-column>
-                        <el-table-column prop="resumes.resume_email" label="邮箱" width="160">
+                        <el-table-column prop="resumes.resume_email" label="邮箱">
                         </el-table-column>
                         <el-table-column fixed="right" label="操作" width="320">
                             <template slot-scope="scope">
@@ -118,7 +118,7 @@
             viewRow(index, row) {
                 this.$router.push({
                     name: 'ResumeSingle',
-                    params: {resumeId: row.id}
+                    params: {resumeId: row.resume_id}
                 })
             },
             passRow(index, row) {

@@ -414,36 +414,6 @@ class NewsController extends RestController {
                 data: '查询出错'
             })
         })
-
-        // var count_user = new Promise(function(resolve, reject) {
-        //     User.count().then((result) => {
-        //         resolve(result)
-        //     })
-        // })
-        // var count_resume = new Promise(function(resolve, reject) {
-        //     UserResume.count().then((result) => {
-        //         resolve(result)
-        //     })
-        // })
-        // var count_company = new Promise(function(resolve, reject) {
-        //     Company.count().then((result) => {
-        //         resolve(result)
-        //     })
-        // })
-        // count_user, count_resume, count_company
-
-        // Promise.all([count_job])
-        //     .then(function(results) {
-        //         console.log(results[0])
-        //     })
-        //     .catch(function(error) {
-        //         console.log(error)
-        //         res.json({
-        //             code: 1,
-        //             message: error,
-        //             data: '查询出错'
-        //         })
-        //     })
     }
 }
 
