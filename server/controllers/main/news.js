@@ -232,7 +232,7 @@ class NewsController extends RestController {
         })
 
         // 计算某天的数据
-        function jobDayCount(input_day) {
+        var jobDayCount = function(input_day) {
             return new Promise(function(resolve, reject) {
                 CompanyJobs.findAll({
                     attributes: [
@@ -254,11 +254,13 @@ class NewsController extends RestController {
                     }
 
                     resolve(res)
+                }).catch((error) => {
+                    reject(error)
                 })
             })
         }
 
-        function userDayCount(input_day) {
+        var userDayCount = (input_day) => {
             return new Promise(function(resolve, reject) {
                 Users.findAll({
                     attributes: [
@@ -280,11 +282,13 @@ class NewsController extends RestController {
                     }
 
                     resolve(res)
+                }).catch((error) => {
+                    reject(error)
                 })
             })
         }
 
-        function resumeDayCount(input_day) {
+        var resumeDayCount = function(input_day) {
             return new Promise(function(resolve, reject) {
                 UserResumes.findAll({
                     attributes: [
@@ -366,7 +370,6 @@ class NewsController extends RestController {
             return day_list
         }).then((days) => {
             // console.log(days);
-            var day_counts = []
             var all_count = []
             _.forEach(days, function(val) {
                 all_count.push(jobDayCount(val), userDayCount(val), resumeDayCount(val), companyDayCount(val))
@@ -383,15 +386,18 @@ class NewsController extends RestController {
                     var resumes = []
                     _.forEach(results, function(vv) {
                         _.forEach(days, function(day) {
-                            if (vv.name === 'companys' && vv.data.day === day) {
-                                companys.push(vv.data.count)
-                            } else if (vv.name === 'jobs' && vv.data.day === day) {
-                                jobs.push(vv.data.count)
-                            } else if (vv.name === 'users' && vv.data.day === day) {
-                                users.push(vv.data.count)
-                            } else if (vv.name === 'resumes' && vv.data.day === day) {
-                                resumes.push(vv.data.count)
+                            if (vv.data.day === day) {
+                                eval(vv.name + ".push(vv.data.count)")
                             }
+                            // if (vv.name === 'companys' && vv.data.day === day) {
+                            //     companys.push(vv.data.count)
+                            // } else if (vv.name === 'jobs' && vv.data.day === day) {
+                            //     jobs.push(vv.data.count)
+                            // } else if (vv.name === 'users' && vv.data.day === day) {
+                            //     users.push(vv.data.count)
+                            // } else if (vv.name === 'resumes' && vv.data.day === day) {
+                            //     resumes.push(vv.data.count)
+                            // }
                         })
                     })
                     // console.log(companys, users, jobs, resumes)
@@ -403,7 +409,7 @@ class NewsController extends RestController {
                             job_list: jobs,
                             user_list: users,
                             resume_list: resumes,
-                            company_list: companys,
+                            company_list: companys
                         }
                     })
                 })
