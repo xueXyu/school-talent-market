@@ -387,7 +387,7 @@ class NewsController extends RestController {
                     _.forEach(results, function(vv) {
                         _.forEach(days, function(day) {
                             if (vv.data.day === day) {
-                                eval(vv.name + ".push(vv.data.count)")
+                                eval(vv.name + '.push(vv.data.count)')
                             }
                             // if (vv.name === 'companys' && vv.data.day === day) {
                             //     companys.push(vv.data.count)
