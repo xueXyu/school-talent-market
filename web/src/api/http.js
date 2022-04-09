@@ -57,8 +57,8 @@ export default {
             baseURL: localhosts,
             url,
             data: data,
-            withCredentials: true,
-            timeout: 5000,//响应时间
+            withCredentials: true, 
+            timeout: 5000,
         }).then(res => {
             return successfun(res)
         }, err => {

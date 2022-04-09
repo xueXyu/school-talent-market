@@ -15,7 +15,7 @@
                              mode="horizontal"
                              @select="handleSelect">
                         <el-menu-item index="applyjob">申请的职位</el-menu-item>
-                        <el-menu-item index="likejob">收藏的职位</el-menu-item>
+ <el-menu-item index="likejob">收藏的职位</el-menu-item>
                     </el-menu>
                 </div>
 

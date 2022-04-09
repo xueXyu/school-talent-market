@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "start": "node ./bin/www",
-        "auto": "DEBUG=school-talent-market:* nodemon ./bin/www"
+        "auto": "nodemon ./bin/www"
     },
     "dependencies": {
         "@hapi/joi": "^17.1.0",
